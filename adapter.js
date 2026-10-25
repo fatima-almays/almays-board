@@ -6,7 +6,16 @@
     try{
       firebase.initializeApp(C.firebase);
       var auth = firebase.auth(), fs = firebase.firestore(), first = true;
+      /* manager's private link (?m=KEY): PIN screen first, then sign in as the manager for this browser session */
+      var mKey = new URLSearchParams(location.search).get("m"), gate = false;
       auth.onAuthStateChanged(function(u){
+        if(gate) return;
+        if(first && mKey && !(u && !u.isAnonymous)){
+          gate = true;
+          var check = u ? fs.collection("bossLinks").doc(u.uid).get().then(function(s){ return s.exists; }, function(){ return false; }) : Promise.resolve(false);
+          check.then(function(ok){ if(ok) location.replace(location.origin + location.pathname); else pinScreen(auth, fs, mKey); });
+          return;
+        }
         if(first){ first=false;
           /* roles live in the database rules (emails stay private): try reading the role docs */
           var probe = function(id){ return u ? fs.collection("roles").doc(id).get().then(function(){return true;},function(){return false;}) : Promise.resolve(false); };
@@ -55,10 +64,10 @@
       box.innerHTML = '<button type="button" class="acct-btn" id="acctIn"><svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-4 0-8 2-8 5v1h16v-1c0-3-4-5-8-5z"/></svg><span>Sign in</span></button>';
       box.querySelector("#acctIn").onclick = function(){ R.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){ alertBar("Sign-in didn't finish: "+(e && e.message || e)); }); };
     }else{
-      var ini = (u.displayName||u.email||"?").trim().charAt(0).toUpperCase();
-      box.innerHTML = '<button type="button" class="acct-btn signed" id="acctOut" title="Signed in as '+esc(u.email)+' · click to sign out"><b>'+esc(ini)+'</b><span>'+(role.isEditor? "Editor":role.isBoss? "Manager":"Viewer")+'</span></button>';
+      var ini = (u.displayName||u.email||(role.isBoss?"Mohammad":"?")).trim().charAt(0).toUpperCase();
+      box.innerHTML = '<button type="button" class="acct-btn signed" id="acctOut" title="Signed in as '+esc(u.email||(role.isBoss?"Manager":"guest"))+' · click to sign out"><b>'+esc(ini)+'</b><span>'+(role.isEditor? "Editor":role.isBoss? "Manager":"Viewer")+'</span></button>';
       box.querySelector("#acctOut").onclick = function(){ R.auth.signOut(); };
-      try{ await R.fs.collection("people").doc(u.uid).set({name: u.displayName || "Team member"}, {merge:true}); }catch(e){}
+      if(!u.isAnonymous){ try{ await R.fs.collection("people").doc(u.uid).set({name: u.displayName || "Team member"}, {merge:true}); }catch(e){} }
       if(role.isEditor){
         try{
           var probe = await R.fs.collection("tasks").limit(1).get();
@@ -68,6 +77,39 @@
       }
     }
   });
+  function pinScreen(auth, fs, key){
+    var css = '#pinGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:radial-gradient(1200px 600px at 70% -10%,#728C82 0%,#4C685A 45%,#22332c 100%);font-family:inherit;padding:16px}'
+      + '#pinGate .pg{width:min(360px,100%);background:#fff;border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.35);padding:28px 24px 22px;text-align:center;color:#22332c}'
+      + '#pinGate img{height:44px;margin:0 auto 14px;display:block}#pinGate h2{margin:0 0 4px;font-size:19px}#pinGate p{margin:0 0 18px;color:#5b6b64;font-size:13.5px}'
+      + '#pinGate input{width:100%;box-sizing:border-box;text-align:center;font-size:26px;letter-spacing:12px;padding:12px 10px;border:1.5px solid #cfd8d3;border-radius:12px;font-family:inherit;color:#22332c}'
+      + '#pinGate input:focus{outline:3px solid #AEC486;border-color:#4C685A}#pinGate button{margin-top:14px;width:100%;padding:12px;border:0;border-radius:12px;background:#4C685A;color:#fff;font:600 15px inherit;font-family:inherit;cursor:pointer}'
+      + '#pinGate button:disabled{opacity:.7;cursor:default}#pinGate .err{color:#b3261e;font-size:13px;margin-top:10px;min-height:18px}#pinGate .sh{animation:pgsh .35s}@keyframes pgsh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}';
+    var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+    var logo = document.querySelector('header img, .band img');
+    var g = document.createElement("div"); g.id = "pinGate";
+    g.innerHTML = '<form class="pg" autocomplete="off">' + (logo ? '<img src="'+logo.src+'" alt="Al Mays">' : '')
+      + '<h2>Marketing Weekly Board</h2><p>Enter your PIN to continue</p>'
+      + '<input id="pgIn" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="PIN" autofocus>'
+      + '<button type="submit" id="pgGo">Enter</button><div class="err" id="pgErr"></div></form>';
+    var mount = function(){ document.body.appendChild(g); var i = g.querySelector("#pgIn"); i.focus(); i.oninput = function(){ i.value = i.value.replace(/\D/g, ""); }; };
+    if(document.body) mount(); else document.addEventListener("DOMContentLoaded", mount);
+    g.querySelector("form").onsubmit = function(ev){
+      ev.preventDefault();
+      var i = g.querySelector("#pgIn"), b = g.querySelector("#pgGo"), er = g.querySelector("#pgErr"), pin = i.value.trim();
+      if(!pin){ i.focus(); return; }
+      b.disabled = true; b.textContent = "Checking…"; er.textContent = "";
+      auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(function(){
+        return auth.currentUser ? {user: auth.currentUser} : auth.signInAnonymously();
+      }).then(function(c){
+        return fs.collection("bossLinks").doc(c.user.uid).set({key: key + "-" + pin, at: new Date().toISOString()}).then(function(){
+          return fs.collection("people").doc(c.user.uid).set({name: "Mohammad"}, {merge: true});
+        });
+      }).then(function(){ b.textContent = "Welcome ✓"; location.replace(location.origin + location.pathname); }, function(e){
+        console.error(e); b.disabled = false; b.textContent = "Enter"; i.value = ""; i.focus();
+        er.textContent = "Incorrect PIN. Please try again."; var f = g.querySelector(".pg"); f.classList.remove("sh"); void f.offsetWidth; f.classList.add("sh");
+      });
+    };
+  }
   function alertBar(msg){ var b=document.createElement("div"); b.className="acct-bar"; b.textContent=msg; document.body.appendChild(b); setTimeout(function(){b.remove();},6000); }
   function offerImport(fs, sn){
     var n = (sn.tasks||[]).length;
