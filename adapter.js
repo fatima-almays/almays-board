@@ -10,7 +10,7 @@
         if(first){ first=false;
           /* roles live in the database rules (emails stay private): try reading the role docs */
           var probe = function(id){ return u ? fs.collection("roles").doc(id).get().then(function(){return true;},function(){return false;}) : Promise.resolve(false); };
-          Promise.all([probe("owner"), probe("editor")]).then(function(r){ resolve({auth:auth, fs:fs, u:u, role:{isOwner:r[0], isEditor:r[0]||r[1]}}); });
+          Promise.all([probe("owner"), probe("editor"), probe("boss")]).then(function(r){ resolve({auth:auth, fs:fs, u:u, role:{isOwner:r[0], isEditor:r[0]||r[1], isBoss:!r[0]&&r[2]}}); });
         }
         else { location.reload(); }
       });
@@ -22,6 +22,7 @@
     if(name === "db") return fs;
     if(name === "user") return {
       isOwner: async function(){ return role.isOwner; },
+      isBoss: async function(){ return role.isBoss; },
       canEdit: async function(){ return role.isEditor; },
       can: async function(n){ return n === "data.write" ? role.isEditor : false; },
       id: async function(){ return u ? u.uid : null; },
@@ -55,7 +56,7 @@
       box.querySelector("#acctIn").onclick = function(){ R.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){ alertBar("Sign-in didn't finish: "+(e && e.message || e)); }); };
     }else{
       var ini = (u.displayName||u.email||"?").trim().charAt(0).toUpperCase();
-      box.innerHTML = '<button type="button" class="acct-btn signed" id="acctOut" title="Signed in as '+esc(u.email)+' · click to sign out"><b>'+esc(ini)+'</b><span>'+(role.isEditor? "Editor":"Viewer")+'</span></button>';
+      box.innerHTML = '<button type="button" class="acct-btn signed" id="acctOut" title="Signed in as '+esc(u.email)+' · click to sign out"><b>'+esc(ini)+'</b><span>'+(role.isEditor? "Editor":role.isBoss? "Manager":"Viewer")+'</span></button>';
       box.querySelector("#acctOut").onclick = function(){ R.auth.signOut(); };
       try{ await R.fs.collection("people").doc(u.uid).set({name: u.displayName || "Team member"}, {merge:true}); }catch(e){}
       if(role.isEditor){
