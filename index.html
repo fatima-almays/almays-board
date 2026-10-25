@@ -2031,7 +2031,7 @@ function renderModal(first){
   const m=$("#mScrim"), t=S.tasks.find(x=>x.id===W.modal); if(!t){closeModal();return}
   const draft=first?"":(($("#cmText")||{}).value||"");
   const cms=commentsOf(t.id), rc=reactsOf(t.id), mine=rc.find(r=>r.uid===W.me);
-  const canSoc=!!W.db&&!!W.me&&S.canWrite!==false;
+  const canSoc=!!W.db&&!!W.me&&(S.canWrite!==false||W.boss);
   const ups=lines(t.updates);
   const whoR=REACTS.map(e=>{const ppl=rc.filter(r=>r.emoji===e).map(r=>nameOf(r.uid)); return ppl.length?`${e} ${ppl.join(", ")}`:""}).filter(Boolean).join(" · ");
   $("#modal").innerHTML=`
@@ -2092,7 +2092,7 @@ document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&W.modal&&!$("#draw
 /* ---------- manager page ---------- */
 function renderMgr(){
   const el=$("#page-mgr"), notes=W.mgr.filter(m=>m.type==="note").sort((a,b)=>String(b.at).localeCompare(String(a.at))), tasks=W.mgr.filter(m=>m.type==="task").sort((a,b)=>(a.done-b.done)||String(a.due||"9").localeCompare(String(b.due||"9")));
-  const tab=W.mgrTab, items=tab==="notes"?notes:tasks, can=!!W.db&&!!W.me&&S.canWrite!==false;
+  const tab=W.mgrTab, items=tab==="notes"?notes:tasks, can=!!W.db&&!!W.me&&(S.canWrite!==false||W.boss);
   const draft={t:($("#mgT")||{}).value||"",x:($("#mgX")||{}).value||"",d:($("#mgD")||{}).value||""};
   el.innerHTML=`<div class="wrap page">
    <div class="mgr-hero"><svg class="pat" viewBox="0 0 260 160"><use href="#leafpair" x="120" y="10" width="120" height="60" fill="#AEC486" opacity=".9"/><use href="#leafpair" x="40" y="70" width="120" height="60" fill="#728C82" opacity=".55"/><use href="#leafpair" x="170" y="80" width="120" height="60" fill="#4C685A"/></svg>
@@ -2146,7 +2146,7 @@ document.querySelectorAll(".pg").forEach(b=>b.addEventListener("click",()=>setPa
 /* ---------- live social data + visit log ---------- */
 async function socialBoot(db,user){
   W.db=db; W.user=user;
-  try{ if(user){ W.isOwner=!!(await user.isOwner()); W.me=await user.id(); } }catch(e){}
+  try{ if(user){ W.isOwner=!!(await user.isOwner()); W.me=await user.id(); W.boss=!!(user.isBoss&&await user.isBoss()); } }catch(e){}
   if(!db) return;
   db.collection("comments").onSnapshot(s=>{W.comments=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
   db.collection("reactions").onSnapshot(s=>{W.reactions=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
