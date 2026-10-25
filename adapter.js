@@ -110,7 +110,7 @@
       + '<div class="pg-card"><span class="pg-kicker">Marketing Weekly Board</span>'
       + '<h1>Hello Boss <span class="pg-wave">👋</span></h1><p class="pg-ar" dir="rtl" lang="ar">مرحباً بوس</p>'
       + '<p class="pg-sub">Enter your PIN to open the dashboard</p>'
-      + '<div class="pg-boxes">' + [0,1,2,3].map(function(n){ return '<input type="tel" inputmode="numeric" maxlength="1" aria-label="PIN digit '+(n+1)+'">'; }).join("") + '</div>'
+      + '<div class="pg-boxes">' + [0,1,2,3].map(function(n){ return '<input type="tel" inputmode="numeric" autocomplete="one-time-code" aria-label="PIN digit '+(n+1)+'">'; }).join("") + '</div>'
       + '<button type="submit" id="pgGo">Open dashboard</button><div class="pg-err" id="pgErr" role="alert"></div></div>'
       + '<div class="pg-foot">AL MAYS CATERING SOLUTIONS · MARKETING</div></form>';
     var ins = g.querySelectorAll(".pg-boxes input"), b = g.querySelector("#pgGo"), er = g.querySelector("#pgErr"), form = g.querySelector("form");
