@@ -108,7 +108,7 @@
     g.innerHTML = '<div class="pg-deco">' + mk(320, "top:-40px;right:-60px;transform:rotate(-18deg)") + mk(260, "bottom:-30px;left:-50px;transform:rotate(14deg)") + mk(140, "top:38%;left:6%;opacity:.1") + '</div>'
       + '<form class="pg-form" autocomplete="off" novalidate><img class="pg-logo" alt="Al Mays Catering Solutions">'
       + '<div class="pg-card"><span class="pg-kicker">Marketing Weekly Board</span>'
-      + '<h1>Hello Boss <span class="pg-wave">👋</span></h1><p class="pg-ar" dir="rtl" lang="ar">مرحباً بوس</p>'
+      + '<h1>Hello Boss <span class="pg-wave">👋</span></h1>'
       + '<p class="pg-sub">Enter your PIN to open the dashboard</p>'
       + '<div class="pg-boxes">' + [0,1,2,3].map(function(n){ return '<input type="tel" inputmode="numeric" autocomplete="one-time-code" aria-label="PIN digit '+(n+1)+'">'; }).join("") + '</div>'
       + '<button type="submit" id="pgGo">Open dashboard</button><div class="pg-err" id="pgErr" role="alert"></div></div>'
