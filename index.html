@@ -1057,9 +1057,9 @@ const LOGO_COLOR="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAB0CAMAAAD9
 const STATUSES=["Not Started","In Progress","Done"];
 const UP_STATUSES=["Planned","In Progress","Done"];
 const PRIOS=["High","Medium","Low"];
-const AREA_ORDER=["SEO","Google Ads","Website"];
+const AREA_ORDER=["SEO & Google Ads","SEO","Google Ads","Website"];
 const AREA_ICON={"SEO":"i-seo","Google Ads":"i-ads","Website":"i-web"};
-const AREA_BLURB={"SEO":"Rank for catering searches in KSA","Google Ads":"Close tracking of campaign performance","Website":"Raise quality and lead conversion"};
+const AREA_BLURB={"SEO & Google Ads":"Increase visibility: search rankings and paid campaigns","SEO":"Rank for catering searches in KSA","Google Ads":"Close tracking of campaign performance","Website":"Raise quality and lead conversion"};
 const SORTS=[["ws","Workstream","Grouped in collapsible sections"],["due","Due date","Nearest deadline first"],["prio","Priority","High, then Medium, then Low"],["status","Status","Overdue first, then in progress"]];
 const S={tasks:[],settings:{title:"Weekly Workstream Update",reportDate:"2026-10-15"},loaded:false,view:"week",q:"",fStatus:"",fPrio:"",sort:"ws",layout:"cards",canWrite:true,db:null,dl:null,editing:null,kind:"weekly",mode:"task",week:null,expanded:new Set(),openRows:new Set(),collapsed:new Set(),fWeek:null,fPrioV:"Medium",fStatV:"Not Started"};
 const $=s=>document.querySelector(s);
@@ -1328,7 +1328,7 @@ function renderNext(){
   const el=$("#view-next");
   if(!S.loaded){el.innerHTML=skeleton();return}
   const all=upcoming(); const filtered=all.filter(matches); const groups=groupBy(all,"workstream",AREA_ORDER); const st=stats(all);
-  const head=`<div class="section-head"><h2>Upcoming tasks</h2><div class="sh-r"><span>Focus: SEO · Google Ads · Website</span>${S.layout==="list"&&S.sort==="ws"?expandBar(groups.map(([n])=>"u:"+n)):""}</div></div>
+  const head=`<div class="section-head"><h2>Upcoming tasks</h2><div class="sh-r"><span>Focus: SEO &amp; Google Ads · Website</span>${S.layout==="list"&&S.sort==="ws"?expandBar(groups.map(([n])=>"u:"+n)):""}</div></div>
   <p class="summary"><b>${all.length}</b> planned actions across <b>${groups.length}</b> focus areas. <b>${st.hi}</b> are high priority, <b>${st.soon}</b> are due within 7 days of the report date, and <b>${st.done}</b> are done.</p>`;
   if(!all.length){el.innerHTML=head+emptyState("No upcoming tasks yet","Plan the next actions for SEO, Google Ads and the website.","upcoming");return}
   let body;
