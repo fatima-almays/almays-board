@@ -1630,16 +1630,17 @@ function openPdfDialog(){
   PDF.o=PDF.o&&weeks().includes(PDF.o.week)?PDF.o:pdfDefaults();
   let sc=document.getElementById("pdfScrim");
   if(!sc){
-    const css=document.createElement("style"); css.textContent=`#pdfScrim{position:fixed;inset:0;z-index:9000;background:rgba(20,30,25,.55);display:none;align-items:center;justify-content:center;padding:16px}#pdfScrim.open{display:flex}
+    const css=document.createElement("style"); css.textContent=`#pdfBox div,#pdfBox h3,#pdfBox label,#pdfBox button,#pdfBox select,#pdfBox option,#pdfBox small,#pdfBox b,#pdfBox input{all:revert;box-sizing:border-box;font-family:Montserrat,system-ui,Segoe UI,Arial,sans-serif}
+#pdfScrim{position:fixed;inset:0;z-index:9000;background:rgba(20,30,25,.55);display:none;align-items:center;justify-content:center;padding:16px}#pdfScrim.open{display:flex}
 #pdfBox{background:var(--surface,#fff);color:var(--ink,#1E2B24);border-radius:20px;width:min(560px,100%);max-height:min(90vh,860px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);font-family:inherit}
-#pdfBox .ph{padding:18px 22px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line,#DCE3DA)}#pdfBox .ph h3{margin:0;font-size:17px;flex:1}#pdfBox .px{background:none;border:0;font-size:22px;cursor:pointer;color:inherit;opacity:.6}
-#pdfBox .pb{padding:14px 22px;overflow:auto}#pdfBox .pg{margin-bottom:16px}#pdfBox .pl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:7px;display:flex;justify-content:space-between}
-#pdfBox .pl button{background:none;border:0;color:#4C685A;font-size:11px;font-weight:700;cursor:pointer;text-transform:none;letter-spacing:0}
-#pdfBox .chips{display:flex;flex-wrap:wrap;gap:7px}#pdfBox .chip{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1.5px solid var(--line,#DCE3DA);cursor:pointer;font-size:13px;user-select:none}
-#pdfBox .chip input{accent-color:#4C685A;margin:0}#pdfBox .chip:has(input:checked){border-color:#4C685A;background:rgba(174,196,134,.18)}
+#pdfBox .pdx-h{padding:18px 22px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line,#DCE3DA)}#pdfBox .pdx-h h3{margin:0;font-size:17px;flex:1}#pdfBox .pdx-x{background:none;border:0;font-size:22px;cursor:pointer;color:inherit;opacity:.6}
+#pdfBox .pdx-b{padding:14px 22px;overflow:auto}#pdfBox .pdx-g{margin-bottom:16px}#pdfBox .pdx-l{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:7px;display:flex;justify-content:space-between}
+#pdfBox .pdx-l button{background:none;border:0;color:#4C685A;font-size:11px;font-weight:700;cursor:pointer;text-transform:none;letter-spacing:0}
+#pdfBox .pdx-chips{display:flex;flex-wrap:wrap;gap:7px}#pdfBox .pdx-chip{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1.5px solid var(--line,#DCE3DA);cursor:pointer;font-size:13px;user-select:none}
+#pdfBox .pdx-chip input[type]{accent-color:#4C685A;margin:0}#pdfBox .pdx-chip:has(input:checked){border-color:#4C685A;background:rgba(174,196,134,.18)}
 #pdfBox select{width:100%;padding:9px 10px;border-radius:10px;border:1.5px solid var(--line,#DCE3DA);font:inherit;background:transparent;color:inherit}
-#pdfBox .pf{padding:14px 22px;border-top:1px solid var(--line,#DCE3DA);display:flex;gap:10px;justify-content:flex-end;align-items:center}#pdfBox .pf small{flex:1;opacity:.6;font-size:11.5px}
-#pdfBox .go{background:#3A5446;color:#fff;border:0;border-radius:11px;padding:10px 18px;font:700 14px inherit;font-family:inherit;cursor:pointer}#pdfBox .cn{background:none;border:1.5px solid var(--line,#DCE3DA);border-radius:11px;padding:9px 16px;font:inherit;cursor:pointer;color:inherit}`;
+#pdfBox .pdx-f{padding:14px 22px;border-top:1px solid var(--line,#DCE3DA);display:flex;gap:10px;justify-content:flex-end;align-items:center}#pdfBox .pdx-f small{flex:1;opacity:.6;font-size:11.5px}
+#pdfBox .pdx-go{background:#3A5446;color:#fff;border:0;border-radius:11px;padding:10px 18px;font:700 14px inherit;font-family:inherit;cursor:pointer}#pdfBox .pdx-cn{background:none;border:1.5px solid var(--line,#DCE3DA);border-radius:11px;padding:9px 16px;font:inherit;cursor:pointer;color:inherit}`;
     document.head.appendChild(css);
     sc=document.createElement("div"); sc.id="pdfScrim"; sc.innerHTML=`<div id="pdfBox" role="dialog" aria-modal="true" aria-labelledby="pdfTtl"></div>`;
     document.body.appendChild(sc);
@@ -1652,19 +1653,19 @@ function closePdf(){ const sc=document.getElementById("pdfScrim"); if(sc) sc.cla
 function renderPdf(){
   const o=PDF.o, box=document.getElementById("pdfBox");
   const wsAll=[...new Set(tasksOfWeek(o.week).map(t=>t.workstream))], usAll=[...new Set(upcoming().map(t=>t.workstream))];
-  const chip=(grp,val,on,label)=>`<label class="chip"><input type="checkbox" data-g="${grp}" value="${esc(val)}"${on?" checked":""}>${esc(label||val)}</label>`;
-  const radio=(val,on,label)=>`<label class="chip"><input type="radio" name="pdfOr" data-g="land" value="${val}"${on?" checked":""}>${label}</label>`;
-  box.innerHTML=`<div class="ph"><h3 id="pdfTtl">Export PDF</h3><button class="px" type="button" data-pdf="x" aria-label="Close">×</button></div>
-<div class="pb">
- <div class="pg"><div class="pl">Report week</div><select id="pdfWeek">${weeks().slice().reverse().map(w=>`<option value="${w}"${w===o.week?" selected":""}>${esc(weekName(w))}</option>`).join("")}</select></div>
- <div class="pg"><div class="pl">Sections</div><div class="chips">${chip("sec","sum",o.sum,"Summary & key numbers")}${chip("sec","wk",o.wk,"Weekly workstreams")}${chip("sec","up",o.up,"Upcoming tasks")}${chip("sec","fb",o.fb,"Manager feedback")}</div></div>
- <div class="pg"><div class="pl">Workstreams <button type="button" data-pdf="allws">${o.ws.length===wsAll.length?"Clear all":"Select all"}</button></div><div class="chips">${wsAll.map(n=>chip("ws",n,o.ws.includes(n))).join("")||"<small>No tasks this week</small>"}</div></div>
- ${usAll.length?`<div class="pg"><div class="pl">Upcoming focus areas</div><div class="chips">${usAll.map(n=>chip("us",n,o.us.includes(n))).join("")}</div></div>`:""}
- <div class="pg"><div class="pl">Task status</div><div class="chips">${["Done","In Progress","Not Started"].map(s=>chip("st",s,o.st.includes(s),s==="Not Started"?"Not started / Planned":s)).join("")}</div></div>
- <div class="pg"><div class="pl">Details</div><div class="chips">${chip("det","upd",o.upd,"Updates")}${chip("det","desc",o.desc,"Descriptions")}${chip("det","meta",o.meta,"Dates & priority")}${chip("det","kpi",o.kpi,"KPIs (upcoming)")}</div></div>
- <div class="pg"><div class="pl">Page layout</div><div class="chips">${radio("0",!o.land,"Portrait")}${radio("1",o.land,"Landscape")}</div></div>
+  const chip=(grp,val,on,label)=>`<label class="pdx-chip"><input type="checkbox" data-g="${grp}" value="${esc(val)}"${on?" checked":""}>${esc(label||val)}</label>`;
+  const radio=(val,on,label)=>`<label class="pdx-chip"><input type="radio" name="pdfOr" data-g="land" value="${val}"${on?" checked":""}>${label}</label>`;
+  box.innerHTML=`<div class="pdx-h"><h3 id="pdfTtl">Export PDF</h3><button class="pdx-x" type="button" data-pdf="x" aria-label="Close">×</button></div>
+<div class="pdx-b">
+ <div class="pdx-g"><div class="pdx-l">Report week</div><select id="pdfWeek">${weeks().slice().reverse().map(w=>`<option value="${w}"${w===o.week?" selected":""}>${esc(weekName(w))}</option>`).join("")}</select></div>
+ <div class="pdx-g"><div class="pdx-l">Sections</div><div class="pdx-chips">${chip("sec","sum",o.sum,"Summary & key numbers")}${chip("sec","wk",o.wk,"Weekly workstreams")}${chip("sec","up",o.up,"Upcoming tasks")}${chip("sec","fb",o.fb,"Manager feedback")}</div></div>
+ <div class="pdx-g"><div class="pdx-l">Workstreams <button type="button" data-pdf="allws">${o.ws.length===wsAll.length?"Clear all":"Select all"}</button></div><div class="pdx-chips">${wsAll.map(n=>chip("ws",n,o.ws.includes(n))).join("")||"<small>No tasks this week</small>"}</div></div>
+ ${usAll.length?`<div class="pdx-g"><div class="pdx-l">Upcoming focus areas</div><div class="pdx-chips">${usAll.map(n=>chip("us",n,o.us.includes(n))).join("")}</div></div>`:""}
+ <div class="pdx-g"><div class="pdx-l">Task status</div><div class="pdx-chips">${["Done","In Progress","Not Started"].map(s=>chip("st",s,o.st.includes(s),s==="Not Started"?"Not started / Planned":s)).join("")}</div></div>
+ <div class="pdx-g"><div class="pdx-l">Details</div><div class="pdx-chips">${chip("det","upd",o.upd,"Updates")}${chip("det","desc",o.desc,"Descriptions")}${chip("det","meta",o.meta,"Dates & priority")}${chip("det","kpi",o.kpi,"KPIs (upcoming)")}</div></div>
+ <div class="pdx-g"><div class="pdx-l">Page layout</div><div class="pdx-chips">${radio("0",!o.land,"Portrait")}${radio("1",o.land,"Landscape")}</div></div>
 </div>
-<div class="pf"><small>In the print window choose <b>Save as PDF</b>.</small><button class="cn" type="button" data-pdf="x">Cancel</button><button class="go" type="button" data-pdf="go">Export PDF</button></div>`;
+<div class="pdx-f"><small>In the print window choose <b>Save as PDF</b>.</small><button class="pdx-cn" type="button" data-pdf="x">Cancel</button><button class="pdx-go" type="button" data-pdf="go">Export PDF</button></div>`;
   box.querySelector("#pdfWeek").onchange=e=>{ o.week=e.target.value; o.ws=[...new Set(tasksOfWeek(o.week).map(t=>t.workstream))]; renderPdf(); };
   box.querySelectorAll("input[data-g]").forEach(inp=>inp.onchange=()=>{
     const g=inp.dataset.g, v=inp.value, on=inp.checked;
