@@ -1566,6 +1566,120 @@ async function copyEmail(){
   catch(e){ const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); let ok=false; try{ok=document.execCommand("copy")}catch(_){} ta.remove(); toast(ok?"Email summary copied. Paste it into your email.":"Copy isn't allowed here. Use Download report instead."); }
 }
 
+/* ================= PDF export (choose what to include) ================= */
+const PDF={o:null};
+function pdfDefaults(){
+  const w=curWeek(), ws=[...new Set(tasksOfWeek(w).map(t=>t.workstream))], us=[...new Set(upcoming().map(t=>t.workstream))];
+  return {week:w, sum:true, wk:true, up:true, fb:false, ws, us, st:["Done","In Progress","Not Started"], upd:true, desc:true, meta:true, kpi:true, land:false};
+}
+function buildPdfHtml(o){
+  const C={g:"#3A5446",l:"#AEC486",ink:"#1E2B24",mut:"#5F6F67",line:"#DCE3DA",bg:"#F3F6F1"};
+  const stc={"Done":["#3D8B57","#E3F1E6"],"In Progress":["#B7791F","#FBF0DC"],"Not Started":["#6F7C75","#ECEFEC"],"Planned":["#4C685A","#E7EEDF"]};
+  const norm=s=>s==="Planned"?"Not Started":s;
+  const all=tasksOfWeek(o.week);
+  const Wl=all.filter(t=>o.ws.includes(t.workstream)&&o.st.includes(norm(t.status))).sort(byOrder);
+  const Ul=upcoming().filter(t=>o.us.includes(t.workstream)&&o.st.includes(norm(t.status))).sort(byOrder);
+  const st=stats(Wl);
+  const pill=s=>{const c=stc[s]||stc["Not Started"];return `<span class="pill" style="color:${c[0]};background:${c[1]}">${esc(s)}</span>`};
+  const due=t=>{const d=diff(t.end_date);return `${esc(fmt(t.end_date))}${late(t)?` <span style="color:#C0453A;font-weight:700">· ${-d}d overdue</span>`:""}`};
+  const fbOf=id=>(W.comments||[]).filter(c=>c.taskId===id).sort((a,b)=>String(a.at).localeCompare(String(b.at)));
+  const cols=(kp)=>["Task",...(o.meta?["Date","Priority"]:[]),"Status",...((kp?o.kpi:o.upd)?[kp?"KPI":"Updates"]:[])];
+  const row=(t,kp)=>{
+    const fb=o.fb?fbOf(t.id):[];
+    const fbHtml=fb.length?`<div class="fb">${fb.map(c=>`<div><b>${esc((typeof VLABEL!=="undefined"&&VLABEL[c.verdict])||"Comment")}</b>${c.text?`: ${esc(c.text)}`:""}</div>`).join("")}</div>`:"";
+    return `<tr><td class="tn">${esc(t.task)}${o.desc&&t.description?`<div class="ds">${esc(t.description)}</div>`:""}${fbHtml}</td>${o.meta?`<td class="nw">${due(t)}</td><td>${esc(t.priority||"")}</td>`:""}<td>${pill(t.status)}</td>${(kp?o.kpi:o.upd)?`<td class="up">${kp?esc(t.kpi||""):lines(t.updates).map(u=>`• ${esc(u)}`).join("<br>")}</td>`:""}</tr>`;
+  };
+  const table=(ts,kp)=>`<table><thead><tr>${cols(kp).map(c=>`<th>${c}</th>`).join("")}</tr></thead><tbody>${ts.map(t=>row(t,kp)).join("")}</tbody></table>`;
+  const kpi=(l,v)=>`<td class="k"><div class="kl">${l}</div><div class="kv">${v}</div></td>`;
+  const parts=[];
+  if(o.sum) parts.push(`<p class="lead">${st.done} of ${st.total} tasks are complete. ${st.prog} in progress, ${st.hi} high-priority items open, ${st.lt} overdue, and ${st.soon} deadlines in the next 7 days.</p><table class="kp"><tr>${kpi("Total tasks",st.total)}${kpi("Done",st.done)}${kpi("In progress",st.prog)}${kpi("Not started",st.not)}${kpi("High priority open",st.hi)}${kpi("Overdue",st.lt)}</tr></table>`);
+  if(o.wk&&Wl.length) parts.push(`<h2>Workstreams</h2>${groupBy(Wl,"workstream").map(([n,ts])=>`<section><h3>${esc(n)}</h3>${table(ts.sort(byOrder),false)}</section>`).join("")}`);
+  if(o.up&&Ul.length) parts.push(`<h2>Upcoming tasks</h2>${groupBy(Ul,"workstream",AREA_ORDER).map(([n,ts])=>`<section><h3>${esc(n)}</h3>${table(ts.sort(byOrder),true)}</section>`).join("")}`);
+  if(!parts.length) parts.push(`<p class="lead">Nothing matches the selected options.</p>`);
+  const title=`Al Mays Weekly Report - ${fmtLong(o.week)}`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>@page{size:A4 ${o.land?"landscape":"portrait"};margin:12mm}*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;font-family:Montserrat,Segoe UI,Arial,sans-serif;color:${C.ink};font-size:12px}
+.hd{background:${C.g};border-radius:14px;padding:20px 22px;color:#fff}.hd img{height:40px;background:#fff;border-radius:9px;padding:7px 11px}
+.ey{margin-top:14px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:${C.l};font-weight:700}.tt{font-size:24px;font-weight:800}.sb{opacity:.85;margin-top:3px}
+.lead{font-size:13px;line-height:1.6;color:${C.mut};margin:16px 0}
+table{border-collapse:collapse;width:100%}.kp{border-collapse:separate;border-spacing:6px;margin:0 -6px}
+.k{padding:10px 12px;border:1px solid ${C.line};border-radius:10px;width:16%}.kl{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:${C.mut};font-weight:700}.kv{font-size:22px;font-weight:800}
+h2{margin:22px 0 6px;font-size:17px}h3{margin:14px 0 6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:${C.g}}
+section table{border:1px solid ${C.line}}th{background:${C.g};color:#fff;text-align:left;padding:7px 8px;font-size:11px}
+td{padding:7px 8px;border-bottom:1px solid ${C.line};vertical-align:top}tr{page-break-inside:avoid;break-inside:avoid}thead{display:table-header-group}
+.tn{font-weight:600}.ds{font-weight:400;color:${C.mut};font-size:11px;margin-top:2px}.nw{white-space:nowrap}.up{font-size:11px;line-height:1.5}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10.5px;font-weight:700;white-space:nowrap}
+.fb{margin-top:5px;padding:5px 7px;background:#F6F8F3;border-left:3px solid ${C.l};font-weight:400;font-size:11px}
+.ft{margin-top:22px;font-size:10px;color:${C.mut};border-top:1px solid ${C.line};padding-top:10px}</style></head><body>
+<div class="hd"><img src="${LOGO_COLOR}" alt="Al Mays Catering Solutions"><div class="ey">Management weekly report</div><div class="tt">${esc(S.settings.title)}</div><div class="sb">${esc(weekName(o.week))}</div></div>
+${parts.join("")}
+<p class="ft">Al Mays Catering Solutions · Generated ${esc(new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"}))}</p></body></html>`;
+}
+function printPdf(o){
+  const old=document.getElementById("pdfFrame"); if(old) old.remove();
+  const f=document.createElement("iframe"); f.id="pdfFrame"; f.setAttribute("aria-hidden","true");
+  f.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+  document.body.appendChild(f);
+  const doc=f.contentWindow.document; doc.open(); doc.write(buildPdfHtml(o)); doc.close();
+  const go=()=>{ const prev=document.title; document.title=f.contentWindow.document.title; try{f.contentWindow.focus(); f.contentWindow.print();}catch(e){toast("Couldn't open the PDF dialog")} setTimeout(()=>{document.title=prev},1500); };
+  const fonts=f.contentWindow.document.fonts; (fonts&&fonts.ready?Promise.race([fonts.ready,new Promise(r=>setTimeout(r,1500))]):Promise.resolve()).then(()=>setTimeout(go,250));
+}
+function openPdfDialog(){
+  PDF.o=PDF.o&&weeks().includes(PDF.o.week)?PDF.o:pdfDefaults();
+  let sc=document.getElementById("pdfScrim");
+  if(!sc){
+    const css=document.createElement("style"); css.textContent=`#pdfScrim{position:fixed;inset:0;z-index:9000;background:rgba(20,30,25,.55);display:none;align-items:center;justify-content:center;padding:16px}#pdfScrim.open{display:flex}
+#pdfBox{background:var(--surface,#fff);color:var(--ink,#1E2B24);border-radius:20px;width:min(560px,100%);max-height:min(90vh,860px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);font-family:inherit}
+#pdfBox .ph{padding:18px 22px 12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line,#DCE3DA)}#pdfBox .ph h3{margin:0;font-size:17px;flex:1}#pdfBox .px{background:none;border:0;font-size:22px;cursor:pointer;color:inherit;opacity:.6}
+#pdfBox .pb{padding:14px 22px;overflow:auto}#pdfBox .pg{margin-bottom:16px}#pdfBox .pl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:7px;display:flex;justify-content:space-between}
+#pdfBox .pl button{background:none;border:0;color:#4C685A;font-size:11px;font-weight:700;cursor:pointer;text-transform:none;letter-spacing:0}
+#pdfBox .chips{display:flex;flex-wrap:wrap;gap:7px}#pdfBox .chip{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:99px;border:1.5px solid var(--line,#DCE3DA);cursor:pointer;font-size:13px;user-select:none}
+#pdfBox .chip input{accent-color:#4C685A;margin:0}#pdfBox .chip:has(input:checked){border-color:#4C685A;background:rgba(174,196,134,.18)}
+#pdfBox select{width:100%;padding:9px 10px;border-radius:10px;border:1.5px solid var(--line,#DCE3DA);font:inherit;background:transparent;color:inherit}
+#pdfBox .pf{padding:14px 22px;border-top:1px solid var(--line,#DCE3DA);display:flex;gap:10px;justify-content:flex-end;align-items:center}#pdfBox .pf small{flex:1;opacity:.6;font-size:11.5px}
+#pdfBox .go{background:#3A5446;color:#fff;border:0;border-radius:11px;padding:10px 18px;font:700 14px inherit;font-family:inherit;cursor:pointer}#pdfBox .cn{background:none;border:1.5px solid var(--line,#DCE3DA);border-radius:11px;padding:9px 16px;font:inherit;cursor:pointer;color:inherit}`;
+    document.head.appendChild(css);
+    sc=document.createElement("div"); sc.id="pdfScrim"; sc.innerHTML=`<div id="pdfBox" role="dialog" aria-modal="true" aria-labelledby="pdfTtl"></div>`;
+    document.body.appendChild(sc);
+    sc.addEventListener("click",e=>{ if(e.target===sc) closePdf(); });
+    document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&sc.classList.contains("open")) closePdf(); });
+  }
+  renderPdf(); sc.classList.add("open");
+}
+function closePdf(){ const sc=document.getElementById("pdfScrim"); if(sc) sc.classList.remove("open"); }
+function renderPdf(){
+  const o=PDF.o, box=document.getElementById("pdfBox");
+  const wsAll=[...new Set(tasksOfWeek(o.week).map(t=>t.workstream))], usAll=[...new Set(upcoming().map(t=>t.workstream))];
+  const chip=(grp,val,on,label)=>`<label class="chip"><input type="checkbox" data-g="${grp}" value="${esc(val)}"${on?" checked":""}>${esc(label||val)}</label>`;
+  const radio=(val,on,label)=>`<label class="chip"><input type="radio" name="pdfOr" data-g="land" value="${val}"${on?" checked":""}>${label}</label>`;
+  box.innerHTML=`<div class="ph"><h3 id="pdfTtl">Export PDF</h3><button class="px" type="button" data-pdf="x" aria-label="Close">×</button></div>
+<div class="pb">
+ <div class="pg"><div class="pl">Report week</div><select id="pdfWeek">${weeks().slice().reverse().map(w=>`<option value="${w}"${w===o.week?" selected":""}>${esc(weekName(w))}</option>`).join("")}</select></div>
+ <div class="pg"><div class="pl">Sections</div><div class="chips">${chip("sec","sum",o.sum,"Summary & key numbers")}${chip("sec","wk",o.wk,"Weekly workstreams")}${chip("sec","up",o.up,"Upcoming tasks")}${chip("sec","fb",o.fb,"Manager feedback")}</div></div>
+ <div class="pg"><div class="pl">Workstreams <button type="button" data-pdf="allws">${o.ws.length===wsAll.length?"Clear all":"Select all"}</button></div><div class="chips">${wsAll.map(n=>chip("ws",n,o.ws.includes(n))).join("")||"<small>No tasks this week</small>"}</div></div>
+ ${usAll.length?`<div class="pg"><div class="pl">Upcoming focus areas</div><div class="chips">${usAll.map(n=>chip("us",n,o.us.includes(n))).join("")}</div></div>`:""}
+ <div class="pg"><div class="pl">Task status</div><div class="chips">${["Done","In Progress","Not Started"].map(s=>chip("st",s,o.st.includes(s),s==="Not Started"?"Not started / Planned":s)).join("")}</div></div>
+ <div class="pg"><div class="pl">Details</div><div class="chips">${chip("det","upd",o.upd,"Updates")}${chip("det","desc",o.desc,"Descriptions")}${chip("det","meta",o.meta,"Dates & priority")}${chip("det","kpi",o.kpi,"KPIs (upcoming)")}</div></div>
+ <div class="pg"><div class="pl">Page layout</div><div class="chips">${radio("0",!o.land,"Portrait")}${radio("1",o.land,"Landscape")}</div></div>
+</div>
+<div class="pf"><small>In the print window choose <b>Save as PDF</b>.</small><button class="cn" type="button" data-pdf="x">Cancel</button><button class="go" type="button" data-pdf="go">Export PDF</button></div>`;
+  box.querySelector("#pdfWeek").onchange=e=>{ o.week=e.target.value; o.ws=[...new Set(tasksOfWeek(o.week).map(t=>t.workstream))]; renderPdf(); };
+  box.querySelectorAll("input[data-g]").forEach(inp=>inp.onchange=()=>{
+    const g=inp.dataset.g, v=inp.value, on=inp.checked;
+    if(g==="sec"||g==="det") o[v]=on;
+    else if(g==="land") o.land=v==="1";
+    else { const arr=o[g]; const i=arr.indexOf(v); if(on&&i<0) arr.push(v); if(!on&&i>=0) arr.splice(i,1); if(g==="ws") renderPdf(); }
+  });
+  box.querySelectorAll("[data-pdf]").forEach(b=>b.onclick=()=>{
+    const a=b.dataset.pdf;
+    if(a==="x") closePdf();
+    else if(a==="allws"){ o.ws=o.ws.length===wsAll.length?[]:wsAll.slice(); renderPdf(); }
+    else if(a==="go"){ if(!o.sum&&!o.wk&&!o.up){toast("Choose at least one section");return} closePdf(); printPdf(o); }
+  });
+}
+
 /* ================= Dropdown wiring ================= */
 const countBy=fn=>scope().filter(fn).length;
 $("#ddStatus").addEventListener("click",e=>{
@@ -1588,9 +1702,11 @@ $("#weekBtn").addEventListener("click",e=>{
 $("#exportBtn").addEventListener("click",e=>{
   const items=[{head:"Save & share · "+weekName(curWeek())}];
   if(S.dl) items.push({label:"Download report",sub:"One branded file, ready to attach to an email",value:"html",icon:"i-file"},{label:"Download as CSV",sub:"Opens in Excel or Google Sheets",value:"csv",icon:"i-table"});
+  items.push({label:"Export PDF…",sub:"Choose the week, sections and details to include",value:"pdf",icon:"i-file"});
   items.push({label:"Copy email summary",sub:"Paste straight into Outlook or Gmail",value:"mail",icon:"i-mail"});
   openPop(e.currentTarget,items,it=>{
-    if(it.value==="html") download(`Al Mays Weekly Report - ${reportDateName()}.html`,buildReport());
+    if(it.value==="pdf") openPdfDialog();
+    else if(it.value==="html") download(`Al Mays Weekly Report - ${reportDateName()}.html`,buildReport());
     else if(it.value==="csv") download(`Al Mays Weekly Tasks - ${reportDateName()}.csv`,buildCsv());
     else copyEmail();
   },{minWidth:300,noTick:true});
