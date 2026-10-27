@@ -987,7 +987,7 @@ body[data-page="world"] #page-world .w-help{display:none}
         <button class="tab" role="tab" id="tab-time" aria-selected="false" data-view="time">Timeline</button>
       </div>
       <div class="actions">
-        <button class="btn" id="exportBtn" type="button" aria-haspopup="menu" aria-expanded="false"><svg class="i"><use href="#i-share"/></svg>Save &amp; share<svg class="i" style="width:12px;height:12px;opacity:.6"><use href="#i-down"/></svg></button>
+        <button class="btn" id="exportBtn" type="button" aria-haspopup="menu" aria-expanded="false"><svg class="i"><use href="#i-file"/></svg>Export Report</button>
         <button class="btn btn-primary" id="addBtn" type="button"><svg class="i"><use href="#i-plus"/></svg>Add task</button>
       </div>
     </div>
@@ -1701,7 +1701,8 @@ $("#weekBtn").addEventListener("click",e=>{
   openPop(e.currentTarget,items,it=>{ if(it.value==="__new") startNextWeek(); else goWeek(it.value); },{minWidth:280});
 });
 $("#exportBtn").addEventListener("click",e=>{
-  const items=[{head:"Save & share · "+weekName(curWeek())}];
+  if(!W.isOwner){ openPdfDialog(); return; }
+  const items=[{head:"Export report · "+weekName(curWeek())}];
   if(S.dl) items.push({label:"Download report",sub:"One branded file, ready to attach to an email",value:"html",icon:"i-file"},{label:"Download as CSV",sub:"Opens in Excel or Google Sheets",value:"csv",icon:"i-table"});
   items.push({label:"Export PDF…",sub:"Choose the week, sections and details to include",value:"pdf",icon:"i-file"});
   items.push({label:"Copy email summary",sub:"Paste straight into Outlook or Gmail",value:"mail",icon:"i-mail"});
@@ -2264,6 +2265,7 @@ document.querySelectorAll(".pg").forEach(b=>b.addEventListener("click",()=>setPa
 async function socialBoot(db,user){
   W.db=db; W.user=user;
   try{ if(user){ W.isOwner=!!(await user.isOwner()); W.me=await user.id(); W.boss=!!(user.isBoss&&await user.isBoss()); } }catch(e){}
+  { const eb=document.getElementById("exportBtn"); if(eb) eb.innerHTML=W.isOwner?'<svg class="i"><use href="#i-file"/></svg>Export Report<svg class="i" style="width:12px;height:12px;opacity:.6"><use href="#i-down"/></svg>':'<svg class="i"><use href="#i-file"/></svg>Export Report'; }
   if(!db) return;
   db.collection("comments").onSnapshot(s=>{W.comments=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
   db.collection("reactions").onSnapshot(s=>{W.reactions=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
