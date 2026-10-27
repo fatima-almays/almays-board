@@ -67,6 +67,7 @@
       var ini = (u.displayName||u.email||(role.isBoss?"Mohammad":"?")).trim().charAt(0).toUpperCase();
       box.innerHTML = '<button type="button" class="acct-btn signed" id="acctOut" title="Signed in as '+esc(u.email||(role.isBoss?"Manager":"guest"))+' · click to sign out"><b>'+esc(ini)+'</b><span>'+(role.isEditor? "Editor":role.isBoss? "Manager":"Viewer")+'</span></button>';
       box.querySelector("#acctOut").onclick = function(){ R.auth.signOut(); };
+      if(role.isBoss){ bossPing(u.uid); }
       if(!u.isAnonymous){ try{ await R.fs.collection("people").doc(u.uid).set({name: u.displayName || "Team member"}, {merge:true}); }catch(e){} }
       if(role.isEditor){
         try{
@@ -77,6 +78,23 @@
       }
     }
   });
+  /* manager visit: alert Fatima on arrival, thank-you email (via her Outlook) after he leaves */
+  var ALERT_URL = "https://script.google.com/macros/s/AKfycbytMcKE5-CttXPB4wr8IMTbJutbb9xyZ6G4JhHlC3A9lk-s1hijsuVFFsSzdutbzmBcmQ/exec";
+  function bossPing(uid){
+    var send = function(t, beacon){
+      var body = JSON.stringify({k: "almays-board-visit", t: t, uid: uid, who: "Mr. Mohammad", page: location.pathname});
+      try{
+        if(beacon && navigator.sendBeacon){ navigator.sendBeacon(ALERT_URL, new Blob([body], {type: "text/plain"})); }
+        else { fetch(ALERT_URL, {method: "POST", mode: "no-cors", body: body, keepalive: true}); }
+      }catch(e){}
+    };
+    var once = function(k){ try{ if(sessionStorage.getItem(k)) return false; sessionStorage.setItem(k, "1"); }catch(e){} return true; };
+    if(once("almaysVisit")) send("visit", false);
+    var left = false;
+    var bye = function(){ if(left) return; left = true; if(once("almaysLeave")) send("leave", true); };
+    window.addEventListener("pagehide", bye);
+    document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "hidden") setTimeout(function(){ if(document.visibilityState === "hidden") bye(); }, 60000); });
+  }
   function pinScreen(auth, fs, key){
     var css = '#pinGate div,#pinGate p,#pinGate h1,#pinGate form,#pinGate span,#pinGate img,#pinGate input,#pinGate button,#pinGate svg{all:revert;box-sizing:border-box}'
       + '#pinGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px 16px;overflow:auto;font-family:Montserrat,system-ui,"Segoe UI",Arial,sans-serif;color:#fff;'
