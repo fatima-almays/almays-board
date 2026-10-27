@@ -2225,6 +2225,16 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&W.modal&&!$("#drawer").classList.contains("open")) closeModal(); if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("li[data-social]")){e.preventDefault(); e.target.click();} });
 
+/* ---------- monthly repeating tasks ---------- */
+function rollRepeat(t){
+  const day=+t.repeat_day; if(!day) return t;
+  const n=new Date(), p=x=>String(x).padStart(2,"0"); let Y=n.getFullYear(), M=n.getMonth();
+  if(n.getDate()>day){ M++; if(M>11){M=0;Y++;} }
+  t.end_date=`${Y}-${p(M+1)}-${p(day)}`;
+  const pm=M===0?12:M, py=M===0?Y-1:Y, prev=`${py}-${p(pm)}-${p(day)}`;
+  if(t.status==="Done"&&String(t.updatedAt||"").slice(0,10)<=prev) t.status="Planned";
+  return t;
+}
 /* ---------- open task details by clicking the card ---------- */
 document.addEventListener("click",e=>{ const card=e.target.closest("article.task[data-id]"); if(!card||e.target.closest("button,a,input,textarea,select,label,[data-social],[data-status]")) return; if(window.getSelection&&String(window.getSelection()).length) return; openModal(card.dataset.id); });
 /* ---------- task files (attachments) ---------- */
@@ -2536,7 +2546,7 @@ setView(S.view); saveState();
   if(!db){useSnap(); return}
   db.doc("settings/report").onSnapshot(s=>{ if(s.exists){S.settings=Object.assign({},S.settings,s.data())} render(); },()=>{});
   db.collection("tasks").onSnapshot(snap=>{
-    S.tasks=snap.docs.map(d=>Object.assign({id:d.id},d.data()));
+    S.tasks=snap.docs.map(d=>rollRepeat(Object.assign({id:d.id},d.data())));
     S.loaded=true; render(); saveState();
   },()=>{ if(!S.tasks.length) useSnap(); else {S.loaded=true; render();} });
 })();
