@@ -2339,14 +2339,13 @@ function renderLog(){
    <div class="lg-stats">
     <div class="lg-stat"><small>This week</small><b>${cnt(x=>String(x.date||"")>=wk)}</b></div>
     <div class="lg-stat"><small>This month</small><b>${cnt(x=>String(x.date||"").slice(0,7)===mo)}</b></div>
-    <div class="lg-stat"><small>Done</small><b>${cnt(x=>x.status==="مكتملة")}</b></div>
-    <div class="lg-stat"><small>In progress / review</small><b>${cnt(x=>x.status!=="مكتملة")}</b></div>
+    <div class="lg-stat"><small>Today</small><b>${cnt(x=>String(x.date||"").slice(0,10)===new Date(now.getTime()-now.getTimezoneOffset()*6e4).toISOString().slice(0,10))}</b></div>
+    <div class="lg-stat"><small>All entries</small><b>${all.length}</b></div>
    </div>
-   <div class="lg-bar"><input id="lgQ" type="search" placeholder="Search tasks…" value="${esc(LOG.q)}" aria-label="Search tasks">
-    <button type="button" class="lg-chip" data-lg-st="" aria-pressed="${!LOG.st}">All</button>${Object.entries(LOG_ST).map(([k,[l]])=>`<button type="button" class="lg-chip" data-lg-st="${esc(k)}" aria-pressed="${LOG.st===k}">${l}</button>`).join("")}</div>
+   <div class="lg-bar"><input id="lgQ" type="search" placeholder="Search notes…" value="${esc(LOG.q)}" aria-label="Search tasks"></div>
    <div class="lg-bar" style="margin-top:0"><button type="button" class="lg-chip" data-lg-type="" aria-pressed="${!LOG.type}">All types</button>${[...new Set(all.map(x=>x.type).filter(Boolean))].map(t=>`<button type="button" class="lg-chip" data-lg-type="${esc(t)}" aria-pressed="${LOG.type===t}" dir="auto">${esc(t)}</button>`).join("")}</div>
    <div class="lg-bar" style="margin-top:0"><button type="button" class="lg-chip" data-lg-proj="" aria-pressed="${!LOG.proj}">All projects</button>${projs.map(p=>`<button type="button" class="lg-chip" data-lg-proj="${esc(p)}" aria-pressed="${LOG.proj===p}" dir="auto">${esc(p)}</button>`).join("")}</div>
-   ${list.length?Object.entries(days).map(([d,xs])=>`<section class="lg-day"><h3>${esc(dayName(d))} · ${xs.length}</h3><div class="lg-list">${xs.map(x=>{const st=LOG_ST[x.status]||[x.status||"",""]; return `<article class="lg-item"><div class="lg-top"><h4 dir="auto">${esc(x.title||"")}</h4><div class="lg-tags">${x.type?`<span class="lg-tag" dir="auto">${esc(x.type)}</span>`:""}${x.project?`<span class="lg-tag" dir="auto">${esc(x.project)}</span>`:""}${st[0]?`<span class="lg-tag ${st[1]}">${esc(st[0])}</span>`:""}</div></div>${x.desc?`<p dir="auto">${esc(x.desc)}</p>`:""}${x.link&&/^https?:/i.test(x.link)?`<a href="${esc(x.link)}" target="_blank" rel="noopener">Open link ↗</a>`:""}</article>`}).join("")}</div></section>`).join(""):`<div class="lg-empty">${all.length?"No tasks match these filters.":"No tasks logged yet."}</div>`}
+   ${list.length?Object.entries(days).map(([d,xs])=>`<section class="lg-day"><h3>${esc(dayName(d))} · ${xs.length}</h3><div class="lg-list">${xs.map(x=>{const st=LOG_ST[x.status]||[x.status||"",""]; return `<article class="lg-item"><div class="lg-top"><h4 dir="auto">${esc(x.title||"")}</h4><div class="lg-tags">${x.type?`<span class="lg-tag" dir="auto">${esc(x.type)}</span>`:""}${x.project?`<span class="lg-tag" dir="auto">${esc(x.project)}</span>`:""}</div></div>${x.desc?`<p dir="auto">${esc(x.desc)}</p>`:""}${x.link&&/^https?:/i.test(x.link)?`<a href="${esc(x.link)}" target="_blank" rel="noopener">Open link ↗</a>`:""}</article>`}).join("")}</div></section>`).join(""):`<div class="lg-empty">${all.length?"No tasks match these filters.":"No tasks logged yet."}</div>`}
   </div>`;
 }
 document.addEventListener("click",e=>{
