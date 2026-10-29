@@ -851,6 +851,24 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .att-lbox{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .att-lbox input{flex:1 1 160px;min-width:0;padding:8px 10px;border:1px solid var(--line);border-radius:10px;font:inherit;background:transparent;color:inherit}
 .att-note{display:block;margin-top:8px;color:var(--muted);font-size:11px}
+.lg-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 6px}
+.lg-bar input{flex:1 1 220px;min-width:0;padding:10px 14px;border:1px solid var(--line);border-radius:999px;font:inherit;background:var(--surface);color:inherit}
+.lg-chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-weight:700;font-size:12.5px;font-family:inherit;color:inherit;cursor:pointer}
+.lg-chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff}
+.lg-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:16px 0 4px}
+.lg-stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.lg-stat b{display:block;font-size:24px;font-weight:800}.lg-stat small{color:var(--muted);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.lg-day{margin-top:22px}.lg-day h3{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.lg-list{display:grid;gap:10px}
+.lg-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:8px}
+.lg-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.lg-top h4{margin:0;font-size:15px;font-weight:800;line-height:1.4;flex:1 1 260px}
+.lg-tags{display:flex;gap:6px;flex-wrap:wrap}
+.lg-tag{font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 10px;background:rgba(114,140,130,.12);color:var(--ink,inherit);white-space:nowrap}
+.lg-st-done{background:rgba(92,150,90,.16);color:#3d7a3b}.lg-st-wip{background:rgba(200,140,40,.16);color:#9a6512}.lg-st-rev{background:rgba(70,110,170,.14);color:#35609a}
+.lg-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.lg-item a{font-size:12.5px;font-weight:700;color:var(--brand);text-decoration:none}.lg-item a:hover{text-decoration:underline}
+.lg-empty{padding:30px;text-align:center;color:var(--muted)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -976,6 +994,7 @@ body[data-page="world"] #page-world .w-help{display:none}
   <button class="pg" type="button" data-page="board" role="tab" aria-selected="false"><span class="em">📋</span>Weekly board</button>
   <button class="pg" type="button" data-page="month" role="tab" aria-selected="false"><span class="em">📅</span>Monthly plan &amp; report</button>
   <button class="pg" type="button" data-page="mgr" role="tab" aria-selected="false"><span class="em">📨</span>From the boss <span class="count" id="c-mgr"></span></button>
+  <button class="pg" type="button" data-page="log" role="tab" aria-selected="false" id="pgLog" hidden><span class="em">🗂️</span>Daily log</button>
     </nav>
     <div class="band-meta">
       <div class="weeknav" role="group" aria-label="Report week">
@@ -992,6 +1011,7 @@ body[data-page="world"] #page-world .w-help{display:none}
 <section id="page-world"></section>
 <section id="page-mgr" hidden></section>
 <section id="page-month" hidden></section>
+<section id="page-log" hidden></section>
 <nav class="toolbar" id="boardBar" aria-label="Board controls">
   <div class="wrap">
     <div class="bar-row">
@@ -1405,7 +1425,7 @@ let animate=false;
 function render(){
   closePop();
   renderControls();
-  if(W.page==="board") ({week:renderWeek,next:renderNext,time:renderTime})[S.view](); else if(W.page==="world") renderWorld(); else if(W.page==="month") renderMonth(); else renderMgr();
+  if(W.page==="board") ({week:renderWeek,next:renderNext,time:renderTime})[S.view](); else if(W.page==="world") renderWorld(); else if(W.page==="month") renderMonth(); else if(W.page==="log") renderLog(); else renderMgr();
   renderPageNav();
   if(animate){const v=$("#view-"+S.view); v.classList.remove("enter"); void v.offsetWidth; v.classList.add("enter"); animate=false;}
 }
@@ -2298,6 +2318,45 @@ document.addEventListener("click",e=>{
 },true);
 document.addEventListener("change",e=>{ if(e.target&&e.target.id==="attFile"&&e.target.files.length){ const l=[...e.target.files]; e.target.value=""; attUpload(l); } });
 
+/* ---------- daily & side tasks log (owner + boss) ---------- */
+const LOG={q:"",proj:"",st:"",type:""};
+const LOG_ST={"مكتملة":["Done","lg-st-done"],"قيد العمل":["In progress","lg-st-wip"],"بانتظار مراجعة":["Awaiting review","lg-st-rev"]};
+function canLog(){ return !!(W.isOwner||W.boss); }
+function renderLog(){
+  const el=$("#page-log"); if(!el) return;
+  if(!canLog()){ el.innerHTML=`<div class="wrap page"><div class="lg-empty">This page is only available to the board owner and the manager.</div></div>`; return; }
+  const all=(W.log||[]).slice().sort((a,b)=>String(b.date||"").localeCompare(String(a.date||""))||String(b.at||"").localeCompare(String(a.at||"")));
+  const projs=[...new Set(all.map(x=>x.project).filter(Boolean))];
+  const q=LOG.q.trim().toLowerCase();
+  const list=all.filter(x=>(!LOG.proj||x.project===LOG.proj)&&(!LOG.type||x.type===LOG.type)&&(!LOG.st||x.status===LOG.st)&&(!q||[x.title,x.desc,x.type,x.project].join(" ").toLowerCase().includes(q)));
+  const now=new Date(), wk=new Date(now.getTime()-6*864e5).toISOString().slice(0,10), mo=now.toISOString().slice(0,7);
+  const cnt=(f)=>all.filter(f).length;
+  const days={}; list.forEach(x=>{const d=String(x.date||"").slice(0,10)||"No date"; (days[d]=days[d]||[]).push(x);});
+  const dayName=d=>{ if(d==="No date") return d; const t=new Date(d+"T12:00:00"); return t.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}); };
+  el.innerHTML=`<div class="wrap page">
+   <div class="mgr-hero"><svg class="pat" viewBox="0 0 260 160"><use href="#leafpair" x="120" y="10" width="120" height="60" fill="#AEC486" opacity=".9"/><use href="#leafpair" x="40" y="70" width="120" height="60" fill="#728C82" opacity=".55"/></svg>
+    <div style="position:relative"><h2>🗂️ Daily &amp; side tasks</h2><p>Everything Fatima works on day to day, beyond the weekly workstreams: side tasks, meetings, documents, designs, emails and research. Synced from her Notion work log.</p>${W.isOwner?`<a class="btn" style="margin-top:14px;display:inline-flex;background:#fff;color:var(--brand)" href="https://app.notion.com/p/ced3d32e41c44de28201048145a4ef32" target="_blank" rel="noopener">Open in Notion ↗</a>`:""}</div></div>
+   <div class="lg-stats">
+    <div class="lg-stat"><small>This week</small><b>${cnt(x=>String(x.date||"")>=wk)}</b></div>
+    <div class="lg-stat"><small>This month</small><b>${cnt(x=>String(x.date||"").slice(0,7)===mo)}</b></div>
+    <div class="lg-stat"><small>Done</small><b>${cnt(x=>x.status==="مكتملة")}</b></div>
+    <div class="lg-stat"><small>In progress / review</small><b>${cnt(x=>x.status!=="مكتملة")}</b></div>
+   </div>
+   <div class="lg-bar"><input id="lgQ" type="search" placeholder="Search tasks…" value="${esc(LOG.q)}" aria-label="Search tasks">
+    <button type="button" class="lg-chip" data-lg-st="" aria-pressed="${!LOG.st}">All</button>${Object.entries(LOG_ST).map(([k,[l]])=>`<button type="button" class="lg-chip" data-lg-st="${esc(k)}" aria-pressed="${LOG.st===k}">${l}</button>`).join("")}</div>
+   <div class="lg-bar" style="margin-top:0"><button type="button" class="lg-chip" data-lg-type="" aria-pressed="${!LOG.type}">All types</button>${[...new Set(all.map(x=>x.type).filter(Boolean))].map(t=>`<button type="button" class="lg-chip" data-lg-type="${esc(t)}" aria-pressed="${LOG.type===t}" dir="auto">${esc(t)}</button>`).join("")}</div>
+   <div class="lg-bar" style="margin-top:0"><button type="button" class="lg-chip" data-lg-proj="" aria-pressed="${!LOG.proj}">All projects</button>${projs.map(p=>`<button type="button" class="lg-chip" data-lg-proj="${esc(p)}" aria-pressed="${LOG.proj===p}" dir="auto">${esc(p)}</button>`).join("")}</div>
+   ${list.length?Object.entries(days).map(([d,xs])=>`<section class="lg-day"><h3>${esc(dayName(d))} · ${xs.length}</h3><div class="lg-list">${xs.map(x=>{const st=LOG_ST[x.status]||[x.status||"",""]; return `<article class="lg-item"><div class="lg-top"><h4 dir="auto">${esc(x.title||"")}</h4><div class="lg-tags">${x.type?`<span class="lg-tag" dir="auto">${esc(x.type)}</span>`:""}${x.project?`<span class="lg-tag" dir="auto">${esc(x.project)}</span>`:""}${st[0]?`<span class="lg-tag ${st[1]}">${esc(st[0])}</span>`:""}</div></div>${x.desc?`<p dir="auto">${esc(x.desc)}</p>`:""}${x.link&&/^https?:/i.test(x.link)?`<a href="${esc(x.link)}" target="_blank" rel="noopener">Open link ↗</a>`:""}</article>`}).join("")}</div></section>`).join(""):`<div class="lg-empty">${all.length?"No tasks match these filters.":"No tasks logged yet."}</div>`}
+  </div>`;
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest("#page-log")) return;
+  const s=e.target.closest("[data-lg-st]"); if(s){LOG.st=s.dataset.lgSt; renderLog(); return;}
+  const ty=e.target.closest("[data-lg-type]"); if(ty){LOG.type=ty.dataset.lgType; renderLog(); return;}
+  const p=e.target.closest("[data-lg-proj]"); if(p){LOG.proj=p.dataset.lgProj; renderLog(); return;}
+});
+document.addEventListener("input",e=>{ if(e.target.id==="lgQ"){ LOG.q=e.target.value; const pos=e.target.selectionStart; renderLog(); const i=$("#lgQ"); if(i){i.focus(); try{i.setSelectionRange(pos,pos)}catch(_){}} } });
+
 /* ---------- manager page ---------- */
 function renderMgr(){
   const el=$("#page-mgr"), notes=W.mgr.filter(m=>m.type==="note").sort((a,b)=>String(b.at).localeCompare(String(a.at))), tasks=W.mgr.filter(m=>m.type==="task").sort((a,b)=>(a.done-b.done)||String(a.due||"9").localeCompare(String(b.due||"9")));
@@ -2346,16 +2405,17 @@ function renderPageNav(){
   document.querySelectorAll(".pg").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.page===W.page)));
   const open=W.mgr.filter(m=>m.type==="task"&&!m.done).length; $("#c-mgr").textContent=open||"";
   document.body.dataset.page=W.page;
-  $("#page-world").hidden=W.page!=="world"; $("#page-mgr").hidden=W.page!=="mgr"; $("#page-month").hidden=W.page!=="month"; $("#boardBar").hidden=W.page!=="board"; $("#boardMain").hidden=W.page!=="board";
+  $("#page-world").hidden=W.page!=="world"; $("#page-mgr").hidden=W.page!=="mgr"; $("#page-month").hidden=W.page!=="month"; $("#page-log").hidden=W.page!=="log"; $("#boardBar").hidden=W.page!=="board"; $("#boardMain").hidden=W.page!=="board";
 }
 function setPage(p){ W.page=p; store.set("almays-page",p); if(p!=="world") W.sel=W.sel; render(); window.scrollTo({top:0}); }
 document.querySelectorAll(".pg").forEach(b=>b.addEventListener("click",()=>setPage(b.dataset.page)));
-{const p=store.get("almays-page"); if(p&&["world","board","mgr","month"].includes(p)) W.page=p;}
+{const p=store.get("almays-page"); if(p&&["world","board","mgr","month","log"].includes(p)) W.page=p;}
 
 /* ---------- live social data + visit log ---------- */
 async function socialBoot(db,user){
   W.db=db; W.user=user;
   try{ if(user){ W.isOwner=!!(await user.isOwner()); W.me=await user.id(); W.boss=!!(user.isBoss&&await user.isBoss()); } }catch(e){}
+  { const pl=document.getElementById("pgLog"); if(pl) pl.hidden=!canLog(); if(canLog()&&db) db.collection("worklog").onSnapshot(s=>{W.log=s.docs.map(d=>Object.assign({id:d.id},d.data())); if(W.page==="log") renderLog();},()=>{}); else if(W.page==="log"){W.page="board"; render();} }
   { const eb=document.getElementById("exportBtn"); if(eb) eb.innerHTML=W.isOwner?'<svg class="i"><use href="#i-file"/></svg>Export Report<svg class="i" style="width:12px;height:12px;opacity:.6"><use href="#i-down"/></svg>':'<svg class="i"><use href="#i-file"/></svg>Export Report'; }
   if(!db) return;
   db.collection("comments").onSnapshot(s=>{W.comments=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
