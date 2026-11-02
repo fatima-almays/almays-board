@@ -952,6 +952,9 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .brand-left .title-edit{width:26px;height:26px}
 .hdr-tabs{grid-area:tabs;justify-self:center;display:flex;gap:4px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:4px;overflow-x:auto;scrollbar-width:none;max-width:100%}
 .hdr-tabs::-webkit-scrollbar{display:none}
+body.tabs-stack .band .wrap{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand meta" "tabs tabs";row-gap:8px;padding-block:10px 8px}
+body.tabs-stack .hdr-tabs{justify-self:center}
+body.tabs-stack .brand-left > div{display:block}
 .hdr-tabs .pg{padding:7px 14px;border-radius:10px;font-size:13px}
 .band-meta{grid-area:meta;flex-wrap:nowrap;justify-content:flex-end;gap:8px}
 .band-meta .btn-leaf{padding:7px 13px}
@@ -2673,6 +2676,7 @@ setView(S.view); saveState();
 </script>
 
 <script>
+(function(){const n=document.querySelector(".hdr-tabs"); if(!n) return; const fit=()=>{document.body.classList.remove("tabs-stack"); if(n.scrollWidth>n.clientWidth+2) document.body.classList.add("tabs-stack");}; window.__fitTabs=fit; fit(); addEventListener("resize",fit); [800,2000,4000].forEach(t=>setTimeout(fit,t)); document.addEventListener("click",()=>setTimeout(fit,50));})();
 (function(){const h=document.querySelector("header.band"); if(!h) return; const set=()=>document.documentElement.style.setProperty("--hdr-h",h.offsetHeight+"px"); set(); if(window.ResizeObserver) new ResizeObserver(set).observe(h); else addEventListener("resize",set);})();
 </script>
 </body></html>
