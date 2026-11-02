@@ -1,0 +1,180 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>لوحة قياس حملات جوجل</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: single reading column, calculator as the page's working core, reference tables below */
+:root{
+  --bg:#F7F8F6; --surface:#FFFFFF; --ink:#13201B; --muted:#5C6B64; --line:#DDE3DF;
+  --accent:#0E7A5F; --accent-soft:#E3F1EC; --warn:#A8690B; --warn-soft:#FBF0DC; --bad:#A6342C; --bad-soft:#FAE8E6;
+  --font-display:"Readex Pro",system-ui,sans-serif; --font-body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E1512; --surface:#16201C; --ink:#E8EFEB; --muted:#9DAEA6; --line:#283531;
+  --accent:#4FC5A1; --accent-soft:#17312A; --warn:#E0A64A; --warn-soft:#302715; --bad:#E8847A; --bad-soft:#331C1A;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0E1512; --surface:#16201C; --ink:#E8EFEB; --muted:#9DAEA6; --line:#283531;
+  --accent:#4FC5A1; --accent-soft:#17312A; --warn:#E0A64A; --warn-soft:#302715; --bad:#E8847A; --bad-soft:#331C1A;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);margin:0;line-height:1.75}
+.wrap{direction:rtl;max-width:62rem;margin:0 auto;padding-block:2.5rem 4rem;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;font-weight:600}
+h1{font-size:1.9rem;line-height:1.35}
+h2{font-size:1.25rem;margin-block:0 .25rem}
+h3{font-size:1rem}
+p{margin:.35rem 0}
+.lede{color:var(--muted);max-width:46ch}
+.eyebrow{font-size:.7rem;letter-spacing:.14em;color:var(--accent);font-weight:600}
+section{margin-top:2.75rem}
+.sec-head{border-top:1px solid var(--line);padding-top:1.1rem;margin-bottom:1.1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem}
+.grid{display:grid;gap:.85rem}
+.calc-in{grid-template-columns:repeat(auto-fit,minmax(10rem,1fr))}
+.field{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+label{font-size:.78rem;color:var(--muted);font-weight:500}
+input{font:inherit;font-variant-numeric:tabular-nums;background:var(--bg);color:var(--ink);
+  border:1px solid var(--line);border-radius:9px;padding:.5rem .6rem;width:100%;box-sizing:border-box}
+input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.out{grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));margin-top:1.1rem}
+.tile{border:1px solid var(--line);border-radius:11px;padding:.7rem .8rem;background:var(--bg);min-width:0}
+.tile .k{font-size:.72rem;color:var(--muted);font-weight:500}
+.tile .v{font-family:var(--font-display);font-size:1.3rem;font-variant-numeric:tabular-nums;line-height:1.4}
+.verdict{margin-top:1.1rem;border-radius:11px;padding:.85rem 1rem;border:1px solid}
+.v-good{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.v-warn{background:var(--warn-soft);border-color:var(--warn);color:var(--ink)}
+.v-bad{background:var(--bad-soft);border-color:var(--bad);color:var(--ink)}
+.verdict .t{font-family:var(--font-display);font-weight:600;display:block}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:30rem}
+th,td{text-align:right;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;color:var(--muted);font-weight:600;letter-spacing:.03em}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:.8rem}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:1.9rem 1fr;gap:.7rem;align-items:start}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--font-display);font-size:.8rem;
+  color:var(--accent);background:var(--accent-soft);border-radius:7px;padding:.25rem 0;text-align:center}
+ol.steps b{font-weight:600}
+ol.steps span{color:var(--muted);font-size:.88rem;display:block}
+.pill{display:inline-block;font-size:.72rem;padding:.1rem .5rem;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted);margin-top:.8rem}
+.stamp{direction:ltr;display:inline-block;margin:.5rem 0 0;font-family:var(--font-display);font-size:.72rem;
+  font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);
+  background:var(--warn-soft);border:1px solid var(--warn);border-radius:999px;padding:.2rem .7rem}
+</style>
+<div class="wrap">
+  <p class="eyebrow"><a href="../" style="color:inherit;text-decoration:none">← AL MAYS MARKETING BOARD</a> · SEO &amp; GOOGLE ADS</p>
+  <p class="stamp">Under testing &amp; development</p>
+  <h1>لوحة قياس أداء حملات جوجل</h1>
+  <p class="lede">القرار في الحملة المدفوعة ما يُبنى على النقرات ولا على عدد الليدز، بل على تكلفة اكتساب العميل مقارنة بربح العقد. هذي اللوحة تحسب الرقم وتعطي القرار: ضخ، أو إصلاح، أو إيقاف.</p>
+
+  <section>
+    <div class="sec-head"><h2>حاسبة القرار</h2><p class="lede">الأرقام المعروضة مثال توضيحي — بدّليها بأرقام الحملة الفعلية.</p></div>
+    <div class="card">
+      <div class="grid calc-in">
+        <div class="field"><label for="spend">الصرف الشهري (ريال)</label><input id="spend" type="number" min="0" value="20000"></div>
+        <div class="field"><label for="leads">الليدز الواردة</label><input id="leads" type="number" min="0" value="50"></div>
+        <div class="field"><label for="qual">الليدز المؤهلة</label><input id="qual" type="number" min="0" value="20"></div>
+        <div class="field"><label for="deals">العقود الموقّعة</label><input id="deals" type="number" min="0" value="2"></div>
+        <div class="field"><label for="value">متوسط قيمة العقد (ريال)</label><input id="value" type="number" min="0" value="200000"></div>
+        <div class="field"><label for="margin">هامش الربح (%)</label><input id="margin" type="number" min="0" max="100" value="15"></div>
+        <div class="field"><label for="share">سقف CAC من الربح (%)</label><input id="share" type="number" min="1" max="100" value="25"></div>
+      </div>
+      <div class="grid out">
+        <div class="tile"><div class="k">CPL · تكلفة الليد</div><div class="v" id="o-cpl">—</div></div>
+        <div class="tile"><div class="k">CPQL · الليد المؤهل</div><div class="v" id="o-cpql">—</div></div>
+        <div class="tile"><div class="k">CAC · اكتساب العميل</div><div class="v" id="o-cac">—</div></div>
+        <div class="tile"><div class="k">سقف CAC المسموح</div><div class="v" id="o-cap">—</div></div>
+        <div class="tile"><div class="k">نسبة التأهيل</div><div class="v" id="o-qr">—</div></div>
+        <div class="tile"><div class="k">نسبة الإغلاق</div><div class="v" id="o-cr">—</div></div>
+      </div>
+      <div class="verdict v-warn" id="verdict"><span class="t">—</span><span id="v-body"></span></div>
+      <p class="note">سقف CAC = (قيمة العقد × هامش الربح) × النسبة المختارة. لعقود التموين المتجددة احسبي القيمة على مدة العقد كاملة، لا على أول شهر.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>الطريقة · ترتيب التنفيذ</h2><p class="lede">الخطوات من ١ إلى ٤ شرط لصحة البيانات. أي قرار يُتخذ قبلها مبني على قياس ناقص.</p></div>
+    <ol class="steps">
+      <li><div><b>عرّف التحويلات الحقيقية</b><span>نموذج طلب عرض سعر، اتصال من الإعلان، ضغطة واتساب، تحميل البروفايل — كل واحد Conversion Action مستقل في Google Ads، لا مجرد زيارة صفحة.</span></div></li>
+      <li><div><b>افصل Primary عن Secondary</b><span>الليد المؤهل فقط هو Primary. الباقي Secondary للمتابعة لا للتحسين — هذا يغيّر سلوك خوارزمية المزايدة بالكامل.</span></div></li>
+      <li><div><b>اربط GA4 + GTM + تتبع المكالمات</b><span>في قطاع التموين جزء كبير من الليدز مكالمة. بدون Call Tracking تظهر الحملة أضعف من حقيقتها وتُلغى بالخطأ.</span></div></li>
+      <li><div><b>فعّل Offline Conversions عبر GCLID</b><span>خزّني GCLID مع كل ليد في الـ CRM، وارفعي العقود المُغلقة فعلاً إلى Google Ads. وسّعي Conversion Window إلى ٦٠–٩٠ يوم لأن دورة البيع طويلة.</span></div></li>
+      <li><div><b>نظّف مصدر الليدز</b><span>reCAPTCHA وفلترة على النماذج، وانضباط UTM على كل قناة حتى تُعزل نتائج جوجل عن غيرها.</span></div></li>
+      <li><div><b>راجعي أسبوعياً وقرري شهرياً</b><span>التقرير الأسبوعي للتشخيص، وقرار الضخ أو الإيقاف بعد ٣٠ تحويلاً على الأقل أو دورة بيع كاملة — أيهما أطول.</span></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>وين العطل بالضبط</h2><p class="lede">قبل الإلغاء، شخّصي الحلقة المعطلة — الإلغاء يرمي معه الحلقات السليمة.</p></div>
+    <div class="scroll"><table>
+      <thead><tr><th>العَرَض</th><th>مكان الخلل</th><th>الإجراء</th></tr></thead>
+      <tbody>
+        <tr><td>CTR منخفض</td><td>الإعلان أو الاستهداف</td><td>إعادة كتابة النصوص وتضييق الكلمات — لا علاقة للميزانية</td></tr>
+        <tr><td>CTR جيد وتحويل ضعيف</td><td>صفحة الهبوط</td><td>نموذج أقصر، عرض واضح، زر طلب عرض سعر ظاهر</td></tr>
+        <tr><td>ليدز كثيرة وتأهيل ضعيف</td><td>الكلمات المفتاحية</td><td>Search Terms Report وإضافة سلبيات: وظائف، أسعار أفراد، وصفات</td></tr>
+        <tr><td>تأهيل جيد وإغلاق ضعيف</td><td>المبيعات لا التسويق</td><td>سرعة الرد أقل من ٥ دقائق، ونص متابعة موحّد</td></tr>
+        <tr><td>Impression Share ضايع بسبب الميزانية</td><td>الطلب أكبر من الصرف</td><td>المؤشر الوحيد الذي يبرر الضخ فوراً</td></tr>
+        <tr><td>الليدز ما تغيّرت بعد إيقاف إعلانات الاسم التجاري</td><td>تداخل مع البحث العضوي</td><td>أوقفي حملة الـ Brand ووفّري الميزانية للكلمات العامة</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>الأدوات المطلوبة</h2><p class="lede">الأساسي يكفي للقياس الصحيح؛ البقية تسرّع العمل ولا تستبدله.</p></div>
+    <div class="scroll"><table>
+      <thead><tr><th>الأداة</th><th>الدور</th><th>الحالة</th></tr></thead>
+      <tbody>
+        <tr><td>Google Ads</td><td>تعريف التحويلات، Search Terms، السلبيات، استراتيجية المزايدة</td><td><span class="pill">أساسي</span></td></tr>
+        <tr><td>Google Tag Manager</td><td>تركيب وسوم النماذج والمكالمات وواتساب بدون تعديل كود الموقع</td><td><span class="pill">أساسي</span></td></tr>
+        <tr><td>GA4</td><td>أحداث الليدز ومسار الزائر ومصادر الزيارات</td><td><span class="pill">أساسي</span></td></tr>
+        <tr><td>Google Search Console</td><td>فصل أداء البحث العضوي عن المدفوع</td><td><span class="pill">أساسي</span></td></tr>
+        <tr><td>CRM (Odoo)</td><td>تخزين GCLID وحالة كل ليد حتى توقيع العقد — مصدر رقم CAC</td><td><span class="pill">أساسي</span></td></tr>
+        <tr><td>تتبع مكالمات (CallRail أو رقم ديناميكي)</td><td>احتساب الليدز الهاتفية كتحويلات</td><td><span class="pill">مهم</span></td></tr>
+        <tr><td>Looker Studio</td><td>تقرير أسبوعي آلي: CPL و CPQL و CAC لكل حملة</td><td><span class="pill">مهم</span></td></tr>
+        <tr><td>Microsoft Clarity أو Hotjar</td><td>تسجيل الجلسات لمعرفة سبب عدم التحويل على الصفحة</td><td><span class="pill">إضافي</span></td></tr>
+        <tr><td>PageSpeed Insights</td><td>سرعة الصفحة وأثرها على نسبة التحويل</td><td><span class="pill">إضافي</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</div>
+<script>
+(function(){
+  var ids=["spend","leads","qual","deals","value","margin","share"],el={};
+  ids.forEach(function(i){el[i]=document.getElementById(i)});
+  function n(i){var v=parseFloat(el[i].value);return isFinite(v)&&v>=0?v:0}
+  function sar(v){return isFinite(v)&&v>0?Math.round(v).toLocaleString("en-US")+" ر.س":"—"}
+  function pct(v){return isFinite(v)?Math.round(v*100)+"%":"—"}
+  function render(){
+    var spend=n("spend"),leads=n("leads"),qual=n("qual"),deals=n("deals"),
+        val=n("value"),mg=n("margin")/100,sh=n("share")/100;
+    var cpl=leads?spend/leads:NaN, cpql=qual?spend/qual:NaN, cac=deals?spend/deals:NaN,
+        cap=val*mg*sh, qr=leads?qual/leads:NaN, cr=qual?deals/qual:NaN;
+    document.getElementById("o-cpl").textContent=sar(cpl);
+    document.getElementById("o-cpql").textContent=sar(cpql);
+    document.getElementById("o-cac").textContent=sar(cac);
+    document.getElementById("o-cap").textContent=sar(cap);
+    document.getElementById("o-qr").textContent=pct(qr);
+    document.getElementById("o-cr").textContent=pct(cr);
+    var box=document.getElementById("verdict"),t=box.querySelector(".t"),b=document.getElementById("v-body"),cls="v-warn";
+    if(!spend||!cap){ t.textContent="أدخلي الصرف وقيمة العقد";
+      b.textContent="القرار يحتاج الصرف الشهري ومتوسط قيمة العقد وهامش الربح."; }
+    else if(!deals){ t.textContent="لا يوجد عقود بعد — لا تحكمي";
+      b.textContent="قرار الضخ أو الإيقاف يحتاج ٣٠ تحويلاً أو دورة بيع كاملة. احكمي مؤقتاً على CPQL ونسبة التأهيل."; }
+    else if(cac<=cap*0.8){ cls="v-good"; t.textContent="ضخ الميزانية";
+      b.textContent="تكلفة العميل أقل من السقف بهامش واضح. زيدي الميزانية تدريجياً ٢٠–٣٠٪ كل أسبوعين وراقبي ثبات CAC."; }
+    else if(cac<=cap*1.2){ t.textContent="أصلحي ثم قرري";
+      b.textContent="الرقم على حافة السقف. اشتغلي على السلبيات وصفحة الهبوط وسرعة الرد قبل أي زيادة في الصرف."; }
+    else { cls="v-bad"; t.textContent="أوقفي الضخ";
+      b.textContent="تكلفة العميل أعلى من السقف بوضوح. أوقفي الزيادة، عالجي الحلقة المعطلة من جدول التشخيص، وألغي الحملة فقط إذا لم تتغير بعد الإصلاح."; }
+    box.className="verdict "+cls;
+  }
+  ids.forEach(function(i){el[i].addEventListener("input",render)});
+  render();
+})();
+</script>
+
+</body></html>
