@@ -2595,7 +2595,7 @@ const shiftMonth=(m,d)=>{const [y,mo]=m.split("-").map(Number); const t=new Date
 const num=v=>{const n=parseFloat(String(v??"").replace(/[^0-9.\-]/g,"")); return isNaN(n)?null:n};
 const nf=n=>n==null?"—":Number(n).toLocaleString("en-US",{maximumFractionDigits:2});
 const wsColor=name=>PAL[hsh(name)%PAL.length];
-function curMonth(){ if(!MON.month) MON.month=monthOf(curWeek())||new Date().toISOString().slice(0,7); return MON.month }
+function curMonth(){ if(!MON.month){ const now=new Date(Date.now()+3*3600e3).toISOString().slice(0,7), wk=monthOf(curWeek())||now; MON.month=wk>now?wk:now; } return MON.month }
 function monthTasks(m){
   const map=new Map();
   S.tasks.filter(t=>t.kind!=="upcoming"&&(monthOf(t.end_date)===m||monthOf(wk(t))===m)).forEach(t=>{const k=(t.workstream||"")+"|"+(t.task||"").trim().toLowerCase(); const prev=map.get(k); if(!prev||String(wk(t))>String(wk(prev))) map.set(k,t);});
