@@ -910,6 +910,84 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .lx-cal small{color:#AEC486!important;opacity:1!important}
 .lx-sel select{flex:1;min-width:0}
 @media (max-width:820px){.lx-stats{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.lx-stat{padding:10px 12px}.lx-stat span{letter-spacing:.04em;font-size:10px}.lx-notion{grid-column:1/-1;text-align:center}.lx-sel{flex:1 1 140px}}
+.m-choices{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.m-choices{grid-template-columns:1fr}}
+.m-choices .choice.c-cp .ci{background:linear-gradient(135deg,#A9C47F,#43695B)}
+.cp{--teal:#43695B;--lime:#A9C47F;margin-top:16px;display:grid;gap:18px}
+.cp-hero{position:relative;overflow:hidden;border-radius:24px;padding:28px;color:#fff;background:radial-gradient(520px 260px at 92% 0%,rgba(169,196,127,.35),transparent 60%),linear-gradient(135deg,#43695B,#2F4C41);display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:end;scroll-margin-top:calc(var(--hdr-h,64px) + 12px)}
+.cp-kick{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);border:1px solid rgba(169,196,127,.45);background:rgba(169,196,127,.12);padding:4px 11px;border-radius:999px}
+.cp-hero h2{margin:10px 0 6px;font-size:28px;font-weight:800;letter-spacing:-.01em}.cp-hero p{margin:0;color:rgba(255,255,255,.8);line-height:1.6;max-width:62ch}
+.cp-tag{margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.12em}.cp-tag b{color:var(--lime);font-weight:500}
+.cp-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cp-facts div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px 14px}.cp-facts b{display:block;font-size:28px;font-weight:800;line-height:1.1}.cp-facts span{font-size:12px;color:rgba(255,255,255,.75)}
+.cp-nav{position:sticky;top:calc(var(--hdr-h,64px) + 8px);z-index:5;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px;box-shadow:0 6px 18px rgba(30,30,30,.06)}
+.cp-nav::-webkit-scrollbar{display:none}
+.cp-nav button{flex:0 0 auto;border:0;background:none;border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;font-weight:700;color:inherit;cursor:pointer}.cp-nav button:hover{background:rgba(169,196,127,.22)}
+.cp-sec{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.cp-sh{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;scroll-margin-top:calc(var(--hdr-h,64px) + 70px)}
+.cp-sh > span{width:40px;height:40px;border-radius:12px;background:#EEF3E5;display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.cp-sh h3{margin:0;font-size:20px;font-weight:800;color:var(--teal)}.cp-sh p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.55;max-width:80ch}
+.cp-h4{margin:20px 0 10px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.cp-filt{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px;scroll-margin-top:calc(var(--hdr-h,64px) + 70px)}
+.cp-filt > button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;color:inherit}.cp-filt > button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.cp-leg{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:11.5px;color:var(--muted);font-weight:600}.cp-leg i{width:10px;height:10px;border-radius:3px;background:var(--cc);margin-left:8px}
+.cp-cal{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cp-wd,.cp-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.cp-wd span{background:#43695B;color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 10px}
+.cp-cell{min-height:104px;border-right:1px solid var(--line);border-top:1px solid var(--line);padding:6px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.cp-cell:nth-child(7n){border-right:0}.cp-cell.off{background:rgba(217,217,214,.25)}.cp-cell.has{background:#FBFCF8}
+.cp-dn{font-size:12px;font-weight:800;color:var(--muted)}
+.cp-chip{display:block;width:100%;text-align:left;border:0;border-left:3px solid var(--cc);background:color-mix(in srgb,var(--cc) 14%,white);border-radius:6px;padding:5px 6px;font:inherit;font-size:11px;font-weight:700;line-height:1.3;color:#1E1E1E;cursor:pointer;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cp-chip:hover{filter:brightness(.96)}
+.cp-aud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.cp-pil{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.cp-box{background:#F7F8F4;border:1px solid var(--line);border-radius:16px;padding:14px 16px;min-width:0}
+.cp-box > b{display:block;font-size:14px;color:var(--teal);margin-bottom:6px}.cp-box p{margin:0;font-size:13px;line-height:1.55;color:#3a4540}
+.cp-box dl{margin:10px 0 0;font-size:12.5px}.cp-box dt{font-weight:800;color:var(--muted);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin-top:6px}.cp-box dd{margin:2px 0 0}
+.cp-pi{font-size:22px;display:block;margin-bottom:6px}.cp-box em{font-style:normal;font-size:11px;font-weight:800;background:#EEF3E5;color:var(--teal);padding:3px 8px;border-radius:999px;display:inline-block;margin-bottom:6px}
+.cp-box ul,.cp-week ul{margin:4px 0 0;padding-left:18px;font-size:13px;line-height:1.6}
+.cp-camps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.cp-camp{border-radius:16px;padding:16px;background:var(--cs);border-top:4px solid var(--cc)}.cp-camp small{font-size:11px;font-weight:800;color:var(--cc);letter-spacing:.06em;text-transform:uppercase}.cp-camp b{display:block;font-size:17px;margin:4px 0 6px}.cp-camp p{margin:0;font-size:13px;line-height:1.55}.cp-camp span{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:800;color:var(--cc)}
+.cp-tbl{display:grid;gap:6px}.cp-tbl div{display:grid;grid-template-columns:120px 1fr 1fr;gap:10px;align-items:center;background:#F7F8F4;border-radius:12px;padding:10px 14px;font-size:13px}.cp-tbl small{color:var(--muted)}
+.cp-posts{display:grid;gap:12px}
+.cp-post{border:1px solid var(--line);border-left:5px solid var(--cc);border-radius:18px;overflow:hidden;scroll-margin-top:calc(var(--hdr-h,64px) + 70px)}
+.cp-ph{display:flex;gap:14px;align-items:center;padding:14px 16px;background:var(--cs)}
+.cp-date{width:50px;height:54px;flex:none;border-radius:14px;background:#43695B;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.cp-date b{font-size:20px;font-weight:800}.cp-date small{font-size:10px;font-weight:800;color:#A9C47F;text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+.cp-date.sm{width:42px;height:46px}.cp-date.sm b{font-size:17px}
+.cp-pt h5{margin:0 0 6px;font-size:16px;font-weight:800}
+.cp-meta{display:flex;gap:6px;flex-wrap:wrap}.cp-meta span{font-size:11px;font-weight:700;background:#fff;border-radius:999px;padding:3px 9px;color:#3a4540}.cp-meta span.c{background:var(--cc);color:#fff}
+.cp-pb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:0}
+.cp-vis{padding:14px 16px;border-right:1px solid var(--line)}.cp-vis small,.cp-kv small,.cp-prev small,.cp-subj small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cp-vis p{margin:3px 0 10px;font-size:13px;line-height:1.55}
+.cp-kv{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;font-weight:700}
+.cp-cap{padding:14px 16px;background:#FCFCFA}
+.cp-capbar{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+.cp-lang{display:flex;background:#EEF1EC;border-radius:999px;padding:3px}.cp-lang button{border:0;background:none;border-radius:999px;padding:5px 12px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;color:inherit}.cp-lang button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);color:var(--teal)}
+.cp-copy{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 11px;font:inherit;font-size:11.5px;font-weight:800;color:var(--teal);cursor:pointer;white-space:nowrap}
+.cp-txt{white-space:pre-wrap;margin:0;font-size:13.5px;line-height:1.7}.cp-txt[lang=ar],[lang=ar] b,.cp-kw [lang=ar],[dir=rtl][lang=ar]{font-family:Cairo,"Segoe UI",Tahoma,sans-serif}
+.cp-tags{margin:8px 0 0;font-size:12px;color:#6F8F80;font-weight:600}
+.cp-mails{display:grid;gap:12px;margin-bottom:12px}
+.cp-mailc{display:flex;gap:14px;border:1px solid var(--line);border-left:5px solid #A9C47F;border-radius:18px;padding:16px;scroll-margin-top:calc(var(--hdr-h,64px) + 70px)}
+.cp-mb{flex:1;min-width:0}.cp-mb h5{margin:0 0 4px;font-size:16px;font-weight:800}.cp-aud2{margin:0 0 10px;font-size:12.5px;color:var(--muted)}
+.cp-subj{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.cp-subj > div{background:#F7F8F4;border-radius:12px;padding:10px 12px;display:grid;gap:4px;align-content:start}.cp-subj b{font-size:14px}.cp-subj .cp-copy{justify-self:start}
+.cp-prev{margin:0 0 6px;font-size:13px}.cp-prev small{display:inline}
+.cp-mb ol{margin:6px 0 10px;padding-left:20px;font-size:13px;line-height:1.6}
+.cp-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.cp-mini{display:grid;gap:6px}.cp-mini div{display:flex;justify-content:space-between;gap:10px;font-size:13px;border-bottom:1px dashed var(--line);padding-bottom:5px}.cp-mini b{color:var(--teal)}
+.cp-weeks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.cp-week{border-radius:16px;padding:14px;background:linear-gradient(180deg,#EEF3E5,#F7F8F4);border:1px solid var(--line)}.cp-week small{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7E9B57}.cp-week b{display:block;font-size:15px;color:var(--teal);margin:3px 0 4px}
+.cp-kw{display:grid;gap:8px}.cp-kw div{display:flex;flex-wrap:wrap;gap:6px}.cp-kw span{font-size:12px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.cp-art{display:flex;gap:10px;align-items:flex-start;margin-top:10px;scroll-margin-top:calc(var(--hdr-h,64px) + 70px)}.cp-art b{font-size:13.5px}.cp-art p{margin:2px 0;font-size:13px}.cp-art small{font-size:11.5px;color:var(--muted)}
+.cp-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.cp-kpis div{border-radius:16px;padding:14px;background:#43695B;color:#fff}.cp-kpis small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A9C47F}.cp-kpis b{display:block;font-size:20px;margin:4px 0 2px}.cp-kpis span{font-size:11.5px;color:rgba(255,255,255,.72)}
+.cp-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
+.cp-flow div{position:relative;background:#F7F8F4;border:1px solid var(--line);border-radius:16px;padding:14px}.cp-flow i{font-style:normal;width:26px;height:26px;border-radius:50%;background:#A9C47F;color:#43695B;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:6px}.cp-flow b{display:block;color:var(--teal)}.cp-flow small{font-size:11.5px;font-weight:700;color:var(--muted)}.cp-flow p{margin:6px 0 0;font-size:12.5px;line-height:1.5}
+.cp-notes{margin-top:12px;display:grid;gap:4px}.cp-notes p{margin:0;font-size:12.5px;color:#5c6b63}
+.cp-flash{animation:cpFlash 1.4s}@keyframes cpFlash{0%,40%{box-shadow:0 0 0 4px rgba(169,196,127,.8)}100%{box-shadow:0 0 0 0 rgba(169,196,127,0)}}
+@media (max-width:1000px){.cp-aud,.cp-pil,.cp-weeks{grid-template-columns:repeat(2,minmax(0,1fr))}.cp-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.cp-hero{grid-template-columns:1fr}}
+@media (max-width:700px){.cp-aud,.cp-pil,.cp-weeks,.cp-camps,.cp-two,.cp-subj,.cp-pb,.cp-flow{grid-template-columns:1fr}.cp-vis{border-right:0;border-bottom:1px solid var(--line)}.cp-tbl div{grid-template-columns:1fr}.cp-cell{min-height:64px;padding:3px}.cp-chip{font-size:0;padding:0;height:8px;border-left-width:0;background:var(--cc);-webkit-line-clamp:unset}.cp-wd span{padding:6px 2px;text-align:center;font-size:9px}.cp-sec{padding:16px}.cp-hero{padding:20px}.cp-hero h2{font-size:22px}.cp-leg{margin-left:0}}
+.cp-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cp-date small{color:#A9C47F!important;opacity:1!important}
+@media (max-width:1000px){.cp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2485,6 +2563,7 @@ async function socialBoot(db,user){
   W.files=W.files||[]; db.collection("files").onSnapshot(s=>{W.files=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
   db.collection("manager").onSnapshot(s=>{W.mgr=s.docs.map(d=>Object.assign({id:d.id},d.data())); render();},()=>{});
   db.collection("monthly").onSnapshot(s=>{MON.docs={}; s.docs.forEach(d=>MON.docs[d.id]=Object.assign({id:d.id},d.data())); if(W.page==="month") renderMonth();},()=>{});
+  db.collection("contentplans").onSnapshot(s=>{CP.docs={}; s.docs.forEach(d=>CP.docs[d.id]=d.data()); if(W.page==="month") renderMonth();},()=>{});
   db.collection("plans").onSnapshot(s=>{MON.plans=s.docs.map(d=>Object.assign({id:d.id},d.data())); if(W.page==="month") renderMonth();},()=>{});
   if(W.me&&!W.isOwner){
     try{ const ref=db.doc("visits/"+W.me); const snap=await ref.get(); const prev=snap&&snap.exists?snap.data():{};
@@ -2530,14 +2609,15 @@ function renderMonth(){
   const tab=MON.tab;
   el.innerHTML=`<div class="wrap page">
    <div class="m-hero"><div class="m-blobs"><i></i><i></i><i></i><i></i></div>
-    <div class="m-hero-in"><div><small>📅 Monthly workspace</small><h2>${esc(monthName(m))}</h2><p>${tab==="plan"?"Set the month's goals, KPI targets and activities.":"Results for the month, built from your board, plan and feedback."}</p></div>
+    <div class="m-hero-in"><div><small>📅 Monthly workspace</small><h2>${esc(monthName(m))}</h2><p>${tab==="content"?"Content calendar, social media, bulk email and SEO for the month.":tab==="plan"?"Set the month's goals, KPI targets and activities.":"Results for the month, built from your board, plan and feedback."}</p></div>
      <div class="m-nav"><button type="button" class="m-arrow" data-mmove="-1" aria-label="Previous month">‹</button><input type="month" id="mPick" value="${m}" aria-label="Choose month"><button type="button" class="m-arrow" data-mmove="1" aria-label="Next month">›</button></div></div>
    </div>
    <div class="mgr-choices m-choices">
     <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${plans.length}</span></button>
     <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results, KPIs vs targets, plan vs actual</small></span><span class="cn">${Math.round(monthDone(m)*100)}%</span></button>
+    <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">📣</span><span><b>Marketing plan</b><small>Content calendar, social media, email &amp; SEO</small></span><span class="cn">${CP.docs[m]?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
    </div>
-   ${tab==="plan"?planView(m,D,plans,can):reportView(m,D,plans,can)}
+   ${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}
   </div>`;
 }
 function monthDone(m){const ts=monthTasks(m); return ts.length?ts.filter(t=>t.status==="Done").length/ts.length:0}
@@ -2612,6 +2692,86 @@ function reportHTML(m){
   <h2>4. Plan vs actual</h2><table style="border-collapse:collapse;width:100%"><tr>${["Activity","Workstream","Status","Budget (SAR)","Spent (SAR)"].map(h=>`<th style="${th}">${h}</th>`).join("")}</tr>${plans.map(x=>`<tr><td style="${cell}">${esc(x.title)}</td><td style="${cell}">${esc(x.workstream||"")}</td><td style="${cell}">${esc(x.status||"Planned")}</td><td style="${cell}">${nf(num(x.budget))}</td><td style="${cell}">${nf(num(x.spent))}</td></tr>`).join("")}</table>
   <h2>5. Challenges and lessons</h2>${p(D.challenges)}<h2>6. Focus for next month</h2>${p(D.next)}</body></html>`;
 }
+/* ---------- MONTHLY: marketing / content plan ---------- */
+const CP={docs:{},filter:"all",lang:{}};
+const CP_CAMP={trusted:["#43695B","#E3ECE7"],bem:["#7E9B57","#EEF4E3"],winter:["#5E7F8A","#E4EEF1"]};
+const CP_PIL={quality:"🛡️",people:"👨‍🍳",clients:"🤝",menus:"🍲"};
+function cpDate(m,d){const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,d));}
+function cpDay(m,d,o){return cpDate(m,d).toLocaleDateString("en-GB",Object.assign({timeZone:"UTC"},o));}
+function cpItems(P,m){
+  const it=[]; (P.posts||[]).forEach((p,i)=>it.push({day:p.day,kind:"social",id:"cp-p"+i,label:p.title,camp:p.campaign}));
+  (P.emails||[]).forEach((e,i)=>it.push({day:e.day,kind:"email",id:"cp-e"+i,label:e.name,camp:e.campaign}));
+  ((P.seo||{}).articles||[]).forEach((a,i)=>it.push({day:a.day,kind:"seo",id:"cp-a"+i,label:a.title}));
+  return it;
+}
+function cpCopyBtn(txt,lbl){return `<button type="button" class="cp-copy" data-cpcopy="${esc(encodeURIComponent(txt))}">${lbl||"Copy"}</button>`;}
+function contentView(m){
+  const P=CP.docs[m];
+  if(!P) return `<section class="m-card wide" style="--c:#43695B"><div class="empty"><b>No marketing plan for ${esc(monthName(m))} yet</b>Ask Claude to prepare one and it will appear here.</div></section>`;
+  const items=cpItems(P,m), f=CP.filter, show=it=>f==="all"||it.kind===f;
+  const [y,mo]=m.split("-").map(Number), first=new Date(Date.UTC(y,mo-1,1)).getUTCDay(), nd=new Date(Date.UTC(y,mo,0)).getUTCDate();
+  const camps=Object.fromEntries((P.campaigns||[]).map(c=>[c.key,c]));
+  const cells=[]; for(let i=0;i<first;i++) cells.push(`<div class="cp-cell off"></div>`);
+  for(let d=1;d<=nd;d++){const its=items.filter(x=>x.day===d&&show(x)); cells.push(`<div class="cp-cell ${its.length?"has":""}"><span class="cp-dn">${d}</span>${its.map(x=>{const c=x.kind==="social"&&x.camp&&CP_CAMP[x.camp]?CP_CAMP[x.camp][0]:x.kind==="email"?"#A9C47F":x.kind==="seo"?"#8A9A8E":"#6F8F80"; return `<button type="button" class="cp-chip k-${x.kind}" style="--cc:${c}" data-cpgo="${x.id}" title="${esc(x.label)}">${x.kind==="email"?"✉️ ":x.kind==="seo"?"🔎 ":""}${esc(x.label)}</button>`}).join("")}</div>`);}
+  const sec=(id,ic,t,sub)=>`<div class="cp-sh" id="${id}"><span>${ic}</span><div><h3>${t}</h3>${sub?`<p>${sub}</p>`:""}</div></div>`;
+  const nav=[["cp-ov","Overview"],["cp-cal","Calendar"],["cp-soc","Social media"],["cp-mail","Bulk email"],["cp-seo","SEO"],["cp-kpi","KPIs & workflow"]];
+  const S=P.seo||{};
+  return `<div class="cp">
+   <div class="cp-hero" id="cp-ov"><div class="cp-hero-t"><span class="cp-kick">Marketing plan</span><h2>${esc(P.title||"")}</h2><p>${esc(P.lead||"")}</p><div class="cp-tag">FEEDING AMBITIONS <b>WITH EVERY BITE</b></div></div>
+    <div class="cp-facts">${(P.facts||[]).map(([n,l])=>`<div><b>${esc(n)}</b><span>${esc(l)}</span></div>`).join("")}</div></div>
+   <nav class="cp-nav">${nav.map(([id,l])=>`<button type="button" data-cpgo="${id}">${l}</button>`).join("")}</nav>
+
+   <section class="cp-sec">${sec("cp-cal-h","🗓️","Content calendar · "+esc(monthName(m)),"Every post, email and article in one view. Click an item to open it.")}
+    <div class="cp-filt" id="cp-cal">${[["all","All"],["social","Social posts"],["email","Emails"],["seo","SEO articles"]].map(([k,l])=>`<button type="button" data-cpf="${k}" aria-pressed="${f===k}">${l}</button>`).join("")}
+     <span class="cp-leg">${(P.campaigns||[]).map(c=>`<i style="--cc:${(CP_CAMP[c.key]||["#43695B"])[0]}"></i>${esc(c.name)}`).join("")}<i style="--cc:#A9C47F"></i>Email<i style="--cc:#8A9A8E"></i>SEO</span></div>
+    <div class="cp-cal"><div class="cp-wd">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<span>${x}</span>`).join("")}</div><div class="cp-grid">${cells.join("")}</div></div>
+   </section>
+
+   <section class="cp-sec">${sec("cp-soc","📱","Social media","Audiences, content pillars, campaigns and every post with ready captions.")}
+    <h4 class="cp-h4">Who we're talking to</h4>
+    <div class="cp-aud">${(P.audiences||[]).map(a=>`<div class="cp-box"><b>${esc(a.name)}</b><p>${esc(a.who)}</p><dl><dt>They need</dt><dd>${esc(a.need)}</dd><dt>Our angle</dt><dd>${esc(a.angle)}</dd></dl></div>`).join("")}</div>
+    <h4 class="cp-h4">Content pillars</h4>
+    <div class="cp-pil">${(P.pillars||[]).map(p=>`<div class="cp-box"><span class="cp-pi">${CP_PIL[p.key]||"•"}</span><b>${esc(p.name)}</b><em>${esc(p.share)}</em><p>${esc(p.desc)}</p></div>`).join("")}</div>
+    <h4 class="cp-h4">Campaigns</h4>
+    <div class="cp-camps">${(P.campaigns||[]).map(c=>`<div class="cp-camp" style="--cc:${(CP_CAMP[c.key]||["#43695B"])[0]};--cs:${(CP_CAMP[c.key]||["","#EEF1EC"])[1]}"><small>${esc(c.dates)} · ${esc(c.goal)}</small><b>${esc(c.name)}</b><p>${esc(c.desc)}</p><span>${(P.posts||[]).filter(p=>p.campaign===c.key).length} posts${(P.emails||[]).some(e=>e.campaign===c.key)?" · emails":""}</span></div>`).join("")}</div>
+    <h4 class="cp-h4">Posting schedule</h4>
+    <div class="cp-tbl">${(P.schedule||[]).map(r=>`<div><b>${esc(r[0])}</b><span>${esc(r[1])}</span><small>${esc(r[2])}</small></div>`).join("")}</div>
+    <h4 class="cp-h4">Posts · ${(P.posts||[]).length}</h4>
+    <div class="cp-posts">${(P.posts||[]).map((p,i)=>{const c=CP_CAMP[p.campaign]||["#6F8F80","#EEF1EC"], L=CP.lang["p"+i]||"en", cap=L==="ar"?p.ar:p.en, tags=L==="ar"?p.tagsAr:p.tagsEn;
+      return `<article class="cp-post" id="cp-p${i}" style="--cc:${c[0]};--cs:${c[1]}">
+       <div class="cp-ph"><div class="cp-date"><b>${p.day}</b><small>${esc(cpDay(m,p.day,{weekday:"short"}))}</small></div><div class="cp-pt"><h5>${esc(p.title)}</h5><div class="cp-meta">${p.campaign&&camps[p.campaign]?`<span class="c">${esc(camps[p.campaign].name)}</span>`:""}<span>${CP_PIL[p.pillar]||""} ${esc(((P.pillars||[]).find(x=>x.key===p.pillar)||{}).name||"")}</span><span>${esc(p.format)}</span><span>${esc((p.platforms||[]).join(" · "))}</span></div></div></div>
+       <div class="cp-pb"><div class="cp-vis"><small>Visual</small><p>${esc(p.visual)}</p>${p.story?`<small>Story</small><p>${esc(p.story)}</p>`:""}<div class="cp-kv"><span><small>CTA</small>${esc(p.cta)}</span><span><small>Goal</small>${esc(p.goal)}</span></div></div>
+        <div class="cp-cap"><div class="cp-capbar"><div class="cp-lang"><button type="button" data-cplang="p${i}:en" aria-pressed="${L==="en"}">English</button><button type="button" data-cplang="p${i}:ar" aria-pressed="${L==="ar"}">العربية</button></div>${cpCopyBtn(cap+"\n\n"+tags,"Copy caption")}</div>
+         <p class="cp-txt" dir="${L==="ar"?"rtl":"ltr"}" lang="${L}">${esc(cap)}</p><p class="cp-tags" dir="${L==="ar"?"rtl":"ltr"}">${esc(tags)}</p></div></div></article>`}).join("")}</div>
+   </section>
+
+   <section class="cp-sec">${sec("cp-mail","✉️","Bulk email campaigns","Three sends this month, each with its audience, subject lines and content outline.")}
+    <div class="cp-mails">${(P.emails||[]).map((e,i)=>`<article class="cp-mailc" id="cp-e${i}"><div class="cp-date"><b>${e.day}</b><small>${esc(cpDay(m,e.day,{weekday:"short"}))}</small></div><div class="cp-mb"><h5>${esc(e.name)}</h5><p class="cp-aud2">👥 ${esc(e.audience)}</p>
+      <div class="cp-subj"><div><small>Subject (EN)</small><b>${esc(e.subjectEn)}</b>${cpCopyBtn(e.subjectEn)}</div><div dir="rtl" lang="ar"><small>العنوان (AR)</small><b>${esc(e.subjectAr)}</b>${cpCopyBtn(e.subjectAr,"نسخ")}</div></div>
+      <p class="cp-prev"><small>Preview text</small> ${esc(e.preview)}</p><ol>${(e.outline||[]).map(o=>`<li>${esc(o)}</li>`).join("")}</ol><div class="cp-kv"><span><small>CTA</small>${esc(e.cta)}</span><span><small>Goal</small>${esc(e.goal)}</span></div></div></article>`).join("")}</div>
+    <div class="cp-two"><div class="cp-box"><b>Sending rules</b><ul>${(P.emailRules||[]).map(r=>`<li>${esc(r)}</li>`).join("")}</ul></div><div class="cp-box"><b>Email targets</b><div class="cp-mini">${(P.emailKpis||[]).map(k=>`<div><span>${esc(k[0])}</span><b>${esc(k[1])}</b></div>`).join("")}</div></div></div>
+   </section>
+
+   <section class="cp-sec">${sec("cp-seo","🔎","SEO",esc(S.summary||""))}
+    <div class="cp-weeks">${(S.weeks||[]).map((w,i)=>`<div class="cp-week"><small>Week ${i+1} · ${esc(w.range)}</small><b>${esc(w.focus)}</b><ul>${w.tasks.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="cp-two"><div class="cp-box"><b>Target keywords</b><div class="cp-kw"><div dir="rtl" lang="ar">${((S.keywords||{}).ar||[]).map(k=>`<span>${esc(k)}</span>`).join("")}</div><div>${((S.keywords||{}).en||[]).map(k=>`<span>${esc(k)}</span>`).join("")}</div></div></div>
+     <div class="cp-box"><b>Articles this month</b>${(S.articles||[]).map((a,i)=>`<div class="cp-art" id="cp-a${i}"><div class="cp-date sm"><b>${a.day}</b><small>${esc(cpDay(m,a.day,{month:"short"}))}</small></div><div><b>${esc(a.title)}</b><p dir="rtl" lang="ar">${esc(a.titleAr)}</p><small>Keyword: ${esc(a.keyword)}</small></div></div>`).join("")}</div></div>
+    <div class="cp-box"><b>SEO targets</b><div class="cp-mini">${(S.kpis||[]).map(k=>`<div><span>${esc(k[0])}</span><b>${esc(k[1])}</b></div>`).join("")}</div></div>
+   </section>
+
+   <section class="cp-sec">${sec("cp-kpi","📈","KPIs & workflow","What we'll measure, and how each piece moves from draft to published.")}
+    <div class="cp-kpis">${(P.kpis||[]).map(k=>`<div><small>${esc(k[0])}</small><b>${esc(k[1])}</b><span>${esc(k[2])}</span></div>`).join("")}</div>
+    <div class="cp-flow">${(P.workflow||[]).map((w,i)=>`<div><i>${i+1}</i><b>${esc(w[0])}</b><small>${esc(w[1])}</small><p>${esc(w[2])}</p></div>`).join("")}</div>
+    <div class="cp-notes">${(P.notes||[]).map(n=>`<p>⚠️ ${esc(n)}</p>`).join("")}</div>
+   </section>
+  </div>`;
+}
+$("#page-month").addEventListener("click",e=>{
+  const g=e.target.closest("[data-cpgo]"); if(g){const t=document.getElementById(g.dataset.cpgo); if(t){t.scrollIntoView({behavior:"smooth",block:"start"}); t.classList.remove("cp-flash"); void t.offsetWidth; t.classList.add("cp-flash");} return;}
+  const f=e.target.closest("[data-cpf]"); if(f){CP.filter=f.dataset.cpf; renderMonth(); return;}
+  const l=e.target.closest("[data-cplang]"); if(l){const [k,v]=l.dataset.cplang.split(":"); CP.lang[k]=v; const y=scrollY; renderMonth(); scrollTo(0,y); return;}
+  const c=e.target.closest("[data-cpcopy]"); if(c){const t=decodeURIComponent(c.dataset.cpcopy), o=c.textContent; const ok=()=>{c.textContent="Copied ✓"; setTimeout(()=>c.textContent=o,1400)}; try{navigator.clipboard.writeText(t).then(ok,ok)}catch(_){ok()} return;}
+});
 $("#page-month").addEventListener("click",e=>{
   const mv=e.target.closest("[data-mmove]"); if(mv){MON.month=shiftMonth(curMonth(),+mv.dataset.mmove); renderMonth(); return;}
   const tb=e.target.closest("[data-mtab]"); if(tb){MON.tab=tb.dataset.mtab; store.set("almays-mtab",MON.tab); renderMonth(); return;}
@@ -2633,7 +2793,7 @@ $("#page-month").addEventListener("submit",async e=>{
   if(ok){MON.adding=false; renderMonth();}
 });
 $("#page-month").addEventListener("focusout",()=>{ if(MON.pending) setTimeout(()=>{const a=document.activeElement; if(!(a&&$("#page-month").contains(a)&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))){MON.pending=false; renderMonth();}},0); });
-{const t=store.get("almays-mtab"); if(t==="plan"||t==="report") MON.tab=t;}
+{const t=store.get("almays-mtab"); if(t==="plan"||t==="report"||t==="content") MON.tab=t;}
 
 /* ================= Snapshot for viewers who are not signed in ================= */
 function useSnap(){
