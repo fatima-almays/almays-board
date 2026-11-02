@@ -985,6 +985,22 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .cx-mnav{margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}.cx-mnav button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer}.cx-mnav button:hover{border-color:var(--lime)}.cx-mnav small{color:var(--muted);font-weight:700}
 @media (max-width:1000px){.cx-weeks{grid-template-columns:repeat(2,minmax(0,1fr))}.cx-goals{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.cx-fan{display:none}.cx-hero h2{font-size:32px}.cx-cal{display:none}.cx-agenda{display:grid}.cx-legend small{display:none}.cx-two,.cx-weeks,.cx-goals{grid-template-columns:1fr}.cx-mbox{grid-template-columns:1fr}.cx-mimg img{max-height:55vh}.cx-body{padding:14px}.cx-feed{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cx-tabs button{flex:0 0 auto}.cx-mod{padding:10px}}
+.cx-rv{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;border-radius:999px;padding:4px 9px;background:rgba(255,255,255,.95);color:#5c6b63;white-space:nowrap}
+.cx-img .cx-rv{position:absolute;left:10px;bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.cx-agt .cx-rv{align-self:flex-start;margin-top:4px;background:#F2F4EF}
+.cx-rv.rv-approved{background:#E3F2DC;color:#2F6B2A}.cx-rv.rv-rejected{background:#FBE3E1;color:#A23A30}.cx-rv.rv-discuss{background:#FFF1D6;color:#8A5A00}
+.cx-th.rv-approved{outline:3px solid #6DBE5C}.cx-th.rv-rejected{outline:3px solid #E06A5E}.cx-th.rv-discuss{outline:3px solid #F2B640}
+.cx-rvbox{border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:8px;background:#FCFDFB}
+.cx-rvh{display:flex;justify-content:space-between;align-items:center;gap:8px}.cx-rvh b{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cx-rvbtns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.rvb{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 6px;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer;transition:all .15s}
+.rvb:disabled{opacity:.55;cursor:default}
+.rvb-approved:hover:not(:disabled),.rvb-approved[aria-pressed="true"]{border-color:#6DBE5C;background:#E3F2DC;color:#2F6B2A}
+.rvb-rejected:hover:not(:disabled),.rvb-rejected[aria-pressed="true"]{border-color:#E06A5E;background:#FBE3E1;color:#A23A30}
+.rvb-discuss:hover:not(:disabled),.rvb-discuss[aria-pressed="true"]{border-color:#F2B640;background:#FFF1D6;color:#8A5A00}
+#cxRvNote{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:8px 10px;font:inherit;font-size:13px;resize:vertical}
+.cx-rvf{display:flex;justify-content:space-between;align-items:center;gap:8px}.cx-rvf small,.cx-rvro{font-size:11.5px;color:var(--muted)}
+.cx-rvnote{margin:0;font-size:13px;font-style:italic;color:#3a4540}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2611,7 +2627,7 @@ function renderMonth(){
    <div class="mgr-choices m-choices">
     <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${plans.length}</span></button>
     <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results, KPIs vs targets, plan vs actual</small></span><span class="cn">${Math.round(monthDone(m)*100)}%</span></button>
-    <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">📣</span><span><b>Marketing plan</b><small>Content calendar, social media, email &amp; SEO</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
+    <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">🗓️</span><span><b>Content calendar</b><small>Posts, bulk emails &amp; SEO by date</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
    </div>
    ${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}
   </div>`;
@@ -2689,9 +2705,20 @@ function reportHTML(m){
   <h2>5. Challenges and lessons</h2>${p(D.challenges)}<h2>6. Focus for next month</h2>${p(D.next)}</body></html>`;
 }
 /* ---------- MONTHLY: marketing / content plan ---------- */
-const CP={docs:{},loading:{},view:"cal",lang:"ar",open:null};
-const CP_PLAT={"LinkedIn":["in","#0A66C2"],"Instagram":["IG","#D6249F"],"X":["X","#111"],"Google Business Profile":["G","#34A853"],"TikTok":["TT","#111"],"Email":["✉","#43695B"]};
-function cpLoad(m){ if(CP.docs[m]||CP.loading[m]) return; CP.loading[m]=1; fetch(`cp/${m}/plan.json?v=${Date.now()}`).then(r=>r.ok?r.json():null).then(d=>{ if(d){CP.docs[m]=d; if(W.page==="month"&&MON.tab==="content") renderMonth();} }).catch(()=>{}); }
+const CP={docs:{},loading:{},view:"cal",lang:"ar",open:null,rev:{},revOn:0};
+const CP_RV={approved:["✅","Approved"],rejected:["❌","Rejected"],discuss:["💬","To be discussed"]};
+function cpCanRev(){return !!(W.db&&(W.isOwner||W.boss));}
+function cpRevBoot(){ if(CP.revOn||!W.db) return; CP.revOn=1; W.db.collection("cpreview").onSnapshot(s=>{CP.rev={}; s.docs.forEach(d=>CP.rev[d.id]=d.data()); if(W.page==="month"&&MON.tab==="content") renderMonth(); if(CP.open){const a=document.activeElement; if(!(a&&a.id==="cxRvNote")) cpModal(curMonth(),CP.open);}},()=>{}); }
+function cpRv(m,id){return CP.rev[m+"_"+id]||null;}
+function cpRvBadge(m,id){const r=cpRv(m,id), v=r&&CP_RV[r.verdict]; return v?`<span class="cx-rv rv-${r.verdict}">${v[0]} ${v[1]}</span>`:`<span class="cx-rv rv-none">⏳ Awaiting review</span>`;}
+async function cpSetRev(m,id,verdict){
+  if(!cpCanRev()) return; const ref=W.db.doc("cpreview/"+m+"_"+id), cur=cpRv(m,id), note=((document.getElementById("cxRvNote")||{}).value||"").trim();
+  if(verdict===null){ if(!cur) {toast("Pick Approve, Reject or To be discussed first"); return;} return wWrite(()=>ref.set(Object.assign({},cur,{note,at:new Date().toISOString()})),"Note saved"); }
+  if(cur&&cur.verdict===verdict&&note===(cur.note||"")) return wWrite(()=>ref.delete(),"Review cleared");
+  return wWrite(()=>ref.set({month:m,item:id,verdict,note,uid:W.me||"",by:W.isOwner?"Fatima":"Manager",at:new Date().toISOString()}),CP_RV[verdict][1]);
+}
+const CP_PLAT={"LinkedIn":["in","#0A66C2"],"Instagram":["IG","#D6249F"],"Instagram Story":["IG","#D6249F"],"X":["X","#111"],"Google Business Profile":["G","#34A853"],"TikTok":["TT","#111"],"Email":["✉","#43695B"]};
+function cpLoad(m){ cpRevBoot(); if(CP.docs[m]||CP.loading[m]) return; CP.loading[m]=1; fetch(`cp/${m}/plan.json?v=${Date.now()}`).then(r=>r.ok?r.json():null).then(d=>{ if(d){CP.docs[m]=d; if(W.page==="month"&&MON.tab==="content") renderMonth();} }).catch(()=>{}); }
 function cpSrc(m,f){return `cp/${m}/${f}`;}
 function cpDay(m,d,o){const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,d)).toLocaleDateString("en-GB",Object.assign({timeZone:"UTC"},o));}
 function cpItems(P){const it=[]; (P.posts||[]).forEach(p=>it.push(Object.assign({kind:"post"},p))); (P.emails||[]).forEach(e=>it.push(Object.assign({kind:"email",platforms:["Email"]},e))); ((P.seo||{}).articles||[]).forEach((a,i)=>it.push(Object.assign({kind:"seo",id:"a"+i},a))); return it.sort((a,b)=>a.day-b.day||a.kind.localeCompare(b.kind));}
@@ -2706,13 +2733,13 @@ function contentView(m){
   let body="";
   if(CP.view==="cal"){
     const cells=[]; for(let i=0;i<first;i++) cells.push(`<div class="cx-c off"></div>`);
-    for(let d=1;d<=nd;d++){const its=items.filter(x=>x.day===d); cells.push(`<div class="cx-c ${its.length?"has":""} ${isNow&&today.getDate()===d?"today":""}"><span class="cx-dn">${d}</span><div class="cx-its">${its.map(x=>x.kind==="seo"?`<button type="button" class="cx-art" data-cpopen="${x.id}">🔎 <span>${esc(x.title)}</span></button>`:`<button type="button" class="cx-th k-${x.kind}" data-cpopen="${x.id}" title="${esc(x.title)}"><img src="${cpSrc(m,x.img)}" alt="" loading="lazy"><i>${x.kind==="email"?"✉️":"📱"}</i></button>`).join("")}</div></div>`);}
+    for(let d=1;d<=nd;d++){const its=items.filter(x=>x.day===d); cells.push(`<div class="cx-c ${its.length?"has":""} ${isNow&&today.getDate()===d?"today":""}"><span class="cx-dn">${d}</span><div class="cx-its">${its.map(x=>x.kind==="seo"?`<button type="button" class="cx-art" data-cpopen="${x.id}">🔎 <span>${esc(x.title)}</span></button>`:`<button type="button" class="cx-th k-${x.kind} ${(cpRv(m,x.id)||{}).verdict?"rv-"+cpRv(m,x.id).verdict:""}" data-cpopen="${x.id}" title="${esc(x.title)}"><img src="${cpSrc(m,x.img)}" alt="" loading="lazy"><i>${x.kind==="email"?"✉️":"📱"}</i></button>`).join("")}</div></div>`);}
     body=`<div class="cx-legend"><span><i class="lp"></i>Social post</span><span><i class="le"></i>Bulk email</span><span><i class="ls"></i>SEO article</span><small>Tap any item to open it</small></div>
      <div class="cx-cal"><div class="cx-wd">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<span>${x}</span>`).join("")}</div><div class="cx-grid">${cells.join("")}</div></div>
-     <div class="cx-agenda">${items.map(x=>`<button type="button" class="cx-ag" data-cpopen="${x.id}"><span class="cx-agd"><b>${x.day}</b><small>${esc(cpDay(m,x.day,{weekday:"short"}))}</small></span>${x.img?`<img src="${cpSrc(m,x.img)}" alt="" loading="lazy">`:`<span class="cx-agi">🔎</span>`}<span class="cx-agt"><small>${x.kind==="post"?"Social post":x.kind==="email"?"Bulk email · "+esc(x.sector):"SEO article"}</small><b>${esc(x.title)}</b></span></button>`).join("")}</div>`;
+     <div class="cx-agenda">${items.map(x=>`<button type="button" class="cx-ag" data-cpopen="${x.id}"><span class="cx-agd"><b>${x.day}</b><small>${esc(cpDay(m,x.day,{weekday:"short"}))}</small></span>${x.img?`<img src="${cpSrc(m,x.img)}" alt="" loading="lazy">`:`<span class="cx-agi">🔎</span>`}<span class="cx-agt"><small>${x.kind==="post"?"Social post":x.kind==="email"?"Bulk email · "+esc(x.sector):"SEO article"}</small><b>${esc(x.title)}</b>${x.kind!=="seo"?cpRvBadge(m,x.id):""}</span></button>`).join("")}</div>`;
   } else if(CP.view==="posts"||CP.view==="mail"){
     const list=CP.view==="posts"?posts:mails;
-    body=`<div class="cx-feed">${list.map(x=>`<button type="button" class="cx-card" data-cpopen="${x.id}"><span class="cx-img"><img src="${cpSrc(m,x.img)}" alt="" loading="lazy"><span class="cx-date"><b>${x.day}</b>${esc(cpDay(m,x.day,{month:"short"}))}</span>${x.sector?`<span class="cx-sec">${esc(x.sector)}</span>`:""}</span><span class="cx-cb"><b>${esc(x.title)}</b><small>${esc(x.type||("Bulk email · "+cpDay(m,x.day,{weekday:"long"})))}</small><span class="cx-pls">${cpPlat(x.platforms||["Email"])}</span></span></button>`).join("")}</div>`;
+    body=`<div class="cx-feed">${list.map(x=>`<button type="button" class="cx-card" data-cpopen="${x.id}"><span class="cx-img"><img src="${cpSrc(m,x.img)}" alt="" loading="lazy"><span class="cx-date"><b>${x.day}</b>${esc(cpDay(m,x.day,{month:"short"}))}</span>${x.sector?`<span class="cx-sec">${esc(x.sector)}</span>`:""}${cpRvBadge(m,x.id)}</span><span class="cx-cb"><b>${esc(x.title)}</b><small>${esc(x.type||("Bulk email · "+cpDay(m,x.day,{weekday:"long"})))}</small><span class="cx-pls">${cpPlat(x.platforms||["Email"])}</span></span></button>`).join("")}</div>`;
   } else if(CP.view==="seo"){
     body=`<p class="cx-lead">${esc(S.summary||"")}</p><div class="cx-weeks">${(S.weeks||[]).map((w,i)=>`<div class="cx-wk"><span class="cx-wn">W${i+1}</span><small>${esc(w.range)}</small><b>${esc(w.focus)}</b><ul>${w.tasks.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>`).join("")}</div>
      <div class="cx-two"><div class="cx-box"><h4>Target keywords</h4><div class="cx-kw" dir="rtl">${((S.keywords||{}).ar||[]).map(k=>`<span>${esc(k)}</span>`).join("")}</div><div class="cx-kw">${((S.keywords||{}).en||[]).map(k=>`<span>${esc(k)}</span>`).join("")}</div></div>
@@ -2723,7 +2750,7 @@ function contentView(m){
   }
   const thumbs=posts.slice(0,4).map((p,i)=>`<img src="${cpSrc(m,p.img)}" alt="" style="--r:${[-10,-3,4,11][i]}deg;--x:${i*58}px">`).join("");
   return `<div class="cx">
-   <div class="cx-hero"><div class="cx-ht"><span class="cx-kick">✨ Marketing plan</span><h2>${esc(P.title)}</h2><p>${esc(P.sub||"")}</p>
+   <div class="cx-hero"><div class="cx-ht"><span class="cx-kick">✨ Content calendar</span><h2>${esc(P.title)}</h2><p>${esc(P.sub||"")}</p>
      <div class="cx-stats"><span><b>${posts.length}</b> posts</span><span><b>${mails.length}</b> bulk emails</span><span><b>${(S.articles||[]).length}</b> SEO articles</span></div></div>
     <div class="cx-fan">${thumbs}</div></div>
    <nav class="cx-tabs">${tabs.map(([k,i,l,n])=>`<button type="button" data-cpview="${k}" aria-pressed="${CP.view===k}"><span>${i}</span>${l}${n!=null?`<em>${n}</em>`:""}</button>`).join("")}</nav>
@@ -2746,6 +2773,9 @@ function cpModal(m,id){
     ${x.note?`<p class="cx-note">⚠️ ${esc(x.note)}</p>`:""}
     ${x.kind!=="seo"?`<div class="cx-capbar"><div class="cx-lang"><button type="button" data-cplang="ar" aria-pressed="${L==="ar"}">العربي</button><button type="button" data-cplang="en" aria-pressed="${L==="en"}">English</button></div>${cpCopy(cap+(tags?"\n\n"+tags:""),"Copy")}</div>
     <p class="cx-cap" dir="${L==="ar"?"rtl":"ltr"}" lang="${L}">${esc(cap)}</p>${tags?`<p class="cx-tags">${esc(tags)}</p>`:""}`:""}
+    ${x.kind!=="seo"?(()=>{const r=cpRv(m,x.id), can=cpCanRev(); return `<div class="cx-rvbox"><div class="cx-rvh"><b>Review</b>${cpRvBadge(m,x.id)}</div>
+     <div class="cx-rvbtns">${Object.entries(CP_RV).map(([k,[ic,lb]])=>`<button type="button" class="rvb rvb-${k}" data-cprv="${k}" aria-pressed="${!!(r&&r.verdict===k)}" ${can?"":"disabled"}>${ic} ${lb}</button>`).join("")}</div>
+     ${can?`<textarea id="cxRvNote" rows="2" placeholder="Add a note (optional)">${esc((r&&r.note)||"")}</textarea><div class="cx-rvf"><small>${r?`By ${esc(r.by||"")} · ${esc(new Date(r.at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}))}`:"Pick a choice to save your review."}</small>${r?`<button type="button" class="cx-copy" data-cprv="__note">Save note</button>`:""}</div>`:`${r&&r.note?`<p class="cx-rvnote">“${esc(r.note)}”</p>`:""}<small class="cx-rvro">Only the manager and Fatima can review.</small>`}</div>`})():""}
     <div class="cx-mnav">${prev?`<button type="button" data-cpopen="${prev.id}">‹ ${esc(cpDay(m,prev.day,{day:"numeric",month:"short"}))}</button>`:"<span></span>"}<small>${i+1} / ${items.length}</small>${next?`<button type="button" data-cpopen="${next.id}">${esc(cpDay(m,next.day,{day:"numeric",month:"short"}))} ›</button>`:"<span></span>"}</div>
    </div></div>`;
   el.classList.add("on"); document.documentElement.style.overflow="hidden";
@@ -2755,6 +2785,7 @@ document.addEventListener("click",e=>{
   const inMod=e.target.closest("#cxModal"), inPage=e.target.closest("#page-month"); if(!inMod&&!inPage) return;
   if(inMod&&(e.target.id==="cxModal"||e.target.closest("[data-cpclose]"))){cpClose(); return;}
   const o=e.target.closest("[data-cpopen]"); if(o){cpModal(curMonth(),o.dataset.cpopen); return;}
+  const rv=e.target.closest("[data-cprv]"); if(rv&&CP.open){cpSetRev(curMonth(),CP.open,rv.dataset.cprv==="__note"?null:rv.dataset.cprv); return;}
   const v=e.target.closest("[data-cpview]"); if(v){CP.view=v.dataset.cpview; renderMonth(); return;}
   const l=e.target.closest("[data-cplang]"); if(l){CP.lang=l.dataset.cplang; if(CP.open) cpModal(curMonth(),CP.open); return;}
   const c=e.target.closest("[data-cpcopy]"); if(c){const t=decodeURIComponent(c.dataset.cpcopy), o2=c.textContent; const ok=()=>{c.textContent="Copied ✓"; setTimeout(()=>c.textContent=o2,1400)}; try{navigator.clipboard.writeText(t).then(ok,ok)}catch(_){ok()} return;}
