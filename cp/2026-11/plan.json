@@ -1,7 +1,7 @@
 {
  "month": "2026-11",
  "title": "November 2026",
- "sub": "Social media, bulk email and SEO. Everything we publish this month, in one place.",
+ "sub": "Social media and bulk email. Everything we publish this month, in one place.",
  "posts": [
   {
    "id": "p1",
@@ -156,105 +156,6 @@
    "en": "🥗 Elevating Your Employees' Dining Experience with Quality Your Team Deserves.\nAl-Mays provides comprehensive catering solutions for companies, institutions, and operational facilities, offering diverse and balanced meals carefully prepared in accordance with quality and food safety standards."
   }
  ],
- "seo": {
-  "summary": "Build on the comprehensive SEO & Google Ads report: fix the technical basics first, optimise the pages that matter, then publish content that answers what buyers search for.",
-  "weeks": [
-   {
-    "range": "1–7 Nov",
-    "focus": "Technical basics",
-    "tasks": [
-     "Verify Google Search Console and submit the XML sitemap",
-     "Fix broken and inactive links (with the website adjustments due 10 Nov)",
-     "Compress homepage images and videos to improve mobile speed",
-     "Set up GA4 events: quote form, calls, WhatsApp clicks"
-    ]
-   },
-   {
-    "range": "8–14 Nov",
-    "focus": "On-page optimisation",
-    "tasks": [
-     "Rewrite titles, meta descriptions and H1s for the top 10 pages (AR + EN)",
-     "Map one main keyword to each service page",
-     "Add alt text to all images on key pages",
-     "Upload the new company profile and link it from the homepage"
-    ]
-   },
-   {
-    "range": "15–21 Nov",
-    "focus": "Content",
-    "tasks": [
-     "Publish article 1 (AR + EN): How to choose a catering partner for your organisation",
-     "Publish article 2 (AR + EN): Food safety standards in large-scale catering",
-     "Share article 1 in the 17 Nov email and both articles on LinkedIn",
-     "Update Google Business Profile with new photos and services"
-    ]
-   },
-   {
-    "range": "22–30 Nov",
-    "focus": "Local SEO & reporting",
-    "tasks": [
-     "Post weekly updates on Google Business Profile",
-     "Add internal links from articles to service pages",
-     "Track rankings for the target keywords",
-     "Prepare the SEO section of the monthly report (5–6 Dec)"
-    ]
-   }
-  ],
-  "keywords": {
-   "ar": [
-    "شركة تموين وإعاشة",
-    "خدمات الإعاشة للشركات",
-    "تموين الجهات الحكومية",
-    "إعاشة المواقع والمخيمات",
-    "شركة تموين في جدة",
-    "شركة إعاشة في الرياض"
-   ],
-   "en": [
-    "catering company Saudi Arabia",
-    "corporate catering KSA",
-    "government catering services",
-    "camp and remote site catering",
-    "industrial catering Saudi",
-    "catering company Jeddah"
-   ]
-  },
-  "articles": [
-   {
-    "day": 16,
-    "title": "How to choose a catering partner for your organisation",
-    "titleAr": "كيف تختار شركة التموين والإعاشة المناسبة لمنشأتك",
-    "keyword": "شركة تموين وإعاشة · catering company Saudi Arabia"
-   },
-   {
-    "day": 19,
-    "title": "Food safety standards in large-scale catering",
-    "titleAr": "معايير سلامة الغذاء في خدمات الإعاشة الكبيرة",
-    "keyword": "خدمات الإعاشة للشركات · corporate catering KSA"
-   }
-  ],
-  "kpis": [
-   [
-    "Pages indexed",
-    "All key pages (AR + EN)"
-   ],
-   [
-    "Organic visits",
-    "+15% vs October"
-   ],
-   [
-    "Keywords in top 20",
-    "5"
-   ],
-   [
-    "Google Business Profile views",
-    "+20%"
-   ],
-   [
-    "Mobile PageSpeed",
-    "≥ 70"
-   ]
-  ]
- },
  "goals": [
   [
    "📈",
@@ -281,16 +182,10 @@
    "Click rate ≥ 3%"
   ],
   [
-   "🔎",
-   "Organic visits",
-   "+15%",
-   "vs October"
-  ],
-  [
    "📩",
    "Quote requests",
    "10+",
-   "Social, email & website"
+   "Social & email"
   ]
  ],
  "flow": [
