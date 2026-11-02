@@ -2621,13 +2621,13 @@ function renderMonth(){
   const tab=MON.tab;
   el.innerHTML=`<div class="wrap page">
    <div class="m-hero"><div class="m-blobs"><i></i><i></i><i></i><i></i></div>
-    <div class="m-hero-in"><div><small>📅 Monthly workspace</small><h2>${esc(monthName(m))}</h2><p>${tab==="content"?"Content calendar, social media, bulk email and SEO for the month.":tab==="plan"?"Set the month's goals, KPI targets and activities.":"Results for the month, built from your board, plan and feedback."}</p></div>
+    <div class="m-hero-in"><div><small>📅 Monthly workspace</small><h2>${esc(monthName(m))}</h2><p>${tab==="content"?"Content calendar, social media and bulk email for the month.":tab==="plan"?"Set the month's goals, KPI targets and activities.":"Results for the month, built from your board, plan and feedback."}</p></div>
      <div class="m-nav"><button type="button" class="m-arrow" data-mmove="-1" aria-label="Previous month">‹</button><input type="month" id="mPick" value="${m}" aria-label="Choose month"><button type="button" class="m-arrow" data-mmove="1" aria-label="Next month">›</button></div></div>
    </div>
    <div class="mgr-choices m-choices">
     <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${plans.length}</span></button>
     <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results, KPIs vs targets, plan vs actual</small></span><span class="cn">${Math.round(monthDone(m)*100)}%</span></button>
-    <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">🗓️</span><span><b>Content calendar</b><small>Posts, bulk emails &amp; SEO by date</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
+    <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">🗓️</span><span><b>Content calendar</b><small>Posts &amp; bulk emails by date</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
    </div>
    ${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}
   </div>`;
@@ -2721,20 +2721,20 @@ const CP_PLAT={"LinkedIn":["in","#0A66C2"],"Instagram":["IG","#D6249F"],"Instagr
 function cpLoad(m){ cpRevBoot(); if(CP.docs[m]||CP.loading[m]) return; CP.loading[m]=1; fetch(`cp/${m}/plan.json?v=${Date.now()}`).then(r=>r.ok?r.json():null).then(d=>{ if(d){CP.docs[m]=d; if(W.page==="month"&&MON.tab==="content") renderMonth();} }).catch(()=>{}); }
 function cpSrc(m,f){return `cp/${m}/${f}`;}
 function cpDay(m,d,o){const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,d)).toLocaleDateString("en-GB",Object.assign({timeZone:"UTC"},o));}
-function cpItems(P){const it=[]; (P.posts||[]).forEach(p=>it.push(Object.assign({kind:"post"},p))); (P.emails||[]).forEach(e=>it.push(Object.assign({kind:"email",platforms:["Email"]},e))); ((P.seo||{}).articles||[]).forEach((a,i)=>it.push(Object.assign({kind:"seo",id:"a"+i},a))); return it.sort((a,b)=>a.day-b.day||a.kind.localeCompare(b.kind));}
+function cpItems(P){const it=[]; (P.posts||[]).forEach(p=>it.push(Object.assign({kind:"post"},p))); (P.emails||[]).forEach(e=>it.push(Object.assign({kind:"email",platforms:["Email"]},e))); return it.sort((a,b)=>a.day-b.day||a.kind.localeCompare(b.kind));}
 function cpPlat(list){return (list||[]).map(p=>{const c=CP_PLAT[p]||[p[0],"#43695B"]; return `<span class="cx-pl" style="--pc:${c[1]}" title="${esc(p)}"><b>${c[0]}</b>${esc(p)}</span>`}).join("");}
 function cpCopy(t,l){return `<button type="button" class="cx-copy" data-cpcopy="${esc(encodeURIComponent(t))}">${l}</button>`;}
 function contentView(m){
   const P=CP.docs[m]; if(!P){ cpLoad(m); return `<div class="cx-empty"><b>${CP.loading[m]?"Loading the plan…":"No marketing plan for "+esc(monthName(m))+" yet"}</b></div>`; }
   const items=cpItems(P), posts=P.posts||[], mails=P.emails||[], S=P.seo||{};
-  const tabs=[["cal","📅","Calendar"],["posts","📱","Posts",posts.length],["mail","✉️","Bulk emails",mails.length],["seo","🔎","SEO",(S.articles||[]).length],["goals","🎯","Goals"]];
+  const tabs=[["cal","📅","Calendar"],["posts","📱","Posts",posts.length],["mail","✉️","Bulk emails",mails.length],["goals","🎯","Goals"]];
   const [y,mo]=m.split("-").map(Number), first=new Date(Date.UTC(y,mo-1,1)).getUTCDay(), nd=new Date(Date.UTC(y,mo,0)).getUTCDate();
   const today=new Date(), isNow=today.getFullYear()===y&&today.getMonth()+1===mo;
   let body="";
   if(CP.view==="cal"){
     const cells=[]; for(let i=0;i<first;i++) cells.push(`<div class="cx-c off"></div>`);
     for(let d=1;d<=nd;d++){const its=items.filter(x=>x.day===d); cells.push(`<div class="cx-c ${its.length?"has":""} ${isNow&&today.getDate()===d?"today":""}"><span class="cx-dn">${d}</span><div class="cx-its">${its.map(x=>x.kind==="seo"?`<button type="button" class="cx-art" data-cpopen="${x.id}">🔎 <span>${esc(x.title)}</span></button>`:`<button type="button" class="cx-th k-${x.kind} ${(cpRv(m,x.id)||{}).verdict?"rv-"+cpRv(m,x.id).verdict:""}" data-cpopen="${x.id}" title="${esc(x.title)}"><img src="${cpSrc(m,x.img)}" alt="" loading="lazy"><i>${x.kind==="email"?"✉️":"📱"}</i></button>`).join("")}</div></div>`);}
-    body=`<div class="cx-legend"><span><i class="lp"></i>Social post</span><span><i class="le"></i>Bulk email</span><span><i class="ls"></i>SEO article</span><small>Tap any item to open it</small></div>
+    body=`<div class="cx-legend"><span><i class="lp"></i>Social post</span><span><i class="le"></i>Bulk email</span><small>Tap any item to open it</small></div>
      <div class="cx-cal"><div class="cx-wd">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<span>${x}</span>`).join("")}</div><div class="cx-grid">${cells.join("")}</div></div>
      <div class="cx-agenda">${items.map(x=>`<button type="button" class="cx-ag" data-cpopen="${x.id}"><span class="cx-agd"><b>${x.day}</b><small>${esc(cpDay(m,x.day,{weekday:"short"}))}</small></span>${x.img?`<img src="${cpSrc(m,x.img)}" alt="" loading="lazy">`:`<span class="cx-agi">🔎</span>`}<span class="cx-agt"><small>${x.kind==="post"?"Social post":x.kind==="email"?"Bulk email · "+esc(x.sector):"SEO article"}</small><b>${esc(x.title)}</b>${x.kind!=="seo"?cpRvBadge(m,x.id):""}</span></button>`).join("")}</div>`;
   } else if(CP.view==="posts"||CP.view==="mail"){
@@ -2751,7 +2751,7 @@ function contentView(m){
   const thumbs=posts.slice(0,4).map((p,i)=>`<img src="${cpSrc(m,p.img)}" alt="" style="--r:${[-10,-3,4,11][i]}deg;--x:${i*58}px">`).join("");
   return `<div class="cx">
    <div class="cx-hero"><div class="cx-ht"><span class="cx-kick">✨ Content calendar</span><h2>${esc(P.title)}</h2><p>${esc(P.sub||"")}</p>
-     <div class="cx-stats"><span><b>${posts.length}</b> posts</span><span><b>${mails.length}</b> bulk emails</span><span><b>${(S.articles||[]).length}</b> SEO articles</span></div></div>
+     <div class="cx-stats"><span><b>${posts.length}</b> posts</span><span><b>${mails.length}</b> bulk emails</span></div></div>
     <div class="cx-fan">${thumbs}</div></div>
    <nav class="cx-tabs">${tabs.map(([k,i,l,n])=>`<button type="button" data-cpview="${k}" aria-pressed="${CP.view===k}"><span>${i}</span>${l}${n!=null?`<em>${n}</em>`:""}</button>`).join("")}</nav>
    <div class="cx-body">${body}</div>
