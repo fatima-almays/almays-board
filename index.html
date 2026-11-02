@@ -2563,7 +2563,7 @@ async function socialBoot(db,user){
   W.files=W.files||[]; db.collection("files").onSnapshot(s=>{W.files=s.docs.map(d=>Object.assign({id:d.id},d.data())); render(); if(W.modal) renderModal();},()=>{});
   db.collection("manager").onSnapshot(s=>{W.mgr=s.docs.map(d=>Object.assign({id:d.id},d.data())); render();},()=>{});
   db.collection("monthly").onSnapshot(s=>{MON.docs={}; s.docs.forEach(d=>MON.docs[d.id]=Object.assign({id:d.id},d.data())); if(W.page==="month") renderMonth();},()=>{});
-  db.collection("contentplans").onSnapshot(s=>{CP.docs={}; s.docs.forEach(d=>CP.docs[d.id]=d.data()); if(W.page==="month") renderMonth();},()=>{});
+  db.collection("contentplans").onSnapshot(s=>{CP.docs={}; s.docs.forEach(d=>{const x=d.data(); try{CP.docs[d.id]=x.json?JSON.parse(x.json):x}catch(_){}}); if(W.page==="month") renderMonth();},()=>{});
   db.collection("plans").onSnapshot(s=>{MON.plans=s.docs.map(d=>Object.assign({id:d.id},d.data())); if(W.page==="month") renderMonth();},()=>{});
   if(W.me&&!W.isOwner){
     try{ const ref=db.doc("visits/"+W.me); const snap=await ref.get(); const prev=snap&&snap.exists?snap.data():{};
