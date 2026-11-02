@@ -2589,6 +2589,7 @@ const PAL=["#3DDC84","#4DD8E6","#FFD166","#A47CFF","#FFA94D","#AEC486","#5AA9FF"
 const KPIS=[["leads","Leads","",1],["sql","Qualified leads (SQL)","",1],["cpl","Cost per lead","SAR",-1],["visits","Website visits","",1],["organic","Organic visits (SEO)","",1],["followers","Social followers (total)","",1],["engagement","Engagement rate","%",1],["adspend","Ad spend","SAR",-1],["contracts","Contracts from marketing","",1]];
 const PLAN_ST=["Planned","In Progress","Done","Cancelled"];
 const MON={month:null,tab:"plan",docs:{},plans:[],pending:false,adding:false};
+{const v=new URLSearchParams(location.search).get("view"); if(v==="calendar"){MON.tab="content"; W.page="month"; let n=0; const t=setInterval(()=>{const el=document.querySelector(".cx"); if(el&&el.querySelector(".cx-tabs")){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);}}
 const monthOf=s=>String(s||"").slice(0,7);
 const monthName=m=>{const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,1)).toLocaleDateString("en-GB",{month:"long",year:"numeric",timeZone:"UTC"})};
 const shiftMonth=(m,d)=>{const [y,mo]=m.split("-").map(Number); const t=new Date(Date.UTC(y,mo-1+d,1)); return t.toISOString().slice(0,7)};
