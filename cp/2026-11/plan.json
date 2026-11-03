@@ -214,5 +214,568 @@
    "Report",
    "Fatima · 5–6 Dec"
   ]
- ]
+ ],
+ "mp": {
+  "title": "Steady posting, a fresh website, stronger search",
+  "sub": "Four moves for November, in order: post consistently with the new design, relaunch the website, get found on Google, and start the ChatGPT pilot campaign. Targets start realistic and grow each month.",
+  "kpis": [
+   [
+    "12",
+    "feed posts"
+   ],
+   [
+    "15",
+    "stories"
+   ],
+   [
+    "+10%",
+    "website visits"
+   ],
+   [
+    "+5–10%",
+    "organic visits"
+   ],
+   [
+    "3–5",
+    "quote requests"
+   ],
+   [
+    "SAR 10K",
+    "budget"
+   ]
+  ],
+  "goals": [
+   [
+    "📱",
+    "Post consistently, in the new design",
+    "3 feed posts a week (~12) and 3–4 stories a week (~15)",
+    "30 Nov"
+   ],
+   [
+    "💼",
+    "Show the company at work",
+    "1 LinkedIn company-activity post a week (4)",
+    "30 Nov"
+   ],
+   [
+    "🌐",
+    "Relaunch the website",
+    "New photos, fixed pages, profile & video live",
+    "22 Nov"
+   ],
+   [
+    "🔎",
+    "Get found on Google",
+    "Business Profile complete, keywords on every page",
+    "19 Nov"
+   ],
+   [
+    "💬",
+    "Launch the ChatGPT pilot",
+    "Live on 20 Nov with SAR 1,500",
+    "20 Nov"
+   ],
+   [
+    "📩",
+    "Turn visits into requests",
+    "3–5 quote requests from all channels in month 1",
+    "30 Nov"
+   ]
+  ],
+  "pillars": [
+   {
+    "id": "social",
+    "icon": "📱",
+    "name": "Social media",
+    "short": "Social",
+    "color": "#D9822B",
+    "aim": "Post consistently in the new design, with real company moments.",
+    "roles": [
+     [
+      "A",
+      "Runs the accounts, posts & stories"
+     ],
+     [
+      "F",
+      "Reviews & edits content, photography, strategy"
+     ],
+     [
+      "M",
+      "Approves the design & calendar"
+     ]
+    ],
+    "kpis": [
+     [
+      "12",
+      "feed posts (3/week)"
+     ],
+     [
+      "15",
+      "stories (3–4/week)"
+     ],
+     [
+      "4",
+      "LinkedIn activity posts"
+     ],
+     [
+      "≥2%",
+      "engagement"
+     ]
+    ],
+    "img": [
+     "p1.jpg",
+     "p3.jpg",
+     "p4.jpg"
+    ],
+    "items": [
+     [
+      "Content strategy & November calendar",
+      "F",
+      1,
+      3
+     ],
+     [
+      "Approve the new post design",
+      "F M",
+      3,
+      5
+     ],
+     [
+      "3 posts a week on Instagram & LinkedIn",
+      "A",
+      3,
+      30
+     ],
+     [
+      "Instagram stories 3–4 times a week: kitchen, menus, behind the scenes",
+      "A",
+      3,
+      30
+     ],
+     [
+      "LinkedIn: 1 company-activity post a week",
+      "A",
+      3,
+      30
+     ],
+     [
+      "Review & edit every post before it goes live",
+      "F",
+      3,
+      30
+     ],
+     [
+      "Photo & video shoot for stories and activity posts",
+      "F",
+      8,
+      12
+     ]
+    ]
+   },
+   {
+    "id": "web",
+    "icon": "🌐",
+    "name": "Website upgrade",
+    "short": "Website",
+    "color": "#43695B",
+    "aim": "A website that looks like Al Mays today and turns visits into quote requests.",
+    "roles": [
+     [
+      "F",
+      "Upgrade plan & page list"
+     ],
+     [
+      "F",
+      "Execution with tools"
+     ],
+     [
+      "A",
+      "Execution with tools"
+     ]
+    ],
+    "kpis": [
+     [
+      "+10%",
+      "website visits"
+     ],
+     [
+      "0",
+      "broken pages"
+     ],
+     [
+      "100%",
+      "new photos"
+     ],
+     [
+      "Live",
+      "profile & video"
+     ]
+    ],
+    "img": [
+     "mp_w.jpg"
+    ],
+    "items": [
+     [
+      "Upgrade plan & page-by-page checklist",
+      "F",
+      3,
+      6
+     ],
+     [
+      "Fix broken pages & links (0+ counters, phone & email links, branches, ar_SA)",
+      "F A",
+      8,
+      12
+     ],
+     [
+      "Floating WhatsApp button & clear Request a quote form",
+      "F A",
+      10,
+      12
+     ],
+     [
+      "Replace all photos with the new shoot",
+      "F A",
+      12,
+      15
+     ],
+     [
+      "Add keywords to every page",
+      "F A",
+      15,
+      19
+     ],
+     [
+      "New company profile + Al Mays video on the home page",
+      "F A",
+      19,
+      22
+     ]
+    ]
+   },
+   {
+    "id": "google",
+    "icon": "🔎",
+    "name": "Google visibility",
+    "short": "Google",
+    "color": "#4285F4",
+    "aim": "Show up when companies search for catering in Saudi Arabia.",
+    "roles": [
+     [
+      "F",
+      "SEO plan & keywords"
+     ],
+     [
+      "A",
+      "Business Profile & reviews"
+     ]
+    ],
+    "kpis": [
+     [
+      "+5–10%",
+      "organic visits"
+     ],
+     [
+      "100%",
+      "Business Profile"
+     ],
+     [
+      "All",
+      "pages with keywords"
+     ],
+     [
+      "Ready",
+      "Ads tracking & CAC"
+     ]
+    ],
+    "img": [
+     "mp_g.jpg"
+    ],
+    "items": [
+     [
+      "Google Ads: tracking & CAC dashboard",
+      "F",
+      1,
+      5
+     ],
+     [
+      "Google Business Profile: photos, services, hours, weekly posts",
+      "A",
+      8,
+      10
+     ],
+     [
+      "Keyword list (AR/EN) by service, sector and city",
+      "F",
+      8,
+      12
+     ],
+     [
+      "New page titles & descriptions",
+      "F A",
+      15,
+      19
+     ],
+     [
+      "Ask happy clients for Google reviews",
+      "A",
+      10,
+      30
+     ]
+    ]
+   },
+   {
+    "id": "gpt",
+    "icon": "💬",
+    "name": "ChatGPT campaign",
+    "short": "ChatGPT",
+    "color": "#10A37F",
+    "aim": "Be the catering brand people see when they ask ChatGPT.",
+    "roles": [
+     [
+      "F",
+      "Campaign owner"
+     ],
+     [
+      "A",
+      "Creatives & landing page"
+     ],
+     [
+      "M",
+      "Budget approval"
+     ]
+    ],
+    "kpis": [
+     [
+      "20 Nov",
+      "launch"
+     ],
+     [
+      "SAR 1,500",
+      "month 1"
+     ],
+     [
+      "CTR · CPC",
+      "tracked weekly"
+     ],
+     [
+      "Quotes",
+      "main goal"
+     ]
+    ],
+    "img": [
+     "mp_c.jpg"
+    ],
+    "items": [
+     [
+      "Confirm eligibility in Saudi Arabia & open OpenAI Ads Manager",
+      "F",
+      8,
+      10
+     ],
+     [
+      "Ad creatives, messages & ad groups by sector",
+      "F A",
+      10,
+      15
+     ],
+     [
+      "Landing page + tracking (GA4, GTM, Clarity)",
+      "F A",
+      12,
+      17
+     ],
+     [
+      "Launch month 1: testing",
+      "F",
+      20,
+      20
+     ],
+     [
+      "Weekly check: impressions, CTR, CPC, leads",
+      "F",
+      20,
+      30
+     ]
+    ]
+   }
+  ],
+  "gpt": {
+   "objective": "Make Al Mays visible inside ChatGPT to people looking for catering, institutional food services and large-scale meal solutions, and turn that into qualified leads and website traffic.",
+   "sectors": [
+    [
+     "🏭",
+     "Industrial",
+     "Factory catering & industrial meal solutions"
+    ],
+    [
+     "🏢",
+     "Corporate",
+     "Corporate catering & employee meal services"
+    ],
+    [
+     "🏨",
+     "Hospitality",
+     "Hotel & hospitality catering"
+    ],
+    [
+     "🏥",
+     "Healthcare",
+     "Hospital & institutional food services"
+    ],
+    [
+     "🏛️",
+     "Government",
+     "Government catering & large-scale food supply"
+    ],
+    [
+     "🏗️",
+     "Projects",
+     "Workforce catering & camp services"
+    ]
+   ],
+   "budget": [
+    [
+     "Month 1",
+     "Launch & testing",
+     "Nov",
+     1500
+    ],
+    [
+     "Month 2",
+     "Analysis & optimization",
+     "Dec",
+     2000
+    ],
+    [
+     "Month 3",
+     "Optimization & evaluation",
+     "Jan",
+     2500
+    ]
+   ],
+   "kpis": [
+    "Impressions & reach",
+    "Click-through rate (CTR)",
+    "Cost per click (CPC)",
+    "Website traffic",
+    "Qualified leads",
+    "Quote requests",
+    "Conversion rate",
+    "Cost per lead (CPL)"
+   ],
+   "tools": [
+    [
+     "OpenAI Ads Manager",
+     "Campaigns & reporting"
+    ],
+    [
+     "OpenAI Pixel / Conversions API",
+     "Conversion tracking (if available)"
+    ],
+    [
+     "Google Analytics 4",
+     "Traffic & behaviour"
+    ],
+    [
+     "Google Tag Manager",
+     "Events & conversions"
+    ],
+    [
+     "Microsoft Clarity",
+     "Customer journey"
+    ]
+   ],
+   "outcomes": [
+    "More brand visibility inside ChatGPT",
+    "Reach relevant business buyers",
+    "More qualified website traffic",
+    "Quote requests and business inquiries",
+    "Know which sectors and messages work best",
+    "Data to decide on future investment"
+   ],
+   "ask": "Approve SAR 6,000 for a 3-month pilot (Nov–Jan), reviewed monthly.",
+   "note": "Launch, targeting, tracking and minimum spend depend on OpenAI Ads Manager availability and advertiser eligibility in Saudi Arabia."
+  },
+  "budget": {
+   "total": 10000,
+   "note": "Proposed allocation for the plan period (Nov–Jan), including the ChatGPT pilot. Social media runs in-house.",
+   "lines": [
+    [
+     "gpt",
+     "💬",
+     "ChatGPT campaign",
+     "3-month pilot as proposed",
+     [
+      1500,
+      2000,
+      2500
+     ]
+    ],
+    [
+     "web",
+     "🌐",
+     "Website upgrade",
+     "Tools & plugins, speed, stock assets, video hosting",
+     [
+      2000,
+      1000,
+      0
+     ]
+    ],
+    [
+     "google",
+     "🔎",
+     "Google visibility",
+     "SEO tools & Business Profile assets",
+     [
+      500,
+      500,
+      0
+     ]
+    ]
+   ],
+   "months": [
+    "Nov",
+    "Dec",
+    "Jan"
+   ]
+  },
+  "people": {
+   "F": [
+    "Fatima",
+    "Content review, editing, photography & strategy"
+   ],
+   "A": [
+    "Amani",
+    "Social media & execution"
+   ],
+   "M": [
+    "Manager",
+    "Approvals"
+   ]
+  },
+  "main": "Main goal: make Al Mays the catering brand companies find, trust and contact — on social media, on Google and inside ChatGPT.",
+  "phases": [
+   [
+    "Nov",
+    "Phase 1",
+    "Build & launch",
+    "now"
+   ],
+   [
+    "Dec",
+    "Phase 2",
+    "Optimize & grow",
+    "next"
+   ],
+   [
+    "Jan",
+    "Phase 3",
+    "Scale & evaluate",
+    "next"
+   ]
+  ],
+  "cont": "Part of a 3-month plan · to be continued until we reach the main goal, then kept running and improved."
+ }
 }
