@@ -251,21 +251,7 @@
     "name": "Social media",
     "short": "Social",
     "color": "#D9822B",
-    "aim": "Post consistently in the new design, with real company moments.",
-    "roles": [
-     [
-      "A",
-      "Runs the accounts, posts & stories"
-     ],
-     [
-      "F",
-      "Reviews & edits content, photography, strategy"
-     ],
-     [
-      "M",
-      "Approves the design & calendar"
-     ]
-    ],
+    "aim": "Show Al Mays as the reliable contract-catering partner, with real operations and people.",
     "kpis": [
      [
       "12",
@@ -290,34 +276,13 @@
      "p4.jpg"
     ],
     "items": [
-     [
-      "Content strategy & monthly calendar",
-      "F"
-     ],
-     [
-      "New post design approved and applied to every post",
-      "F M"
-     ],
-     [
-      "3 feed posts a week on Instagram & LinkedIn",
-      "A"
-     ],
-     [
-      "Stories 3–4 times a week: kitchen, menus, behind the scenes",
-      "A"
-     ],
-     [
-      "1 LinkedIn company-activity post a week",
-      "A"
-     ],
-     [
-      "Content review & editing before publishing",
-      "F"
-     ],
-     [
-      "Photo & video shoot for stories and activity posts",
-      "F"
-     ]
+     "Content strategy & monthly calendar",
+     "New post design approved and applied to every post",
+     "3 feed posts a week on Instagram & LinkedIn",
+     "Stories 3–4 times a week: client sites, central kitchen operations, food safety, our team at work",
+     "1 LinkedIn company-activity post a week: contracts, training, certifications, events",
+     "Content review & editing before publishing",
+     "Photo & video shoot at client sites and the central kitchen"
     ]
    },
    {
@@ -327,20 +292,6 @@
     "short": "Website",
     "color": "#43695B",
     "aim": "A website that looks like Al Mays today and turns visits into quote requests.",
-    "roles": [
-     [
-      "F",
-      "Upgrade plan & page list"
-     ],
-     [
-      "F",
-      "Execution with tools"
-     ],
-     [
-      "A",
-      "Execution with tools"
-     ]
-    ],
     "kpis": [
      [
       "+10%",
@@ -363,30 +314,12 @@
      "mp_w.jpg"
     ],
     "items": [
-     [
-      "Upgrade plan & page-by-page checklist",
-      "F"
-     ],
-     [
-      "Fix broken pages & links (0+ counters, phone & email links, branches, ar_SA)",
-      "F A"
-     ],
-     [
-      "Floating WhatsApp button & clear Request a quote form",
-      "F A"
-     ],
-     [
-      "Replace all photos with the new shoot",
-      "F A"
-     ],
-     [
-      "Keywords on every page",
-      "F A"
-     ],
-     [
-      "New company profile + Al Mays video on the home page",
-      "F A"
-     ]
+     "Upgrade plan & page-by-page checklist",
+     "Fix broken pages & links (0+ counters, phone & email links, branches, ar_SA)",
+     "Floating WhatsApp button & clear Request a quote form",
+     "Replace all photos with the new shoot",
+     "Keywords on every page",
+     "New company profile + Al Mays video on the home page"
     ]
    },
    {
@@ -396,16 +329,6 @@
     "short": "Google",
     "color": "#4285F4",
     "aim": "Show up when companies search for catering in Saudi Arabia.",
-    "roles": [
-     [
-      "F",
-      "SEO plan & keywords"
-     ],
-     [
-      "A",
-      "Business Profile & reviews"
-     ]
-    ],
     "kpis": [
      [
       "+5–10%",
@@ -428,26 +351,11 @@
      "mp_g.jpg"
     ],
     "items": [
-     [
-      "Google Ads tracking & CAC dashboard",
-      "F"
-     ],
-     [
-      "Google Business Profile: photos, services, hours, weekly posts",
-      "A"
-     ],
-     [
-      "Keyword list (AR/EN) by service, sector and city",
-      "F"
-     ],
-     [
-      "New page titles & descriptions",
-      "F A"
-     ],
-     [
-      "Review requests from satisfied clients",
-      "A"
-     ]
+     "Google Ads tracking & CAC dashboard",
+     "Google Business Profile: photos, services, hours, weekly posts",
+     "Keyword list (AR/EN) by service, sector and city",
+     "New page titles & descriptions",
+     "Review requests from satisfied clients"
     ]
    },
    {
@@ -457,20 +365,6 @@
     "short": "ChatGPT",
     "color": "#10A37F",
     "aim": "Be the catering brand people see when they ask ChatGPT.",
-    "roles": [
-     [
-      "F",
-      "Campaign owner"
-     ],
-     [
-      "A",
-      "Creatives & landing page"
-     ],
-     [
-      "M",
-      "Budget approval"
-     ]
-    ],
     "kpis": [
      [
       "20 Nov",
@@ -493,26 +387,11 @@
      "mp_c.jpg"
     ],
     "items": [
-     [
-      "Eligibility check & OpenAI Ads Manager account",
-      "F"
-     ],
-     [
-      "Ad creatives, messages & ad groups by sector",
-      "F A"
-     ],
-     [
-      "Landing page + tracking (GA4, GTM, Clarity)",
-      "F A"
-     ],
-     [
-      "Launch with SAR 1,500 (month 1)",
-      "F"
-     ],
-     [
-      "Weekly performance check",
-      "F"
-     ]
+     "Open the OpenAI Ads Manager account",
+     "Ad creatives, messages & ad groups by sector",
+     "Landing page + tracking (GA4, GTM, Clarity)",
+     "Launch month 1 with SAR 1,500 (≈ SAR 50 a day)",
+     "Weekly performance check and optimisation"
     ]
    }
   ],
@@ -611,7 +490,7 @@
     "Data to decide on future investment"
    ],
    "ask": "Approve SAR 6,000 for a 3-month pilot (Nov–Jan), reviewed monthly.",
-   "note": "Launch, targeting, tracking and minimum spend depend on OpenAI Ads Manager availability and advertiser eligibility in Saudi Arabia."
+   "note": "ChatGPT ads are open to Saudi businesses through OpenAI Ads Manager; campaigns start from about SAR 50 a day."
   },
   "budget": {
    "total": 10000,
@@ -660,18 +539,18 @@
   "people": {
    "F": [
     "Fatima",
-    "Content review, editing, photography & strategy"
+    "Content review & editing, photography, strategy, website plan"
    ],
    "A": [
     "Amani",
-    "Social media & execution"
+    "Social media management & publishing, website execution"
    ],
    "M": [
     "Manager",
-    "Approvals"
+    "Approvals & budget"
    ]
   },
-  "main": "Main goal: make Al Mays the catering brand companies find, trust and contact — on social media, on Google and inside ChatGPT.",
+  "main": "Make Al Mays the catering brand companies find, trust and contact — on social media, on Google and inside ChatGPT.",
   "phases": [
    [
     "Nov",
@@ -699,7 +578,6 @@
     "Publish consistently in the new design",
     "Feed posts · stories · LinkedIn activity posts",
     "12 · 15 · 4",
-    "Amani",
     "social"
    ],
    [
@@ -707,7 +585,6 @@
     "Build an engaged B2B audience",
     "Engagement rate (Instagram & LinkedIn)",
     "≥ 2%",
-    "Amani",
     "social"
    ],
    [
@@ -715,7 +592,6 @@
     "Turn the website into a sales tool",
     "Website visits · broken pages",
     "+10% · 0",
-    "Fatima & Amani",
     "web"
    ],
    [
@@ -723,7 +599,6 @@
     "Be found for catering searches in KSA",
     "Organic visits · Business Profile",
     "+5–10% · 100% complete",
-    "Fatima & Amani",
     "google"
    ],
    [
@@ -731,7 +606,6 @@
     "Test ChatGPT as a lead source",
     "Launch · CTR · cost per click",
     "Live in Nov · tracked weekly",
-    "Fatima",
     "gpt"
    ],
    [
@@ -739,7 +613,6 @@
     "Turn attention into requests",
     "Quote requests (all channels)",
     "3–5",
-    "Fatima",
     "all"
    ]
   ],
@@ -747,19 +620,16 @@
    "cadence": [
     [
      "Weekly",
-     "Amani",
-     "Posting log, reach, engagement, stories",
+     "Social: posts published, reach, engagement",
      "Mon"
     ],
     [
      "Weekly",
-     "Fatima",
      "ChatGPT campaign: impressions, CTR, CPC, leads",
      "Thu"
     ],
     [
      "Monthly",
-     "Fatima",
      "Monthly report: KPIs vs targets, budget, lessons",
      "5–6 Dec"
     ]
@@ -793,8 +663,8 @@
   },
   "risks": [
    [
-    "ChatGPT ads not yet open in Saudi Arabia",
-    "Check eligibility first; move the budget to Google Ads or LinkedIn if not available"
+    "ChatGPT ads are new for B2B catering",
+    "Small 3-month pilot, weekly review; shift budget to Google Ads or LinkedIn if cost per lead is too high"
    ],
    [
     "Website changes need developer time",
