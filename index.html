@@ -912,6 +912,16 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 @media (max-width:820px){.lx-stats{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.lx-stat{padding:10px 12px}.lx-stat span{letter-spacing:.04em;font-size:10px}.lx-notion{grid-column:1/-1;text-align:center}.lx-sel{flex:1 1 140px}}
 .m-choices{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:860px){.m-choices{grid-template-columns:1fr}}
+
+/* monthly: selected card opens its content in one connected box */
+.m-choices{gap:10px!important;margin-bottom:0}
+.m-choices .choice[aria-pressed="true"]{position:relative;z-index:2;border-color:var(--accent);border-bottom-color:transparent;border-radius:20px 20px 0 0;box-shadow:none;background:color-mix(in srgb,var(--accent) 7%,var(--surface));transform:none;margin-bottom:-2px;padding-bottom:22px}
+.m-pane{position:relative;z-index:1;border:2px solid var(--accent);border-radius:0 0 22px 22px;background:color-mix(in srgb,var(--accent) 7%,var(--surface));padding:16px;margin-top:0}
+.m-pane.p-plan{border-top-left-radius:0}.m-pane.p-report{border-top-left-radius:22px}.m-pane.p-content{border-top-left-radius:22px;border-top-right-radius:0}
+.m-pane.p-report{border-top-right-radius:22px}
+.m-pane>.cx{margin-top:0}.m-pane>.m-tiles:first-child{margin-top:0}
+.m-more{margin-top:18px;background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:10px 14px}.m-more summary{cursor:pointer;font-weight:800;font-size:14px;color:var(--deep,#1F3A30)}.m-more summary small{font-weight:500;color:var(--muted)}
+@media (max-width:860px){.m-choices{grid-template-columns:repeat(3,minmax(0,1fr))!important}.m-choices .choice{flex-direction:column;gap:6px;padding:12px 8px;text-align:center;align-items:center}.m-choices .choice small{display:none}.m-choices .choice b{font-size:13px}.m-choices .choice .ci{width:38px;height:38px;font-size:19px;border-radius:12px}.m-choices .choice .cn{margin:0;font-size:15px}.m-pane{padding:10px}}
 .m-choices .choice.c-cp .ci{background:linear-gradient(135deg,#C9F2A6,#A9C47F 45%,#43695B)}
 .cx,.cx-mod{--teal:#43695B;--lime:#A9C47F;--deep:#1F3A30}
 .cx{margin-top:16px;display:grid;gap:16px}
@@ -1024,6 +1034,8 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .mp-tabs button[aria-selected="true"]{background:var(--c,var(--deep));color:#fff;box-shadow:0 6px 14px rgba(31,58,48,.18)}
 .mp-tabs button[aria-selected="true"] i{background:#fff;color:var(--c)}
 .mp-panel{animation:mpIn .35s ease;margin-top:16px}
+.mp-tabs{margin:0 0 14px!important}
+.mp-tabs+.mp-hero{animation:mpIn .35s ease}
 .mp-h{margin:24px 0 10px;font-size:17px;display:flex;justify-content:space-between;align-items:end;gap:10px;color:var(--deep)}.mp-h small{font-size:12px;color:var(--mut);font-weight:600}
 .mp-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 2px 12px rgba(31,58,48,.06)}.mp-card h4{margin:0 0 12px;font-size:15px;color:var(--deep)}
 .mp-note{display:block;font-size:12px;color:var(--mut);margin-top:10px}
@@ -1084,10 +1096,29 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .mp-tbl{overflow-x:auto}.mp-tbl table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}.mp-tbl th,.mp-tbl td{text-align:left;padding:9px 8px;border-bottom:1px solid #edf1ee}.mp-tbl th{font-size:11.5px;color:var(--mut)}.mp-tbl tr.tot td{font-weight:800;background:#F3F6F1}
 .mp-tbl .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
 .mp-pn{display:flex;justify-content:space-between;margin-top:16px}.mp-pn button{all:unset;cursor:pointer;font-size:13.5px;font-weight:800;color:var(--deep);padding:10px 16px;border-radius:14px;background:#fff;box-shadow:0 2px 10px rgba(31,58,48,.06)}.mp-pn .nx{background:var(--deep);color:#fff}
+.mp-kpis2{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}.mp-kpis2 div{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 2px 10px rgba(31,58,48,.05);border-bottom:3px solid var(--lime)}.mp-kpis2 b{display:block;font-size:20px;color:var(--deep)}.mp-kpis2 small{font-size:12px;color:var(--mut)}
+.mp-focus{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mp-fc{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 2px 10px rgba(31,58,48,.05);border-left:5px solid var(--c);transition:transform .2s,box-shadow .2s}.mp-fc:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(31,58,48,.12)}
+.mp-fc .ic{font-size:26px}.mp-fc div{flex:1}.mp-fc b{display:block;font-size:15px;color:var(--deep)}.mp-fc small{font-size:12.5px;color:var(--mut)}.mp-fc em{font-style:normal;font-size:12px;font-weight:800;color:var(--c);background:#F3F6F1;border-radius:99px;padding:4px 10px;white-space:nowrap}
+.mp-chs{display:grid;gap:14px}
+.mp-ch{background:#fff;border-radius:22px;box-shadow:0 2px 12px rgba(31,58,48,.06);overflow:hidden;scroll-margin-top:150px}
+.mp-ch header{display:flex;gap:14px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,color-mix(in srgb,var(--c) 14%,#fff),#fff);border-bottom:1px solid #edf1ee}
+.mp-ch header .ic{font-size:28px}.mp-ch header div{flex:1}.mp-ch h3{margin:0;font-size:18px;color:var(--deep)}.mp-ch header p{margin:2px 0 0;font-size:13px;color:var(--mut)}
+.mp-ch .bd{font-size:13px;font-weight:800;color:#fff;background:var(--c);border-radius:99px;padding:6px 12px;white-space:nowrap}
+.mp-chb{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;padding:16px 20px 20px}
+.mp-ch h5{margin:0 0 8px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.mp-chb ul{list-style:none;margin:0;padding:0}.mp-chb>div:first-child li{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed #e3e9e5;font-size:14px}.mp-chb>div:first-child li:last-child{border:0}
+.mp-chb>div:first-child li>span:first-child{position:relative;padding-left:16px}.mp-chb>div:first-child li>span:first-child:before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--c)}
+.mp-chb .wh{white-space:nowrap}
+.mp-chs2{display:flex;flex-direction:column;gap:6px}.mp-chs2 h5{margin-top:8px}
+.mp-kc{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mp-kc div{background:#F6F9F5;border-radius:12px;padding:8px 10px}.mp-kc b{display:block;font-size:16px;color:var(--c)}.mp-kc small{font-size:11.5px;color:var(--mut)}
+.mp-more{all:unset;cursor:pointer;margin-top:8px;font-weight:800;font-size:13px;color:var(--c)}
+.mp-risk{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mp-risk div{background:#FBF7EE;border-radius:14px;padding:12px 14px}.mp-risk b{display:block;font-size:13.5px}.mp-risk small{display:block;margin-top:4px;font-size:12.5px;color:#3c5a4b}
+@media(max-width:760px){.mp-kpis2{grid-template-columns:repeat(2,1fr)}.mp-focus,.mp-chb,.mp-risk{grid-template-columns:1fr}.mp-ch header{flex-wrap:wrap}.mp-chb>div:first-child li{flex-wrap:wrap}}
 .mp-lb{position:fixed;inset:0;z-index:9999;background:rgba(10,20,16,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:mpIn .2s}
 .mp-lb img{max-width:100%;max-height:100%;border-radius:14px}.mp-lb button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
 @media(max-width:1000px){.mp-kpis{grid-template-columns:repeat(3,1fr)}.mp-pills{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.mp-hero{grid-template-columns:1fr;padding:22px}.mp-hero h2{font-size:23px}.mp-donut{width:140px;height:140px;justify-self:center}.mp-pills,.mp-goals,.mp-team,.mp-cols,.mp-g2,.mp-g3,.mp-pk{grid-template-columns:1fr}.mp-pk{grid-template-columns:1fr 1fr}.mp-ph,.mp-obj,.mp-bc{flex-direction:column;align-items:flex-start}.mp-pb{text-align:left}.mp-tabs button{flex:0 0 auto}.mp-tl2 li{grid-template-columns:1fr}.mp-tl2 .wh,.mp-tl2 .stt{grid-column:1}.mp-sec{grid-template-columns:1fr}}
+@media(max-width:760px){.mp-hero{grid-template-columns:1fr;padding:22px}.mp-hero h2{font-size:23px}.mp-donut{width:140px;height:140px;justify-self:center}.mp-pills,.mp-goals,.mp-team,.mp-cols,.mp-g2,.mp-g3,.mp-pk{grid-template-columns:1fr}.mp-pk{grid-template-columns:1fr 1fr}.mp-ph,.mp-obj,.mp-bc{flex-direction:column;align-items:flex-start}.mp-pb{text-align:left}.mp-tabs{flex-wrap:wrap;position:static}.mp-tabs button{flex:1 1 30%;padding:9px 6px;font-size:12.5px}.mp-tl2 li{grid-template-columns:1fr}.mp-tl2 .wh,.mp-tl2 .stt{grid-column:1}.mp-sec{grid-template-columns:1fr}}
 
 </style>
 
@@ -2714,11 +2745,11 @@ function renderMonth(){
      <div class="m-nav"><button type="button" class="m-arrow" data-mmove="-1" aria-label="Previous month">‹</button><input type="month" id="mPick" value="${m}" aria-label="Choose month"><button type="button" class="m-arrow" data-mmove="1" aria-label="Next month">›</button></div></div>
    </div>
    <div class="mgr-choices m-choices">
-    <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${plans.length}</span></button>
+    <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${(cpLoad(m),CP.docs[m]&&CP.docs[m].mp)?CP.docs[m].mp.pillars.reduce((n,p)=>n+p.items.length,0):plans.length}</span></button>
     <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results, KPIs vs targets, plan vs actual</small></span><span class="cn">${Math.round(monthDone(m)*100)}%</span></button>
     <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">🗓️</span><span><b>Content calendar</b><small>Posts &amp; bulk emails by date</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
    </div>
-   ${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}
+   <div class="m-pane p-${tab}">${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}</div>
   </div>`;
 }
 function monthDone(m){const ts=monthTasks(m); return ts.length?ts.filter(t=>t.status==="Done").length/ts.length:0}
@@ -2728,7 +2759,7 @@ function planView(m,D,plans,can){
   const tiles=[["🗂️","Activities",plans.length,PAL[1]],["✅","Done",dn,PAL[0]],["⚡","In progress",ip,PAL[2]],["💰","Planned budget",nf(bud)+" SAR",PAL[3]]];
   const wsList=[...new Set([...S.tasks.map(t=>t.workstream).filter(Boolean),...AREA_ORDER])];
   setTimeout(mpHdr,0);
-  return `${mpView(m)}<div class="m-tiles">${tiles.map(([i,l,v,c])=>`<div class="m-tile" style="--c:${c}"><span class="ti">${i}</span><b>${esc(String(v))}</b><small>${l}</small></div>`).join("")}</div>
+  const mpH=mpView(m), old=()=>`<div class="m-tiles">${tiles.map(([i,l,v,c])=>`<div class="m-tile" style="--c:${c}"><span class="ti">${i}</span><b>${esc(String(v))}</b><small>${l}</small></div>`).join("")}</div>
   <div class="m-grid">
    <section class="m-card" style="--c:${PAL[0]}"><h3>🎯 Goals for ${esc(monthName(m))}</h3>${ta("goals",D.goals,"One goal per line, e.g. Generate 120 leads from the healthcare sector",can,6)}</section>
    <section class="m-card" style="--c:${PAL[3]}"><h3>📈 KPI targets</h3><div class="kpi-tbl">${KPIS.map(([k,l,u])=>`<label class="kpi-row"><span>${esc(l)}${u?` <em>${u}</em>`:""}</span>${can?`<input inputmode="decimal" data-kpi="${k}" data-kf="target" value="${esc(D.kpis&&D.kpis[k]&&D.kpis[k].target!=null?D.kpis[k].target:"")}" placeholder="Target">`:`<b>${nf(D.kpis&&D.kpis[k]&&num(D.kpis[k].target))}</b>`}</label>`).join("")}</div></section>
@@ -2744,6 +2775,7 @@ function planView(m,D,plans,can){
      <button class="btn btn-leaf" type="submit">Add to plan</button></form>`:""}
    ${plans.length?`<div class="p-list">${plans.map(p=>planRow(p,can,false)).join("")}</div>`:`<div class="empty"><b>No activities planned for ${esc(monthName(m))} yet</b>${can?"Add campaigns, content and events with their budget.":""}</div>`}
   </section>`;
+  return mpH||old();
 }
 function planRow(p,can,report){
   const c=wsColor(p.workstream||p.title), st=p.status||"Planned", k=st==="Done"?"done":st==="In Progress"?"prog":st==="Cancelled"?"late":"plan";
@@ -2882,82 +2914,80 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("keydown",e=>{ if(!CP.open) return; if(e.key==="Escape") cpClose(); const P=CP.docs[curMonth()]; if(!P) return; const it=cpItems(P), i=it.findIndex(x=>x.id===CP.open); if(e.key==="ArrowRight"&&it[i+1]) cpModal(curMonth(),it[i+1].id); if(e.key==="ArrowLeft"&&it[i-1]) cpModal(curMonth(),it[i-1].id); });
 /* ---------- MONTHLY: interactive marketing plan (cp/<month>/plan.json → mp) ---------- */
-const MPS={tab:"overview"};
-function mpSar(n){ return n==null?"TBC":"SAR "+Number(n).toLocaleString("en-US"); }
-function mpWho(M,codes){ return String(codes).split(" ").map(c=>{const p=(M.people||{})[c]||[c,""]; return `<span class="mp-who w-${c}" title="${esc(p[0])}">${esc(p[0])}</span>`;}).join(""); }
-function mpDue(a,b){ return a===b?`${a} Nov`:`${a}–${b} Nov`; }
-function mpView(m){
-  const P=CP.docs[m], M=P&&P.mp; if(!M) return "";
-  return `<div class="mp" id="mpRoot" data-m="${m}">${mpInner(m)}</div>`;
-}
-function mpTabs(M){ return [["overview","✨","Overview"],...M.pillars.map((p,i)=>[p.id,p.icon,p.short,i+1,p.color]),["budget","💰","Budget"]]; }
+const MPS={tab:"summary"};
+function mpSar(n){ return n==null?"In-house":"SAR "+Number(n).toLocaleString("en-US"); }
+function mpWho(M,codes){ return String(codes).split(" ").map(c=>{const p=(M.people||{})[c]||[c,""]; return `<span class="mp-who w-${c}">${esc(p[0])}</span>`;}).join(""); }
+function mpBud(M,id){ const l=M.budget.lines.find(x=>x[0]===id); return l?l[4].reduce((a,b)=>a+b,0):null; }
+function mpView(m){ const P=CP.docs[m], M=P&&P.mp; if(!M) return ""; return `<div class="mp" id="mpRoot" data-m="${m}">${mpInner(m)}</div>`; }
+function mpTabs(){ return [["summary","✨","Summary"],["obj","🎯","Objectives & KPIs"],["channels","📣","Channel plan"],["gpt","💬","ChatGPT pilot"],["budget","💰","Budget"],["measure","📏","Measurement & risks"]]; }
 function mpInner(m){
-  const M=CP.docs[m].mp, B=M.budget, tabs=mpTabs(M); if(!tabs.some(x=>x[0]===MPS.tab)) MPS.tab="overview"; const t=MPS.tab, i=tabs.findIndex(x=>x[0]===t);
-  const prev=tabs[i-1], next=tabs[i+1];
-  const donut=mpDonut(M);
-  return `<section class="mp-hero"><div class="mp-hl"><span class="mp-k">🚀 ${esc(monthName(m))} · Marketing plan</span><h2>${esc(M.title)}</h2><p>${esc(M.sub)}</p>${M.phases?`<div class="mp-ph3">${M.phases.map(([mo,ph,t,st],k)=>`<div class="${st}"><small>${esc(ph)} · ${esc(mo)}</small><b>${esc(t)}</b></div>${k<M.phases.length-1?'<span>→</span>':''}`).join("")}<div class="tbc">To be continued ↻</div></div><p class="mp-main">🎯 ${esc(M.main||"")}<br><small>${esc(M.cont||"")}</small></p>`:""}
-     <div class="mp-kpis">${M.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div></div>
-     <button type="button" class="mp-donut" data-mptab="budget" aria-label="Open budget">${donut}<span class="mp-dc"><b>${mpSar(B.total).replace("SAR ","")}</b><small>SAR · Nov–Jan</small></span></button></section>
-   <nav class="mp-tabs" role="tablist">${tabs.map(([id,ic,l,n,c])=>`<button type="button" role="tab" data-mptab="${id}" aria-selected="${id===t}" style="${c?`--c:${c}`:""}">${n?`<i>${n}</i>`:""}<span>${ic}</span>${esc(l)}</button>`).join("")}</nav>
-   <div class="mp-panel" key="${t}">${t==="overview"?mpOverview(m,M):t==="time"?mpTimeline(M):t==="budget"?mpBudget(M):mpPillar(m,M,M.pillars.find(p=>p.id===t))}</div>
-   <div class="mp-pn">${prev?`<button type="button" data-mptab="${prev[0]}">← ${prev[1]} ${esc(prev[2])}</button>`:"<span></span>"}${next?`<button type="button" class="nx" data-mptab="${next[0]}">Next: ${next[1]} ${esc(next[2])} →</button>`:""}</div>`;
+  const M=CP.docs[m].mp, tabs=mpTabs(); if(!tabs.some(x=>x[0]===MPS.tab)) MPS.tab="summary";
+  const t=MPS.tab, i=tabs.findIndex(x=>x[0]===t), prev=tabs[i-1], next=tabs[i+1];
+  const body=t==="summary"?mpSummary(m,M):t==="obj"?mpObj(M):t==="channels"?mpChannels(m,M):t==="gpt"?mpGpt(m,M):t==="budget"?mpBudget(M):mpMeasure(M);
+  return `<nav class="mp-tabs" role="tablist">${tabs.map(([id,ic,l])=>`<button type="button" role="tab" data-mptab="${id}" aria-selected="${id===t}"><span>${ic}</span>${esc(l)}</button>`).join("")}</nav>
+   <div class="mp-panel">${body}</div>
+   <div class="mp-pn">${prev?`<button type="button" data-mptab="${prev[0]}">← ${esc(prev[2])}</button>`:"<span></span>"}${next?`<button type="button" class="nx" data-mptab="${next[0]}">${esc(next[2])} →</button>`:""}</div>`;
 }
 function mpDonut(M){
   const L=M.budget.lines, tot=M.budget.total, col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color])); let a=0;
   const segs=L.map(l=>{const v=l[4].reduce((s,x)=>s+x,0), f=v/tot, s=a; a+=f; return `${col[l[0]]} ${(s*100).toFixed(2)}% ${(a*100).toFixed(2)}%`;});
   return `<span class="mp-ring" style="background:conic-gradient(${segs.join(",")})"></span>`;
 }
-function mpOverview(m,M){
-  return `<div class="mp-pills">${M.pillars.map((p,i)=>{const s=Math.min(...p.items.map(x=>x[2])), e=Math.max(...p.items.map(x=>x[3])), bl=M.budget.lines.find(l=>l[0]===p.id), bv=bl?bl[4].reduce((a,b)=>a+b,0):null;
-    return `<button type="button" class="mp-pc" data-mptab="${p.id}" style="--c:${p.color}"><span class="no">${i+1}</span><span class="ic">${p.icon}</span><b>${esc(p.name)}</b><small>${esc(p.aim)}</small>
-      <span class="mt"><em>✅ ${p.items.length} tasks</em><em>💰 ${bv==null?"In-house":mpSar(bv)}</em></span><span class="wh">${mpWho(M,[...new Set(p.roles.map(r=>r[0]))].join(" "))}</span><span class="go">Open →</span></button>`;}).join("")}</div>
-   <h3 class="mp-h">🎯 Goals for the month</h3>
-   <div class="mp-goals">${M.goals.map(([ic,t,d,due])=>`<div class="mp-goal"><span class="gi">${ic}</span><div><b>${esc(t)}</b><small>${esc(d)}</small></div><em>${esc(due)}</em></div>`).join("")}</div>
-   <h3 class="mp-h">👥 Who does what</h3>
+function mpSummary(m,M){
+  return `<section class="mp-hero"><div><span class="mp-k">🚀 ${esc(monthName(m))}</span><h2>${esc(M.title)}</h2><p>${esc(M.sub)}</p>
+     <div class="mp-ph3">${M.phases.map(([mo,ph,t,st],k)=>`<div class="${st}"><small>${esc(mo)}</small><b>${esc(t)}</b></div>${k<M.phases.length-1?'<span>→</span>':''}`).join("")}<div class="tbc">To be continued ↻</div></div>
+     <p class="mp-main">🎯 ${esc(M.main)}<br><small>${esc(M.cont)}</small></p></div>
+     <button type="button" class="mp-donut" data-mptab="budget" aria-label="Open budget">${mpDonut(M)}<span class="mp-dc"><b>${Number(M.budget.total).toLocaleString("en-US")}</b><small>SAR · Nov–Jan</small></span></button></section>
+   <div class="mp-kpis2">${M.kpis.filter(k=>!/budget/.test(k[1])).map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>
+   <h3 class="mp-h">📣 Focus areas this month</h3>
+   <div class="mp-focus">${M.pillars.map(p=>`<button type="button" class="mp-fc" data-mptab="channels" data-mpch="${p.id}" style="--c:${p.color}"><span class="ic">${p.icon}</span><div><b>${esc(p.name)}</b><small>${esc(p.aim)}</small></div><em>${mpSar(mpBud(M,p.id))}</em></button>`).join("")}</div>
+   <h3 class="mp-h">👥 Team</h3>
    <div class="mp-team">${Object.entries(M.people).map(([c,[n,r]])=>`<div><span class="mp-who w-${c}">${esc(n)}</span><small>${esc(r)}</small></div>`).join("")}</div>`;
 }
-function mpPillar(m,M,p){
-  if(!p) return "";
-  const bl=M.budget.lines.find(l=>l[0]===p.id), bv=bl?bl[4].reduce((a,b)=>a+b,0):null, today=new Date();
-  const d=today.getMonth()===10?today.getDate():0;
-  const items=p.items.map(([t,w])=>`<li><span class="tx">${esc(t)}</span><span class="wh">${mpWho(M,w)}</span></li>`).join("");
-  const imgs=(p.img||[]).map(f=>`<button type="button" class="mp-im" data-mpimg="${cpSrc(m,f)}"><img src="${cpSrc(m,f)}" alt="" loading="lazy"></button>`).join("");
-  return `<div class="mp-ph" style="--c:${p.color}"><div><span class="mp-k2">${p.icon} Part ${M.pillars.indexOf(p)+1} of ${M.pillars.length}</span><h3>${esc(p.name)}</h3><p>${esc(p.aim)}</p></div><div class="mp-pb"><small>Budget</small><b>${bv==null?"In-house":mpSar(bv)}</b>${bl?`<small>${esc(bl[3])}</small>`:`<small>No separate budget</small>`}</div></div>
-   <div class="mp-pk" style="--c:${p.color}">${p.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>
-   <div class="mp-cols" style="--c:${p.color}"><div class="mp-card"><h4>Tasks</h4><ul class="mp-tl2">${items}</ul></div>
-     <div class="mp-side"><div class="mp-card"><h4>Who</h4><ul class="mp-roles">${p.roles.map(([c,r])=>`<li>${mpWho(M,c)}<small>${esc(r)}</small></li>`).join("")}</ul></div>
-     <div class="mp-card"><h4>${p.id==="social"?"In the new design":"What it will look like"}</h4><div class="mp-ims n${(p.img||[]).length}">${imgs}</div><small class="mp-note">Tap to enlarge${p.id==="social"?" · from the November calendar":" · example"}</small></div></div></div>
-   ${p.id==="gpt"?mpGpt(M):""}`;
+function mpObj(M){
+  const col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color]));
+  return `<div class="mp-card"><h4>Objectives &amp; KPIs · ${esc("November")}</h4><div class="mp-tbl"><table><thead><tr><th>Area</th><th>Objective</th><th>KPI</th><th>Target</th><th>Owner</th></tr></thead><tbody>
+    ${M.objectives.map(([a,o,k,t,w,id])=>`<tr><td><span class="dot" style="background:${col[id]||"#1F3A30"}"></span><b>${esc(a)}</b></td><td>${esc(o)}</td><td>${esc(k)}</td><td><strong>${esc(t)}</strong></td><td>${esc(w)}</td></tr>`).join("")}</tbody></table></div>
+    <small class="mp-note">Targets start realistic in month 1 and are raised in December and January as the channels mature.</small></div>`;
 }
-function mpGpt(M){
-  const G=M.gpt||{}, mx=Math.max(...G.budget.map(b=>b[3])), tot=G.budget.reduce((s,b)=>s+b[3],0);
-  return `<h3 class="mp-h">📊 3-month pilot <small>Proposal for approval</small></h3>
-   <div class="mp-obj"><div><b>Objective</b><p>${esc(G.objective)}</p></div><span class="mp-ask">✅ ${esc(G.ask)}</span></div>
-   <div class="mp-g2"><div class="mp-card"><h4>Who we target</h4><div class="mp-sec">${G.sectors.map(([i,s,f])=>`<div><span>${i}</span><b>${esc(s)}</b><small>${esc(f)}</small></div>`).join("")}</div></div>
-     <div class="mp-card"><h4>Budget · ${mpSar(tot)}</h4><div class="mp-bars">${G.budget.map(([mo,ph,cal,v])=>`<div class="mp-bar"><div><b>${esc(mo)} · ${esc(cal)}</b><small>${esc(ph)}</small></div><div class="mp-bt"><i style="--w:${Math.round(v/mx*100)}%"></i></div><span>${mpSar(v)}</span></div>`).join("")}</div><small class="mp-note">Reviewed monthly; adjusted to results and the platform's minimum spend.</small></div></div>
-   <div class="mp-g3"><div class="mp-card"><h4>We measure</h4><div class="mp-chips">${G.kpis.map(k=>`<span>${esc(k)}</span>`).join("")}</div></div>
-     <div class="mp-card"><h4>Tools</h4><ul class="mp-list">${G.tools.map(([t,d])=>`<li><b>${esc(t)}</b><small>${esc(d)}</small></li>`).join("")}</ul></div>
+function mpChannels(m,M){
+  return `<div class="mp-chs">${M.pillars.map(p=>`<section class="mp-ch" id="mpch-${p.id}" style="--c:${p.color}">
+    <header><span class="ic">${p.icon}</span><div><h3>${esc(p.name)}</h3><p>${esc(p.aim)}</p></div><span class="bd">${mpSar(mpBud(M,p.id))}</span></header>
+    <div class="mp-chb"><div><h5>Key initiatives</h5><ul>${p.items.map(([t,w])=>`<li><span>${esc(t)}</span><span class="wh">${mpWho(M,w)}</span></li>`).join("")}</ul></div>
+      <div class="mp-chs2"><h5>KPIs</h5><div class="mp-kc">${p.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>
+      <h5>Owners</h5><ul class="mp-roles">${p.roles.map(([c,r])=>`<li>${mpWho(M,c)}<small>${esc(r)}</small></li>`).join("")}</ul>
+      ${(p.img||[]).length?`<h5>${p.id==="social"?"In the new design":"Example"}</h5><div class="mp-ims n${p.img.length}">${p.img.map(f=>`<button type="button" class="mp-im" data-mpimg="${cpSrc(m,f)}"><img src="${cpSrc(m,f)}" alt="" loading="lazy"></button>`).join("")}</div>`:""}
+      ${p.id==="gpt"?`<button type="button" class="mp-more" data-mptab="gpt">Full pilot proposal →</button>`:""}</div></div></section>`).join("")}</div>`;
+}
+function mpGpt(m,M){
+  const G=M.gpt, mx=Math.max(...G.budget.map(b=>b[3])), tot=G.budget.reduce((s,b)=>s+b[3],0), p=M.pillars.find(x=>x.id==="gpt");
+  return `<div class="mp-obj"><div><span class="mp-k">💬 ChatGPT campaign · 3-month pilot</span><p><b>Objective.</b> ${esc(G.objective)}</p></div><span class="mp-ask">✅ ${esc(G.ask)}</span></div>
+   <div class="mp-g2"><div class="mp-card"><h4>Target sectors</h4><div class="mp-sec">${G.sectors.map(([i,s,f])=>`<div><span>${i}</span><b>${esc(s)}</b><small>${esc(f)}</small></div>`).join("")}</div></div>
+     <div class="mp-card"><h4>Budget · ${mpSar(tot)}</h4><div class="mp-bars">${G.budget.map(([mo,ph,cal,v])=>`<div class="mp-bar"><div><b>${esc(cal)}</b><small>${esc(ph)}</small></div><div class="mp-bt"><i style="--w:${Math.round(v/mx*100)}%"></i></div><span>${mpSar(v)}</span></div>`).join("")}</div><small class="mp-note">Reviewed monthly; adjusted to results and the platform's minimum spend.</small>
+     ${p&&p.img?`<button type="button" class="mp-im" style="margin-top:12px" data-mpimg="${cpSrc(m,p.img[0])}"><img src="${cpSrc(m,p.img[0])}" alt="ChatGPT ad example"></button>`:""}</div></div>
+   <div class="mp-g3"><div class="mp-card"><h4>KPIs</h4><div class="mp-chips">${G.kpis.map(k=>`<span>${esc(k)}</span>`).join("")}</div></div>
+     <div class="mp-card"><h4>Tracking tools</h4><ul class="mp-list">${G.tools.map(([t,d])=>`<li><b>${esc(t)}</b><small>${esc(d)}</small></li>`).join("")}</ul></div>
      <div class="mp-card"><h4>Expected outcomes</h4><ul class="mp-list">${G.outcomes.map(o=>`<li>✓ ${esc(o)}</li>`).join("")}</ul></div></div>
-   <p class="mp-note">ℹ️ ${esc(G.note)}</p>`;
-}
-function mpTimeline(M){
-  const today=new Date(), d=today.getMonth()===10?today.getDate():0, days=30;
-  const head=Array.from({length:days},(_,k)=>k+1).map(n=>`<span class="${[1,8,15,22,29].includes(n)?"wk":""}">${[1,8,15,22,29].includes(n)?n:""}</span>`).join("");
-  const rows=M.pillars.map(p=>`<div class="mp-gg" style="--c:${p.color}"><button type="button" class="mp-gl" data-mptab="${p.id}">${p.icon} ${esc(p.name)}</button>${p.items.map(([t,w,s,e])=>`<div class="mp-gr"><span class="mp-gt" title="${esc(t)}">${esc(t)}</span><span class="mp-gb"><i class="${(e-s+1)/days>.6?"in":""}" style="left:${(s-1)/days*100}%;width:${Math.max(1,(e-s+1))/days*100}%" title="${mpDue(s,e)}"><em>${mpDue(s,e)}</em></i></span></div>`).join("")}</div>`).join("");
-  return `<div class="mp-card mp-gantt"><div class="mp-gr mp-gh"><span class="mp-gt">November</span><span class="mp-gb mp-days">${head}</span></div>${rows}${d?`<span class="mp-today" style="--x:${(d-.5)/days}"><b>Today</b></span>`:""}</div>
-   `;
+   <p class="mp-note">ℹ️ ${esc(G.note)} Weekly monitoring, monthly report, final evaluation after 3 months.</p>`;
 }
 function mpBudget(M){
-  const B=M.budget, col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color])), mt=B.months.map((_,k)=>B.lines.reduce((s,l)=>s+l[4][k],0));
-  return `<div class="mp-g2"><div class="mp-card mp-bc"><button type="button" class="mp-donut big" tabindex="-1">${mpDonut(M)}<span class="mp-dc"><b>${mpSar(B.total).replace("SAR ","")}</b><small>SAR total</small></span></button>
-      <ul class="mp-leg">${B.lines.map(l=>{const v=l[4].reduce((a,b)=>a+b,0);return `<li style="--c:${col[l[0]]}"><i></i><b>${esc(l[2])}</b><span>${mpSar(v)} · ${Math.round(v/B.total*100)}%</span></li>`;}).join("")}</ul></div>
-    <div class="mp-card"><h4>By month</h4><div class="mp-bars">${B.months.map((mo,k)=>`<div class="mp-bar"><div><b>${mo}</b></div><div class="mp-bt"><i style="--w:${mt[k]/Math.max(...mt)*100}%;background:linear-gradient(90deg,${(()=>{let acc=0;return B.lines.filter(l=>l[4][k]).map(l=>{const st=acc/mt[k]*100;acc+=l[4][k];return `${col[l[0]]} ${st}% ${acc/mt[k]*100}%`;}).join(",")})()})" title="${B.lines.filter(l=>l[4][k]).map(l=>esc(l[2])+": "+mpSar(l[4][k])).join(" · ")}"></i></div><span>${mpSar(mt[k])}</span></div>`).join("")}</div><small class="mp-note">${esc(B.note)}</small></div></div>
-   <div class="mp-card"><h4>Allocation</h4><div class="mp-tbl"><table><thead><tr><th>Area</th><th>For</th>${B.months.map(x=>`<th>${x}</th>`).join("")}<th>Total</th></tr></thead><tbody>${B.lines.map(l=>`<tr><td><span class="dot" style="background:${col[l[0]]}"></span>${l[1]} ${esc(l[2])}</td><td>${esc(l[3])}</td>${l[4].map(v=>`<td>${v?mpSar(v):"—"}</td>`).join("")}<td><b>${mpSar(l[4].reduce((a,b)=>a+b,0))}</b></td></tr>`).join("")}<tr class="tot"><td colspan="2">Total</td>${mt.map(v=>`<td>${mpSar(v)}</td>`).join("")}<td>${mpSar(B.total)}</td></tr></tbody></table></div></div>`;
+  const B=M.budget, col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color])), mt=B.months.map((_,k)=>B.lines.reduce((s,l)=>s+l[4][k],0)), mx=Math.max(...mt);
+  return `<div class="mp-g2"><div class="mp-card mp-bc"><div class="mp-donut big">${mpDonut(M)}<span class="mp-dc"><b>${Number(B.total).toLocaleString("en-US")}</b><small>SAR total</small></span></div>
+      <ul class="mp-leg">${B.lines.map(l=>{const v=l[4].reduce((a,b)=>a+b,0);return `<li style="--c:${col[l[0]]}"><i></i><b>${esc(l[2])}</b><span>${mpSar(v)} · ${Math.round(v/B.total*100)}%</span></li>`;}).join("")}<li style="--c:#cfd8d3"><i></i><b>Social media</b><span>In-house</span></li></ul></div>
+    <div class="mp-card"><h4>By month</h4><div class="mp-bars">${B.months.map((mo,k)=>{let acc=0;const g=B.lines.filter(l=>l[4][k]).map(l=>{const st=acc/mt[k]*100;acc+=l[4][k];return `${col[l[0]]} ${st}% ${acc/mt[k]*100}%`;}).join(",");return `<div class="mp-bar"><div><b>${mo}</b></div><div class="mp-bt"><i style="--w:${mt[k]/mx*100}%;background:linear-gradient(90deg,${g})"></i></div><span>${mpSar(mt[k])}</span></div>`;}).join("")}</div><small class="mp-note">${esc(B.note)}</small></div></div>
+   <div class="mp-card"><h4>Allocation</h4><div class="mp-tbl"><table><thead><tr><th>Area</th><th>Used for</th>${B.months.map(x=>`<th>${x}</th>`).join("")}<th>Total</th></tr></thead><tbody>${B.lines.map(l=>`<tr><td><span class="dot" style="background:${col[l[0]]}"></span>${esc(l[2])}</td><td>${esc(l[3])}</td>${l[4].map(v=>`<td>${v?mpSar(v):"—"}</td>`).join("")}<td><b>${mpSar(l[4].reduce((a,b)=>a+b,0))}</b></td></tr>`).join("")}<tr class="tot"><td colspan="2">Total</td>${mt.map(v=>`<td>${mpSar(v)}</td>`).join("")}<td>${mpSar(B.total)}</td></tr></tbody></table></div></div>`;
+}
+function mpMeasure(M){
+  const X=M.measure;
+  return `<div class="mp-g2"><div class="mp-card"><h4>Reporting rhythm</h4><div class="mp-tbl"><table><thead><tr><th>When</th><th>Who</th><th>What</th><th>Day</th></tr></thead><tbody>${X.cadence.map(([w,o,t,d])=>`<tr><td><b>${esc(w)}</b></td><td>${esc(o)}</td><td>${esc(t)}</td><td>${esc(d)}</td></tr>`).join("")}</tbody></table></div></div>
+    <div class="mp-card"><h4>Measurement tools</h4><ul class="mp-list">${X.tools.map(([t,d])=>`<li><b>${esc(t)}</b><small>${esc(d)}</small></li>`).join("")}</ul></div></div>
+   <div class="mp-card" style="margin-top:12px"><h4>Risks &amp; how we handle them</h4><div class="mp-risk">${M.risks.map(([r,a])=>`<div><b>⚠️ ${esc(r)}</b><small>✅ ${esc(a)}</small></div>`).join("")}</div></div>`;
 }
 document.addEventListener("click",e=>{
   const tb=e.target.closest("[data-mptab]"); if(tb&&tb.closest("#mpRoot")){ const root=document.getElementById("mpRoot"); MPS.tab=tb.dataset.mptab; try{store.set("almays-mptab",MPS.tab)}catch(_){}
-    root.innerHTML=mpInner(root.dataset.m); const nav=root.querySelector(".mp-tabs"), act=nav&&nav.querySelector('[aria-selected="true"]'); if(act) act.scrollIntoView({block:"nearest",inline:"center"});
-    if(tb.closest(".mp-pn,.mp-pills,.mp-gantt,.mp-hero")){ const hd=document.querySelector("header"); const off=(hd&&/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+8; window.scrollTo({top:nav.getBoundingClientRect().top+window.scrollY-off,behavior:"smooth"}); } return; }
+    root.innerHTML=mpInner(root.dataset.m); const nav=root.querySelector(".mp-tabs"), hd=document.querySelector("header"), off=(hd&&/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+8;
+    const target=tb.dataset.mpch?document.getElementById("mpch-"+tb.dataset.mpch):nav;
+    if(target&&(tb.dataset.mpch||tb.closest(".mp-pn"))) window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-off-(tb.dataset.mpch?nav.offsetHeight+8:0),behavior:"smooth"}); return; }
   const v=e.target.closest("[data-mpimg]"); if(v){ const d=document.createElement("div"); d.className="mp-lb"; d.innerHTML=`<img src="${v.dataset.mpimg}" alt=""><button type="button" aria-label="Close">✕</button>`; d.addEventListener("click",()=>d.remove()); document.body.appendChild(d); }
 });
 {const t=store.get("almays-mptab"); if(t) MPS.tab=t;}
