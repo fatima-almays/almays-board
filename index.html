@@ -1001,6 +1001,94 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 #cxRvNote{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:12px;padding:8px 10px;font:inherit;font-size:13px;resize:vertical}
 .cx-rvf{display:flex;justify-content:space-between;align-items:center;gap:8px}.cx-rvf small,.cx-rvro{font-size:11.5px;color:var(--muted)}
 .cx-rvnote{margin:0;font-size:13px;font-style:italic;color:#3a4540}
+.mp{--teal:#43695B;--lime:#A9C47F;--deep:#1F3A30;--ink:#1d2b25;--mut:#5d6b65;margin:0 0 28px;color:var(--ink)}
+@keyframes mpIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mpGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes mpSpin{from{transform:rotate(-90deg) scale(.85);opacity:0}to{transform:rotate(0) scale(1);opacity:1}}
+.mp-hero{position:relative;overflow:hidden;background:radial-gradient(520px 280px at 88% 10%,rgba(169,196,127,.32),transparent 70%),radial-gradient(420px 260px at 0% 100%,rgba(16,163,127,.25),transparent 70%),linear-gradient(135deg,#2A4A3D,#1A3329);color:#fff;border-radius:28px;padding:28px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.mp-k{display:inline-block;background:var(--lime);color:var(--deep);font-weight:800;font-size:12px;padding:5px 12px;border-radius:99px}
+.mp-hero h2{margin:10px 0 6px;font-size:30px;line-height:1.2;color:#fff}.mp-hero p{margin:0;opacity:.85;line-height:1.55;max-width:640px}
+.mp-ph3{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:14px}.mp-ph3 div{border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:6px 11px;background:rgba(255,255,255,.06)}.mp-ph3 div.now{background:var(--lime);color:var(--deep);border-color:var(--lime)}.mp-ph3 small{display:block;font-size:10.5px;opacity:.8;font-weight:700}.mp-ph3 b{font-size:13px}.mp-ph3>span{opacity:.6}.mp-ph3 .tbc{border-style:dashed;font-size:12.5px;font-weight:800}
+.mp-main{margin-top:12px!important;font-weight:700;opacity:1!important}.mp-main small{font-weight:500;opacity:.8}
+.mp-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:18px}
+.mp-kpis div{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:9px 11px}.mp-kpis b{display:block;font-size:19px;color:var(--lime)}.mp-kpis small{font-size:11.5px;opacity:.85}
+.mp-donut{all:unset;cursor:pointer;position:relative;width:170px;height:170px;display:grid;place-items:center}
+.mp-ring{position:absolute;inset:0;border-radius:50%;-webkit-mask:radial-gradient(circle,transparent 56%,#000 57%);mask:radial-gradient(circle,transparent 56%,#000 57%);animation:mpSpin .9s cubic-bezier(.2,.8,.2,1)}
+.mp-dc{position:relative;text-align:center}.mp-dc b{display:block;font-size:30px;line-height:1}.mp-dc small{font-size:11.5px;opacity:.8}
+.mp-donut:hover .mp-ring{filter:brightness(1.12)}
+.mp-tabs{position:sticky;top:var(--hdr,64px);z-index:6;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:16px 0 0;padding:6px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border:1px solid #e1e8e3;border-radius:18px;box-shadow:0 6px 18px rgba(31,58,48,.08)}
+.mp-tabs::-webkit-scrollbar{display:none}
+.mp-tabs button{all:unset;cursor:pointer;flex:1 0 auto;display:flex;gap:7px;align-items:center;justify-content:center;padding:10px 14px;border-radius:13px;font-size:13.5px;font-weight:700;color:var(--deep);transition:background .2s,color .2s,transform .2s;white-space:nowrap}
+.mp-tabs button i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--c,var(--teal));color:#fff;font-size:11px;display:grid;place-items:center}
+.mp-tabs button:hover{background:#EEF4EA}
+.mp-tabs button[aria-selected="true"]{background:var(--c,var(--deep));color:#fff;box-shadow:0 6px 14px rgba(31,58,48,.18)}
+.mp-tabs button[aria-selected="true"] i{background:#fff;color:var(--c)}
+.mp-panel{animation:mpIn .35s ease;margin-top:16px}
+.mp-h{margin:24px 0 10px;font-size:17px;display:flex;justify-content:space-between;align-items:end;gap:10px;color:var(--deep)}.mp-h small{font-size:12px;color:var(--mut);font-weight:600}
+.mp-card{background:#fff;border-radius:20px;padding:18px;box-shadow:0 2px 12px rgba(31,58,48,.06)}.mp-card h4{margin:0 0 12px;font-size:15px;color:var(--deep)}
+.mp-note{display:block;font-size:12px;color:var(--mut);margin-top:10px}
+.mp-who{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;border-radius:99px;padding:3px 9px;margin:0 4px 0 0;background:#EEF4EA;color:var(--deep)}
+.mp-who.w-F{background:#E3EEDD;color:#2A5A3F}.mp-who.w-A{background:#FCEBD8;color:#9A5410}.mp-who.w-M{background:#E6EDF8;color:#2A4F8F}
+.mp-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.mp-pc{all:unset;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:6px;background:#fff;border-radius:22px;padding:18px 18px 16px;box-shadow:0 2px 12px rgba(31,58,48,.06);border-top:5px solid var(--c);transition:transform .2s,box-shadow .2s}
+.mp-pc:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(31,58,48,.14)}
+.mp-pc .no{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+.mp-pc .ic{font-size:28px}.mp-pc b{font-size:16px;color:var(--deep)}.mp-pc small{font-size:13px;color:var(--mut);line-height:1.45}
+.mp-pc .mt{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}.mp-pc .mt em{font-style:normal;font-size:11.5px;font-weight:700;background:#F3F6F1;border-radius:99px;padding:3px 8px}
+.mp-pc .go{margin-top:auto;padding-top:8px;font-size:13px;font-weight:800;color:var(--c)}
+.mp-goals{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mp-goal{display:flex;gap:12px;align-items:flex-start;background:#fff;border-radius:16px;padding:14px;box-shadow:0 2px 10px rgba(31,58,48,.05)}
+.mp-goal .gi{font-size:22px}.mp-goal div{flex:1}.mp-goal b{display:block;font-size:14px}.mp-goal small{display:block;color:var(--mut);font-size:12.5px;line-height:1.45;margin-top:2px}
+.mp-goal em{font-style:normal;font-size:11px;font-weight:800;color:var(--teal);background:#EEF4EA;border-radius:99px;padding:3px 8px;white-space:nowrap}
+.mp-team{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mp-team div{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 2px 10px rgba(31,58,48,.05);display:flex;flex-direction:column;gap:6px;align-items:flex-start}.mp-team small{font-size:12.5px;color:var(--mut)}
+.mp-ph{display:flex;justify-content:space-between;gap:18px;align-items:center;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,#0b1a14));color:#fff;border-radius:24px;padding:22px 24px}
+.mp-k2{font-size:12px;font-weight:800;background:rgba(255,255,255,.18);border-radius:99px;padding:4px 10px}.mp-ph h3{margin:8px 0 4px;font-size:24px;color:#fff}.mp-ph p{margin:0;opacity:.9}
+.mp-pb{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:10px 16px;text-align:right;min-width:150px}.mp-pb small{display:block;font-size:11.5px;opacity:.85}.mp-pb b{font-size:20px}
+.mp-pk{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.mp-pk div{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 2px 10px rgba(31,58,48,.05);border-bottom:3px solid var(--c)}.mp-pk b{display:block;font-size:20px;color:var(--c)}.mp-pk small{font-size:12px;color:var(--mut)}
+.mp-cols{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:12px}.mp-side{display:flex;flex-direction:column;gap:12px}
+.mp-tl2{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid #e3e9e5}
+.mp-tl2 li{position:relative;display:grid;grid-template-columns:1fr;gap:4px 12px;padding:10px 0 12px;border-bottom:1px dashed #edf1ee}.mp-tl2 li:last-child{border:0}
+.mp-tl2 li:before{content:"";position:absolute;left:-21px;top:14px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--c)}
+.mp-tl2 li.now:before{background:var(--c);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 22%,transparent)}
+.mp-tl2 li.done{opacity:.6}
+.mp-tl2 .dt{font-size:12px;font-weight:800;color:var(--c);padding-top:2px}.mp-tl2 .tx{font-size:14px;font-weight:600}
+.mp-tl2 .wh{grid-column:1}.mp-tl2 .stt{grid-column:2;font-size:11px;font-weight:700;color:var(--mut)}.mp-tl2 li.now .stt{color:var(--c)}
+.mp-roles{list-style:none;margin:0;padding:0}.mp-roles li{display:flex;gap:8px;align-items:center;padding:6px 0}.mp-roles small{font-size:12.5px;color:var(--mut)}
+.mp-ims{display:grid;gap:8px}.mp-ims.n3{grid-template-columns:repeat(3,1fr)}
+.mp-im{all:unset;cursor:zoom-in;border-radius:14px;overflow:hidden;display:block;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:transform .2s}.mp-im:hover{transform:scale(1.02)}
+.mp-im img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;object-position:top}.mp-ims.n3 img{aspect-ratio:4/5}
+.mp-obj{display:flex;justify-content:space-between;gap:16px;align-items:center;background:linear-gradient(135deg,#0F3B30,#10A37F);color:#fff;border-radius:20px;padding:18px 20px}.mp-obj p{margin:4px 0 0;opacity:.92;line-height:1.55}
+.mp-ask{background:#fff;color:#0F3B30;font-weight:800;font-size:13px;border-radius:12px;padding:9px 12px;max-width:260px}
+.mp-g2{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin-top:12px}.mp-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.mp-sec{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.mp-sec div{display:grid;grid-template-columns:30px 1fr;background:#F6F9F5;border-radius:12px;padding:8px}.mp-sec span{grid-row:span 2;font-size:20px}.mp-sec b{font-size:13.5px}.mp-sec small{font-size:12px;color:var(--mut)}
+.mp-bars .mp-bar{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px dashed #e3e9e5}.mp-bars .mp-bar:last-child{border:0}
+.mp-bars .mp-bar>div:first-child{min-width:110px}.mp-bars b{font-size:13.5px;display:block}.mp-bars small{font-size:12px;color:var(--mut)}
+.mp-bt{height:12px;background:#EEF4EA;border-radius:99px;overflow:hidden;display:flex}.mp-bt i{display:block;height:100%;width:var(--w);background:linear-gradient(90deg,#10A37F,#A9C47F);transform-origin:left;animation:mpGrow .8s cubic-bezier(.2,.8,.2,1)}.mp-bt.stack i{border-radius:0;height:auto;align-self:stretch;flex:0 0 var(--w)}
+.mp-bars span{font-weight:800;font-size:13.5px;white-space:nowrap}
+.mp-chips{display:flex;flex-wrap:wrap;gap:6px}.mp-chips span{font-size:12.5px;background:#EEF4EA;color:var(--deep);border-radius:99px;padding:5px 10px;font-weight:600}
+.mp-list{list-style:none;margin:0;padding:0}.mp-list li{font-size:13.5px;padding:6px 0;border-bottom:1px dashed #e3e9e5}.mp-list li:last-child{border:0}.mp-list b{display:block}.mp-list small{color:var(--mut);font-size:12px}
+.mp-gantt{position:relative;overflow-x:auto}
+.mp-gr{display:grid;grid-template-columns:minmax(180px,30%) 1fr;gap:10px;align-items:center;min-width:640px;padding:4px 0}
+.mp-gt{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mp-gb{position:relative;height:22px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/30*7 - 1px),#e6ece8 calc(100%/30*7 - 1px) calc(100%/30*7));border-radius:6px}
+.mp-gb i{position:absolute;top:3px;bottom:3px;background:var(--c);border-radius:99px;transform-origin:left;animation:mpGrow .7s cubic-bezier(.2,.8,.2,1);min-width:10px}
+.mp-gb i em{position:absolute;left:100%;margin-left:6px;top:-1px;font-style:normal;font-size:10.5px;font-weight:700;color:var(--mut);white-space:nowrap}
+.mp-gb i.in em{left:auto;right:8px;margin:0;color:#fff;top:0}
+.mp-gh{font-weight:800;color:var(--deep);border-bottom:1px solid #e3e9e5;margin-bottom:6px}
+.mp-days{display:grid;grid-template-columns:repeat(30,1fr);background:none;height:auto}.mp-days span{font-size:10.5px;color:var(--mut)}
+.mp-gg{border-top:1px dashed #e3e9e5;padding:6px 0}.mp-gl{all:unset;cursor:pointer;font-weight:800;font-size:13px;color:var(--c);padding:4px 0;display:block}
+.mp-today{position:absolute;top:8px;bottom:8px;left:calc(18px + (100% - 36px) * 0.3 + 10px + (100% - 36px) * 0.7 * var(--x));width:2px;background:#E5484D;pointer-events:none}
+.mp-today b{position:absolute;top:-4px;left:4px;font-size:10px;color:#E5484D}
+.mp-bc{display:flex;gap:18px;align-items:center}.mp-donut.big{width:190px;height:190px;color:var(--deep);cursor:default}
+.mp-leg{list-style:none;margin:0;padding:0;flex:1}.mp-leg li{display:grid;grid-template-columns:14px 1fr;gap:2px 8px;padding:7px 0;border-bottom:1px dashed #e3e9e5}.mp-leg li:last-child{border:0}.mp-leg i{width:12px;height:12px;border-radius:4px;background:var(--c);margin-top:4px}.mp-leg b{font-size:13.5px}.mp-leg span{grid-column:2;font-size:12.5px;color:var(--mut)}
+.mp-tbl{overflow-x:auto}.mp-tbl table{width:100%;border-collapse:collapse;font-size:13px;min-width:520px}.mp-tbl th,.mp-tbl td{text-align:left;padding:9px 8px;border-bottom:1px solid #edf1ee}.mp-tbl th{font-size:11.5px;color:var(--mut)}.mp-tbl tr.tot td{font-weight:800;background:#F3F6F1}
+.mp-tbl .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.mp-pn{display:flex;justify-content:space-between;margin-top:16px}.mp-pn button{all:unset;cursor:pointer;font-size:13.5px;font-weight:800;color:var(--deep);padding:10px 16px;border-radius:14px;background:#fff;box-shadow:0 2px 10px rgba(31,58,48,.06)}.mp-pn .nx{background:var(--deep);color:#fff}
+.mp-lb{position:fixed;inset:0;z-index:9999;background:rgba(10,20,16,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:mpIn .2s}
+.mp-lb img{max-width:100%;max-height:100%;border-radius:14px}.mp-lb button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
+@media(max-width:1000px){.mp-kpis{grid-template-columns:repeat(3,1fr)}.mp-pills{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.mp-hero{grid-template-columns:1fr;padding:22px}.mp-hero h2{font-size:23px}.mp-donut{width:140px;height:140px;justify-self:center}.mp-pills,.mp-goals,.mp-team,.mp-cols,.mp-g2,.mp-g3,.mp-pk{grid-template-columns:1fr}.mp-pk{grid-template-columns:1fr 1fr}.mp-ph,.mp-obj,.mp-bc{flex-direction:column;align-items:flex-start}.mp-pb{text-align:left}.mp-tabs button{flex:0 0 auto}.mp-tl2 li{grid-template-columns:1fr}.mp-tl2 .wh,.mp-tl2 .stt{grid-column:1}.mp-sec{grid-template-columns:1fr}}
+
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2639,7 +2727,8 @@ function planView(m,D,plans,can){
   const bud=plans.reduce((s,p)=>s+(num(p.budget)||0),0), dn=plans.filter(p=>p.status==="Done").length, ip=plans.filter(p=>p.status==="In Progress").length;
   const tiles=[["🗂️","Activities",plans.length,PAL[1]],["✅","Done",dn,PAL[0]],["⚡","In progress",ip,PAL[2]],["💰","Planned budget",nf(bud)+" SAR",PAL[3]]];
   const wsList=[...new Set([...S.tasks.map(t=>t.workstream).filter(Boolean),...AREA_ORDER])];
-  return `<div class="m-tiles">${tiles.map(([i,l,v,c])=>`<div class="m-tile" style="--c:${c}"><span class="ti">${i}</span><b>${esc(String(v))}</b><small>${l}</small></div>`).join("")}</div>
+  setTimeout(mpHdr,0);
+  return `${mpView(m)}<div class="m-tiles">${tiles.map(([i,l,v,c])=>`<div class="m-tile" style="--c:${c}"><span class="ti">${i}</span><b>${esc(String(v))}</b><small>${l}</small></div>`).join("")}</div>
   <div class="m-grid">
    <section class="m-card" style="--c:${PAL[0]}"><h3>🎯 Goals for ${esc(monthName(m))}</h3>${ta("goals",D.goals,"One goal per line, e.g. Generate 120 leads from the healthcare sector",can,6)}</section>
    <section class="m-card" style="--c:${PAL[3]}"><h3>📈 KPI targets</h3><div class="kpi-tbl">${KPIS.map(([k,l,u])=>`<label class="kpi-row"><span>${esc(l)}${u?` <em>${u}</em>`:""}</span>${can?`<input inputmode="decimal" data-kpi="${k}" data-kf="target" value="${esc(D.kpis&&D.kpis[k]&&D.kpis[k].target!=null?D.kpis[k].target:"")}" placeholder="Target">`:`<b>${nf(D.kpis&&D.kpis[k]&&num(D.kpis[k].target))}</b>`}</label>`).join("")}</div></section>
@@ -2719,7 +2808,7 @@ async function cpSetRev(m,id,verdict){
   return wWrite(()=>ref.set({month:m,item:id,verdict,note,uid:W.me||"",by:W.isOwner?"Fatima":"Manager",at:new Date().toISOString()}),CP_RV[verdict][1]);
 }
 const CP_PLAT={"LinkedIn":["in","#0A66C2"],"Instagram":["IG","#D6249F"],"Instagram Story":["IG","#D6249F"],"X":["X","#111"],"Google Business Profile":["G","#34A853"],"TikTok":["TT","#111"],"Email":["✉","#43695B"]};
-function cpLoad(m){ cpRevBoot(); if(CP.docs[m]||CP.loading[m]) return; CP.loading[m]=1; fetch(`cp/${m}/plan.json?v=${Date.now()}`).then(r=>r.ok?r.json():null).then(d=>{ if(d){CP.docs[m]=d; if(W.page==="month"&&MON.tab==="content") renderMonth();} }).catch(()=>{}); }
+function cpLoad(m){ cpRevBoot(); if(CP.docs[m]||CP.loading[m]) return; CP.loading[m]=1; fetch(`cp/${m}/plan.json?v=${Date.now()}`).then(r=>r.ok?r.json():null).then(d=>{ if(d){CP.docs[m]=d; if(W.page==="month") renderMonth();} }).catch(()=>{}); }
 function cpSrc(m,f){return `cp/${m}/${f}`;}
 function cpDay(m,d,o){const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,d)).toLocaleDateString("en-GB",Object.assign({timeZone:"UTC"},o));}
 function cpItems(P){const it=[]; (P.posts||[]).forEach(p=>it.push(Object.assign({kind:"post"},p))); (P.emails||[]).forEach(e=>it.push(Object.assign({kind:"email",platforms:["Email"]},e))); return it.sort((a,b)=>a.day-b.day||a.kind.localeCompare(b.kind));}
@@ -2792,6 +2881,89 @@ document.addEventListener("click",e=>{
   const c=e.target.closest("[data-cpcopy]"); if(c){const t=decodeURIComponent(c.dataset.cpcopy), o2=c.textContent; const ok=()=>{c.textContent="Copied ✓"; setTimeout(()=>c.textContent=o2,1400)}; try{navigator.clipboard.writeText(t).then(ok,ok)}catch(_){ok()} return;}
 });
 document.addEventListener("keydown",e=>{ if(!CP.open) return; if(e.key==="Escape") cpClose(); const P=CP.docs[curMonth()]; if(!P) return; const it=cpItems(P), i=it.findIndex(x=>x.id===CP.open); if(e.key==="ArrowRight"&&it[i+1]) cpModal(curMonth(),it[i+1].id); if(e.key==="ArrowLeft"&&it[i-1]) cpModal(curMonth(),it[i-1].id); });
+/* ---------- MONTHLY: interactive marketing plan (cp/<month>/plan.json → mp) ---------- */
+const MPS={tab:"overview"};
+function mpSar(n){ return n==null?"TBC":"SAR "+Number(n).toLocaleString("en-US"); }
+function mpWho(M,codes){ return String(codes).split(" ").map(c=>{const p=(M.people||{})[c]||[c,""]; return `<span class="mp-who w-${c}" title="${esc(p[0])}">${esc(p[0])}</span>`;}).join(""); }
+function mpDue(a,b){ return a===b?`${a} Nov`:`${a}–${b} Nov`; }
+function mpView(m){
+  const P=CP.docs[m], M=P&&P.mp; if(!M) return "";
+  return `<div class="mp" id="mpRoot" data-m="${m}">${mpInner(m)}</div>`;
+}
+function mpTabs(M){ return [["overview","✨","Overview"],...M.pillars.map((p,i)=>[p.id,p.icon,p.short,i+1,p.color]),["budget","💰","Budget"]]; }
+function mpInner(m){
+  const M=CP.docs[m].mp, B=M.budget, tabs=mpTabs(M); if(!tabs.some(x=>x[0]===MPS.tab)) MPS.tab="overview"; const t=MPS.tab, i=tabs.findIndex(x=>x[0]===t);
+  const prev=tabs[i-1], next=tabs[i+1];
+  const donut=mpDonut(M);
+  return `<section class="mp-hero"><div class="mp-hl"><span class="mp-k">🚀 ${esc(monthName(m))} · Marketing plan</span><h2>${esc(M.title)}</h2><p>${esc(M.sub)}</p>${M.phases?`<div class="mp-ph3">${M.phases.map(([mo,ph,t,st],k)=>`<div class="${st}"><small>${esc(ph)} · ${esc(mo)}</small><b>${esc(t)}</b></div>${k<M.phases.length-1?'<span>→</span>':''}`).join("")}<div class="tbc">To be continued ↻</div></div><p class="mp-main">🎯 ${esc(M.main||"")}<br><small>${esc(M.cont||"")}</small></p>`:""}
+     <div class="mp-kpis">${M.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div></div>
+     <button type="button" class="mp-donut" data-mptab="budget" aria-label="Open budget">${donut}<span class="mp-dc"><b>${mpSar(B.total).replace("SAR ","")}</b><small>SAR · Nov–Jan</small></span></button></section>
+   <nav class="mp-tabs" role="tablist">${tabs.map(([id,ic,l,n,c])=>`<button type="button" role="tab" data-mptab="${id}" aria-selected="${id===t}" style="${c?`--c:${c}`:""}">${n?`<i>${n}</i>`:""}<span>${ic}</span>${esc(l)}</button>`).join("")}</nav>
+   <div class="mp-panel" key="${t}">${t==="overview"?mpOverview(m,M):t==="time"?mpTimeline(M):t==="budget"?mpBudget(M):mpPillar(m,M,M.pillars.find(p=>p.id===t))}</div>
+   <div class="mp-pn">${prev?`<button type="button" data-mptab="${prev[0]}">← ${prev[1]} ${esc(prev[2])}</button>`:"<span></span>"}${next?`<button type="button" class="nx" data-mptab="${next[0]}">Next: ${next[1]} ${esc(next[2])} →</button>`:""}</div>`;
+}
+function mpDonut(M){
+  const L=M.budget.lines, tot=M.budget.total, col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color])); let a=0;
+  const segs=L.map(l=>{const v=l[4].reduce((s,x)=>s+x,0), f=v/tot, s=a; a+=f; return `${col[l[0]]} ${(s*100).toFixed(2)}% ${(a*100).toFixed(2)}%`;});
+  return `<span class="mp-ring" style="background:conic-gradient(${segs.join(",")})"></span>`;
+}
+function mpOverview(m,M){
+  return `<div class="mp-pills">${M.pillars.map((p,i)=>{const s=Math.min(...p.items.map(x=>x[2])), e=Math.max(...p.items.map(x=>x[3])), bl=M.budget.lines.find(l=>l[0]===p.id), bv=bl?bl[4].reduce((a,b)=>a+b,0):null;
+    return `<button type="button" class="mp-pc" data-mptab="${p.id}" style="--c:${p.color}"><span class="no">${i+1}</span><span class="ic">${p.icon}</span><b>${esc(p.name)}</b><small>${esc(p.aim)}</small>
+      <span class="mt"><em>✅ ${p.items.length} tasks</em><em>💰 ${bv==null?"In-house":mpSar(bv)}</em></span><span class="wh">${mpWho(M,[...new Set(p.roles.map(r=>r[0]))].join(" "))}</span><span class="go">Open →</span></button>`;}).join("")}</div>
+   <h3 class="mp-h">🎯 Goals for the month</h3>
+   <div class="mp-goals">${M.goals.map(([ic,t,d,due])=>`<div class="mp-goal"><span class="gi">${ic}</span><div><b>${esc(t)}</b><small>${esc(d)}</small></div><em>${esc(due)}</em></div>`).join("")}</div>
+   <h3 class="mp-h">👥 Who does what</h3>
+   <div class="mp-team">${Object.entries(M.people).map(([c,[n,r]])=>`<div><span class="mp-who w-${c}">${esc(n)}</span><small>${esc(r)}</small></div>`).join("")}</div>`;
+}
+function mpPillar(m,M,p){
+  if(!p) return "";
+  const bl=M.budget.lines.find(l=>l[0]===p.id), bv=bl?bl[4].reduce((a,b)=>a+b,0):null, today=new Date();
+  const d=today.getMonth()===10?today.getDate():0;
+  const items=p.items.map(([t,w])=>`<li><span class="tx">${esc(t)}</span><span class="wh">${mpWho(M,w)}</span></li>`).join("");
+  const imgs=(p.img||[]).map(f=>`<button type="button" class="mp-im" data-mpimg="${cpSrc(m,f)}"><img src="${cpSrc(m,f)}" alt="" loading="lazy"></button>`).join("");
+  return `<div class="mp-ph" style="--c:${p.color}"><div><span class="mp-k2">${p.icon} Part ${M.pillars.indexOf(p)+1} of ${M.pillars.length}</span><h3>${esc(p.name)}</h3><p>${esc(p.aim)}</p></div><div class="mp-pb"><small>Budget</small><b>${bv==null?"In-house":mpSar(bv)}</b>${bl?`<small>${esc(bl[3])}</small>`:`<small>No separate budget</small>`}</div></div>
+   <div class="mp-pk" style="--c:${p.color}">${p.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>
+   <div class="mp-cols" style="--c:${p.color}"><div class="mp-card"><h4>Tasks</h4><ul class="mp-tl2">${items}</ul></div>
+     <div class="mp-side"><div class="mp-card"><h4>Who</h4><ul class="mp-roles">${p.roles.map(([c,r])=>`<li>${mpWho(M,c)}<small>${esc(r)}</small></li>`).join("")}</ul></div>
+     <div class="mp-card"><h4>${p.id==="social"?"In the new design":"What it will look like"}</h4><div class="mp-ims n${(p.img||[]).length}">${imgs}</div><small class="mp-note">Tap to enlarge${p.id==="social"?" · from the November calendar":" · example"}</small></div></div></div>
+   ${p.id==="gpt"?mpGpt(M):""}`;
+}
+function mpGpt(M){
+  const G=M.gpt||{}, mx=Math.max(...G.budget.map(b=>b[3])), tot=G.budget.reduce((s,b)=>s+b[3],0);
+  return `<h3 class="mp-h">📊 3-month pilot <small>Proposal for approval</small></h3>
+   <div class="mp-obj"><div><b>Objective</b><p>${esc(G.objective)}</p></div><span class="mp-ask">✅ ${esc(G.ask)}</span></div>
+   <div class="mp-g2"><div class="mp-card"><h4>Who we target</h4><div class="mp-sec">${G.sectors.map(([i,s,f])=>`<div><span>${i}</span><b>${esc(s)}</b><small>${esc(f)}</small></div>`).join("")}</div></div>
+     <div class="mp-card"><h4>Budget · ${mpSar(tot)}</h4><div class="mp-bars">${G.budget.map(([mo,ph,cal,v])=>`<div class="mp-bar"><div><b>${esc(mo)} · ${esc(cal)}</b><small>${esc(ph)}</small></div><div class="mp-bt"><i style="--w:${Math.round(v/mx*100)}%"></i></div><span>${mpSar(v)}</span></div>`).join("")}</div><small class="mp-note">Reviewed monthly; adjusted to results and the platform's minimum spend.</small></div></div>
+   <div class="mp-g3"><div class="mp-card"><h4>We measure</h4><div class="mp-chips">${G.kpis.map(k=>`<span>${esc(k)}</span>`).join("")}</div></div>
+     <div class="mp-card"><h4>Tools</h4><ul class="mp-list">${G.tools.map(([t,d])=>`<li><b>${esc(t)}</b><small>${esc(d)}</small></li>`).join("")}</ul></div>
+     <div class="mp-card"><h4>Expected outcomes</h4><ul class="mp-list">${G.outcomes.map(o=>`<li>✓ ${esc(o)}</li>`).join("")}</ul></div></div>
+   <p class="mp-note">ℹ️ ${esc(G.note)}</p>`;
+}
+function mpTimeline(M){
+  const today=new Date(), d=today.getMonth()===10?today.getDate():0, days=30;
+  const head=Array.from({length:days},(_,k)=>k+1).map(n=>`<span class="${[1,8,15,22,29].includes(n)?"wk":""}">${[1,8,15,22,29].includes(n)?n:""}</span>`).join("");
+  const rows=M.pillars.map(p=>`<div class="mp-gg" style="--c:${p.color}"><button type="button" class="mp-gl" data-mptab="${p.id}">${p.icon} ${esc(p.name)}</button>${p.items.map(([t,w,s,e])=>`<div class="mp-gr"><span class="mp-gt" title="${esc(t)}">${esc(t)}</span><span class="mp-gb"><i class="${(e-s+1)/days>.6?"in":""}" style="left:${(s-1)/days*100}%;width:${Math.max(1,(e-s+1))/days*100}%" title="${mpDue(s,e)}"><em>${mpDue(s,e)}</em></i></span></div>`).join("")}</div>`).join("");
+  return `<div class="mp-card mp-gantt"><div class="mp-gr mp-gh"><span class="mp-gt">November</span><span class="mp-gb mp-days">${head}</span></div>${rows}${d?`<span class="mp-today" style="--x:${(d-.5)/days}"><b>Today</b></span>`:""}</div>
+   `;
+}
+function mpBudget(M){
+  const B=M.budget, col=Object.fromEntries(M.pillars.map(p=>[p.id,p.color])), mt=B.months.map((_,k)=>B.lines.reduce((s,l)=>s+l[4][k],0));
+  return `<div class="mp-g2"><div class="mp-card mp-bc"><button type="button" class="mp-donut big" tabindex="-1">${mpDonut(M)}<span class="mp-dc"><b>${mpSar(B.total).replace("SAR ","")}</b><small>SAR total</small></span></button>
+      <ul class="mp-leg">${B.lines.map(l=>{const v=l[4].reduce((a,b)=>a+b,0);return `<li style="--c:${col[l[0]]}"><i></i><b>${esc(l[2])}</b><span>${mpSar(v)} · ${Math.round(v/B.total*100)}%</span></li>`;}).join("")}</ul></div>
+    <div class="mp-card"><h4>By month</h4><div class="mp-bars">${B.months.map((mo,k)=>`<div class="mp-bar"><div><b>${mo}</b></div><div class="mp-bt"><i style="--w:${mt[k]/Math.max(...mt)*100}%;background:linear-gradient(90deg,${(()=>{let acc=0;return B.lines.filter(l=>l[4][k]).map(l=>{const st=acc/mt[k]*100;acc+=l[4][k];return `${col[l[0]]} ${st}% ${acc/mt[k]*100}%`;}).join(",")})()})" title="${B.lines.filter(l=>l[4][k]).map(l=>esc(l[2])+": "+mpSar(l[4][k])).join(" · ")}"></i></div><span>${mpSar(mt[k])}</span></div>`).join("")}</div><small class="mp-note">${esc(B.note)}</small></div></div>
+   <div class="mp-card"><h4>Allocation</h4><div class="mp-tbl"><table><thead><tr><th>Area</th><th>For</th>${B.months.map(x=>`<th>${x}</th>`).join("")}<th>Total</th></tr></thead><tbody>${B.lines.map(l=>`<tr><td><span class="dot" style="background:${col[l[0]]}"></span>${l[1]} ${esc(l[2])}</td><td>${esc(l[3])}</td>${l[4].map(v=>`<td>${v?mpSar(v):"—"}</td>`).join("")}<td><b>${mpSar(l[4].reduce((a,b)=>a+b,0))}</b></td></tr>`).join("")}<tr class="tot"><td colspan="2">Total</td>${mt.map(v=>`<td>${mpSar(v)}</td>`).join("")}<td>${mpSar(B.total)}</td></tr></tbody></table></div></div>`;
+}
+document.addEventListener("click",e=>{
+  const tb=e.target.closest("[data-mptab]"); if(tb&&tb.closest("#mpRoot")){ const root=document.getElementById("mpRoot"); MPS.tab=tb.dataset.mptab; try{store.set("almays-mptab",MPS.tab)}catch(_){}
+    root.innerHTML=mpInner(root.dataset.m); const nav=root.querySelector(".mp-tabs"), act=nav&&nav.querySelector('[aria-selected="true"]'); if(act) act.scrollIntoView({block:"nearest",inline:"center"});
+    if(tb.closest(".mp-pn,.mp-pills,.mp-gantt,.mp-hero")){ const hd=document.querySelector("header"); const off=(hd&&/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+8; window.scrollTo({top:nav.getBoundingClientRect().top+window.scrollY-off,behavior:"smooth"}); } return; }
+  const v=e.target.closest("[data-mpimg]"); if(v){ const d=document.createElement("div"); d.className="mp-lb"; d.innerHTML=`<img src="${v.dataset.mpimg}" alt=""><button type="button" aria-label="Close">✕</button>`; d.addEventListener("click",()=>d.remove()); document.body.appendChild(d); }
+});
+{const t=store.get("almays-mptab"); if(t) MPS.tab=t;}
+function mpHdr(){ const hd=document.querySelector("header"); if(hd) document.documentElement.style.setProperty("--hdr",(/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+"px"); }
+window.addEventListener("resize",mpHdr);
+
 $("#page-month").addEventListener("click",e=>{
   const mv=e.target.closest("[data-mmove]"); if(mv){MON.month=shiftMonth(curMonth(),+mv.dataset.mmove); renderMonth(); return;}
   const tb=e.target.closest("[data-mtab]"); if(tb){MON.tab=tb.dataset.mtab; store.set("almays-mtab",MON.tab); renderMonth(); return;}
