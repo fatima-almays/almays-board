@@ -605,33 +605,37 @@
       "chats tagged by source"
      ],
      [
-      "CPL",
-      "per source, weekly"
+      "SAR 500",
+      "fixed each month"
      ]
     ],
     "img": [
      "mp_wa.jpg"
     ],
     "items": [
-     "WhatsApp Business API on our 2 sales numbers · one shared inbox",
-     "AI chatbot qualifies the lead, then hands over to sales",
-     "Click-to-WhatsApp ads on Instagram & Facebook",
-     "Every chat tagged by source: Website · Google · ChatGPT · LinkedIn · Meta ads",
+     "WhatsApp Cloud API on our 2 sales numbers · one shared inbox (Chatwoot)",
+     "AI assistant qualifies the lead, then hands over to sales",
+     "Click-to-WhatsApp ads on Instagram & Facebook (small, fixed test)",
+     "Every chat labelled by source: Website · Google · ChatGPT · LinkedIn · Meta ads",
      "Claude saves each client's details, summary & next step",
      "Broadcasts to opted-in contacts (max 2 a month)"
     ],
     "method": [
-     "Verify Al Mays in Meta Business Manager; connect both sales numbers to respond.io (the WhatsApp app stays on the phones)",
-     "Build the chatbot: welcome → sector → meals & city → hand-over to sales 1 or 2",
-     "One WhatsApp link per channel (pre-filled message + UTM) so the source saves itself",
-     "Run Click-to-WhatsApp ads; send quote events back to Meta (Conversions API)",
-     "Connect Claude (MCP): client record, chat summary, weekly leads & CPL by source",
-     "Monthly broadcast to opted-in contacts; track replies & quotes"
+     "Verify Al Mays in Meta Business Manager; connect both sales numbers to the WhatsApp Cloud API (Meta, no platform fee) and add them as 2 inboxes in Chatwoot",
+     "Set up the Captain AI assistant: answers FAQs, asks sector, meals & city, then hands over to sales 1 or 2",
+     "One WhatsApp link per channel (pre-filled message + UTM) so the source is labelled automatically",
+     "Run small Click-to-WhatsApp ads in Meta Ads Manager; scale only if CPL is good",
+     "Connect Claude (MCP connector): client record, chat summary, weekly leads & CPL by source",
+     "Monthly broadcast from approved templates to opted-in contacts; track replies & quotes"
     ],
     "tools": [
      [
-      "respond.io · Growth",
-      "Shared inbox, 2 numbers, AI chatbot, workflows, broadcasts"
+      "Chatwoot · Startups",
+      "Shared inbox, 2 WhatsApp numbers, AI assistant, labels & reports"
+     ],
+     [
+      "WhatsApp Cloud API (Meta)",
+      "Official API, no platform fee · pay per message"
      ],
      [
       "Meta Business Manager",
@@ -642,11 +646,7 @@
       "Click-to-WhatsApp ads on Instagram & Facebook"
      ],
      [
-      "Meta Conversions API",
-      "Sends lead & quote events back to optimise ads"
-     ],
-     [
-      "Claude + respond.io MCP",
+      "Claude + Chatwoot MCP",
       "Saves client info, chat summaries, source reports"
      ],
      [
@@ -656,19 +656,19 @@
     ],
     "spend": [
      [
-      "respond.io Growth",
-      "≈ USD 199 / month (monthly billing) × 3 · 10 users, AI agent",
-      "2250"
+      "Chatwoot Startups",
+      "USD 19 per agent / month × 3 agents (2 sales + marketing) · ≈ SAR 215 / month",
+      "645"
      ],
      [
       "WhatsApp messages (Meta)",
-      "≈ SAR 0.22 per marketing message · ≈ 3,400 broadcasts · replies within 24h & ad chats (72h) free",
-      "750"
+      "≈ SAR 0.22 per marketing message · ≈ 600 broadcasts a month · replies within 24h & ad chats (72h) free",
+      "405"
      ],
      [
       "Click-to-WhatsApp ads",
-      "Meta Ads Manager · Dec–Jan test (≈ SAR 16 a day)",
-      "1000"
+      "Meta Ads Manager · SAR 150 a month (≈ SAR 5 a day)",
+      "450"
      ]
     ]
    }
@@ -771,7 +771,7 @@
    "note": "ChatGPT ads are open to Saudi businesses through OpenAI Ads Manager; campaigns start from about SAR 50 a day."
   },
   "budget": {
-   "total": 14000,
+   "total": 11500,
    "note": "Proposed allocation for the plan period (Nov–Jan): ChatGPT pilot, website tools, Google SEO tool and WhatsApp lead capture. Social media runs in-house.",
    "lines": [
     [
@@ -811,11 +811,11 @@
      "wa",
      "📲",
      "WhatsApp & leads",
-     "Platform, messages & Click-to-WhatsApp ads",
+     "Chatwoot, Meta messages & Click-to-WhatsApp ads · fixed SAR 500/month",
      [
-      750,
-      1550,
-      1700
+      500,
+      500,
+      500
      ]
     ]
    ],
@@ -968,7 +968,7 @@
      "ChatGPT campaign results"
     ],
     [
-     "respond.io + Claude",
+     "Chatwoot + Claude",
      "WhatsApp leads, sources & client records"
     ]
    ]
