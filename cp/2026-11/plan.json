@@ -217,7 +217,7 @@
  ],
  "mp": {
   "title": "November marketing plan",
-  "sub": "Month 1 of 3 · build presence, fix the website, get found on Google, launch ChatGPT ads.",
+  "sub": "Month 1 of 3 · build presence, fix the website, get found on Google, launch ChatGPT ads, capture every lead on WhatsApp.",
   "kpis": [
    [
     "12",
@@ -409,8 +409,8 @@
       "300"
      ],
      [
-      "WhatsApp chat & quote form",
-      "Plugin licence",
+      "Quote request form",
+      "Form plugin (WhatsApp is in the WhatsApp budget)",
       "200"
      ],
      [
@@ -583,6 +583,94 @@
       "2500"
      ]
     ]
+   },
+   {
+    "id": "wa",
+    "icon": "📲",
+    "name": "WhatsApp & leads",
+    "short": "WhatsApp",
+    "color": "#7A5AF8",
+    "aim": "Every enquiry lands in one WhatsApp inbox, gets a fast answer, and we know exactly where it came from.",
+    "kpis": [
+     [
+      "2",
+      "sales numbers · one inbox"
+     ],
+     [
+      "< 5 min",
+      "first reply"
+     ],
+     [
+      "100%",
+      "chats tagged by source"
+     ],
+     [
+      "CPL",
+      "per source, weekly"
+     ]
+    ],
+    "img": [
+     "mp_wa.jpg"
+    ],
+    "items": [
+     "WhatsApp Business API on our 2 sales numbers · one shared inbox",
+     "AI chatbot qualifies the lead, then hands over to sales",
+     "Click-to-WhatsApp ads on Instagram & Facebook",
+     "Every chat tagged by source: Website · Google · ChatGPT · LinkedIn · Meta ads",
+     "Claude saves each client's details, summary & next step",
+     "Broadcasts to opted-in contacts (max 2 a month)"
+    ],
+    "method": [
+     "Verify Al Mays in Meta Business Manager; connect both sales numbers to respond.io (the WhatsApp app stays on the phones)",
+     "Build the chatbot: welcome → sector → meals & city → hand-over to sales 1 or 2",
+     "One WhatsApp link per channel (pre-filled message + UTM) so the source saves itself",
+     "Run Click-to-WhatsApp ads; send quote events back to Meta (Conversions API)",
+     "Connect Claude (MCP): client record, chat summary, weekly leads & CPL by source",
+     "Monthly broadcast to opted-in contacts; track replies & quotes"
+    ],
+    "tools": [
+     [
+      "respond.io · Growth",
+      "Shared inbox, 2 numbers, AI chatbot, workflows, broadcasts"
+     ],
+     [
+      "Meta Business Manager",
+      "Business verification & number ownership"
+     ],
+     [
+      "Meta Ads Manager",
+      "Click-to-WhatsApp ads on Instagram & Facebook"
+     ],
+     [
+      "Meta Conversions API",
+      "Sends lead & quote events back to optimise ads"
+     ],
+     [
+      "Claude + respond.io MCP",
+      "Saves client info, chat summaries, source reports"
+     ],
+     [
+      "UTM links + GA4",
+      "Which page or campaign started the chat"
+     ]
+    ],
+    "spend": [
+     [
+      "respond.io Growth",
+      "≈ USD 199 / month (monthly billing) × 3 · 10 users, AI agent",
+      "2250"
+     ],
+     [
+      "WhatsApp messages (Meta)",
+      "≈ SAR 0.22 per marketing message · ≈ 3,400 broadcasts · replies within 24h & ad chats (72h) free",
+      "750"
+     ],
+     [
+      "Click-to-WhatsApp ads",
+      "Meta Ads Manager · Dec–Jan test (≈ SAR 16 a day)",
+      "1000"
+     ]
+    ]
    }
   ],
   "gpt": {
@@ -683,8 +771,8 @@
    "note": "ChatGPT ads are open to Saudi businesses through OpenAI Ads Manager; campaigns start from about SAR 50 a day."
   },
   "budget": {
-   "total": 10000,
-   "note": "Proposed allocation for the plan period (Nov–Jan), including the ChatGPT pilot. Social media runs in-house.",
+   "total": 14000,
+   "note": "Proposed allocation for the plan period (Nov–Jan): ChatGPT pilot, website tools, Google SEO tool and WhatsApp lead capture. Social media runs in-house.",
    "lines": [
     [
      "gpt",
@@ -718,6 +806,17 @@
       500,
       0
      ]
+    ],
+    [
+     "wa",
+     "📲",
+     "WhatsApp & leads",
+     "Platform, messages & Click-to-WhatsApp ads",
+     [
+      750,
+      1550,
+      1700
+     ]
     ]
    ],
    "months": [
@@ -740,7 +839,7 @@
     "Approvals & budget"
    ]
   },
-  "main": "Make Al Mays the catering brand companies find, trust and contact — on social media, on Google and inside ChatGPT.",
+  "main": "Make Al Mays the catering brand companies find, trust and contact — on social media, on Google and inside ChatGPT — and capture every enquiry on WhatsApp.",
   "phases": [
    [
     "Nov",
@@ -806,6 +905,13 @@
     "perf"
    ],
    [
+    "WhatsApp",
+    "Capture & track every lead",
+    "Chats tagged by source · first reply time · CPL by source",
+    "100% tagged · reply < 5 min",
+    "wa"
+   ],
+   [
     "Leads",
     "Turn attention into requests",
     "Quote requests (all channels)",
@@ -824,6 +930,11 @@
      "Weekly",
      "ChatGPT campaign: impressions, CTR, CPC, leads",
      "Thu"
+    ],
+    [
+     "Weekly",
+     "WhatsApp: chats, qualified leads & CPL by source (Claude report)",
+     "Sun"
     ],
     [
      "Monthly",
@@ -855,6 +966,10 @@
     [
      "OpenAI Ads Manager",
      "ChatGPT campaign results"
+    ],
+    [
+     "respond.io + Claude",
+     "WhatsApp leads, sources & client records"
     ]
    ]
   },
