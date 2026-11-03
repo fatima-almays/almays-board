@@ -1013,6 +1013,24 @@
    "id": "IQ5Cz3EFuPqhQ74e4GQQ",
    "name": "Google Ads campaign performance measurement",
    "why": "One weekly view of cost per lead, cost per qualified lead and cost per client for every campaign — so we know where to put more money and which campaign to stop."
+  },
+  "oneoff": {
+   "icon": "🎬",
+   "name": "Corporate video",
+   "tag": "One-off project · not recurring",
+   "note": "Paid once for the corporate video shoot. Kept separate from the monthly marketing budget.",
+   "items": [
+    [
+     "Video production crew",
+     "Filming team costs",
+     "11000"
+    ],
+    [
+     "Shoot cash float",
+     "On-hand cash for essentials & surprises during the shoot",
+     "1000"
+    ]
+   ]
   }
  }
 }
