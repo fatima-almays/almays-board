@@ -216,8 +216,8 @@
   ]
  ],
  "mp": {
-  "title": "Steady posting, a fresh website, stronger search",
-  "sub": "Four moves for November, in order: post consistently with the new design, relaunch the website, get found on Google, and start the ChatGPT pilot campaign. Targets start realistic and grow each month.",
+  "title": "November marketing plan",
+  "sub": "Month 1 of a 3-month plan: build a consistent presence, relaunch the website, strengthen search visibility and test ChatGPT as a new lead channel.",
   "kpis": [
    [
     "12",
@@ -242,44 +242,6 @@
    [
     "SAR 10K",
     "budget"
-   ]
-  ],
-  "goals": [
-   [
-    "📱",
-    "Post consistently, in the new design",
-    "3 feed posts a week (~12) and 3–4 stories a week (~15)",
-    "30 Nov"
-   ],
-   [
-    "💼",
-    "Show the company at work",
-    "1 LinkedIn company-activity post a week (4)",
-    "30 Nov"
-   ],
-   [
-    "🌐",
-    "Relaunch the website",
-    "New photos, fixed pages, profile & video live",
-    "22 Nov"
-   ],
-   [
-    "🔎",
-    "Get found on Google",
-    "Business Profile complete, keywords on every page",
-    "19 Nov"
-   ],
-   [
-    "💬",
-    "Launch the ChatGPT pilot",
-    "Live on 20 Nov with SAR 1,500",
-    "20 Nov"
-   ],
-   [
-    "📩",
-    "Turn visits into requests",
-    "3–5 quote requests from all channels in month 1",
-    "30 Nov"
    ]
   ],
   "pillars": [
@@ -329,46 +291,32 @@
     ],
     "items": [
      [
-      "Content strategy & November calendar",
-      "F",
-      1,
-      3
+      "Content strategy & monthly calendar",
+      "F"
      ],
      [
-      "Approve the new post design",
-      "F M",
-      3,
-      5
+      "New post design approved and applied to every post",
+      "F M"
      ],
      [
-      "3 posts a week on Instagram & LinkedIn",
-      "A",
-      3,
-      30
+      "3 feed posts a week on Instagram & LinkedIn",
+      "A"
      ],
      [
-      "Instagram stories 3–4 times a week: kitchen, menus, behind the scenes",
-      "A",
-      3,
-      30
+      "Stories 3–4 times a week: kitchen, menus, behind the scenes",
+      "A"
      ],
      [
-      "LinkedIn: 1 company-activity post a week",
-      "A",
-      3,
-      30
+      "1 LinkedIn company-activity post a week",
+      "A"
      ],
      [
-      "Review & edit every post before it goes live",
-      "F",
-      3,
-      30
+      "Content review & editing before publishing",
+      "F"
      ],
      [
       "Photo & video shoot for stories and activity posts",
-      "F",
-      8,
-      12
+      "F"
      ]
     ]
    },
@@ -417,39 +365,27 @@
     "items": [
      [
       "Upgrade plan & page-by-page checklist",
-      "F",
-      3,
-      6
+      "F"
      ],
      [
       "Fix broken pages & links (0+ counters, phone & email links, branches, ar_SA)",
-      "F A",
-      8,
-      12
+      "F A"
      ],
      [
       "Floating WhatsApp button & clear Request a quote form",
-      "F A",
-      10,
-      12
+      "F A"
      ],
      [
       "Replace all photos with the new shoot",
-      "F A",
-      12,
-      15
+      "F A"
      ],
      [
-      "Add keywords to every page",
-      "F A",
-      15,
-      19
+      "Keywords on every page",
+      "F A"
      ],
      [
       "New company profile + Al Mays video on the home page",
-      "F A",
-      19,
-      22
+      "F A"
      ]
     ]
    },
@@ -493,34 +429,24 @@
     ],
     "items": [
      [
-      "Google Ads: tracking & CAC dashboard",
-      "F",
-      1,
-      5
+      "Google Ads tracking & CAC dashboard",
+      "F"
      ],
      [
       "Google Business Profile: photos, services, hours, weekly posts",
-      "A",
-      8,
-      10
+      "A"
      ],
      [
       "Keyword list (AR/EN) by service, sector and city",
-      "F",
-      8,
-      12
+      "F"
      ],
      [
       "New page titles & descriptions",
-      "F A",
-      15,
-      19
+      "F A"
      ],
      [
-      "Ask happy clients for Google reviews",
-      "A",
-      10,
-      30
+      "Review requests from satisfied clients",
+      "A"
      ]
     ]
    },
@@ -568,34 +494,24 @@
     ],
     "items": [
      [
-      "Confirm eligibility in Saudi Arabia & open OpenAI Ads Manager",
-      "F",
-      8,
-      10
+      "Eligibility check & OpenAI Ads Manager account",
+      "F"
      ],
      [
       "Ad creatives, messages & ad groups by sector",
-      "F A",
-      10,
-      15
+      "F A"
      ],
      [
       "Landing page + tracking (GA4, GTM, Clarity)",
-      "F A",
-      12,
-      17
+      "F A"
      ],
      [
-      "Launch month 1: testing",
-      "F",
-      20,
-      20
+      "Launch with SAR 1,500 (month 1)",
+      "F"
      ],
      [
-      "Weekly check: impressions, CTR, CPC, leads",
-      "F",
-      20,
-      30
+      "Weekly performance check",
+      "F"
      ]
     ]
    }
@@ -776,6 +692,122 @@
     "next"
    ]
   ],
-  "cont": "Part of a 3-month plan · to be continued until we reach the main goal, then kept running and improved."
+  "cont": "Part of a 3-month plan · to be continued until we reach the main goal, then kept running and improved.",
+  "objectives": [
+   [
+    "Brand presence",
+    "Publish consistently in the new design",
+    "Feed posts · stories · LinkedIn activity posts",
+    "12 · 15 · 4",
+    "Amani",
+    "social"
+   ],
+   [
+    "Engagement",
+    "Build an engaged B2B audience",
+    "Engagement rate (Instagram & LinkedIn)",
+    "≥ 2%",
+    "Amani",
+    "social"
+   ],
+   [
+    "Website",
+    "Turn the website into a sales tool",
+    "Website visits · broken pages",
+    "+10% · 0",
+    "Fatima & Amani",
+    "web"
+   ],
+   [
+    "Search",
+    "Be found for catering searches in KSA",
+    "Organic visits · Business Profile",
+    "+5–10% · 100% complete",
+    "Fatima & Amani",
+    "google"
+   ],
+   [
+    "New channel",
+    "Test ChatGPT as a lead source",
+    "Launch · CTR · cost per click",
+    "Live in Nov · tracked weekly",
+    "Fatima",
+    "gpt"
+   ],
+   [
+    "Leads",
+    "Turn attention into requests",
+    "Quote requests (all channels)",
+    "3–5",
+    "Fatima",
+    "all"
+   ]
+  ],
+  "measure": {
+   "cadence": [
+    [
+     "Weekly",
+     "Amani",
+     "Posting log, reach, engagement, stories",
+     "Mon"
+    ],
+    [
+     "Weekly",
+     "Fatima",
+     "ChatGPT campaign: impressions, CTR, CPC, leads",
+     "Thu"
+    ],
+    [
+     "Monthly",
+     "Fatima",
+     "Monthly report: KPIs vs targets, budget, lessons",
+     "5–6 Dec"
+    ]
+   ],
+   "tools": [
+    [
+     "Meta Business Suite",
+     "Instagram reach & engagement"
+    ],
+    [
+     "LinkedIn Page Analytics",
+     "Followers & engagement"
+    ],
+    [
+     "Google Analytics 4",
+     "Website traffic & quote requests"
+    ],
+    [
+     "Google Search Console",
+     "Organic visibility & keywords"
+    ],
+    [
+     "Google Business Profile",
+     "Views, calls, directions"
+    ],
+    [
+     "OpenAI Ads Manager",
+     "ChatGPT campaign results"
+    ]
+   ]
+  },
+  "risks": [
+   [
+    "ChatGPT ads not yet open in Saudi Arabia",
+    "Check eligibility first; move the budget to Google Ads or LinkedIn if not available"
+   ],
+   [
+    "Website changes need developer time",
+    "Use page-builder tools in-house; keep a page-by-page checklist"
+   ],
+   [
+    "Approvals slow down posting",
+    "Approve the monthly calendar in one go on the board"
+   ],
+   [
+    "Not enough photos for daily content",
+    "Monthly shoot day + reuse corporate video clips"
+   ]
+  ]
  }
 }
