@@ -1120,6 +1120,11 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .pl-doc>section{animation:mpIn .3s ease}
 .pl-pager{display:flex;justify-content:space-between;align-items:center;gap:10px}.pl-pager small{color:var(--mut);font-weight:700}
 .pl-pager button{all:unset;cursor:pointer;font-weight:800;font-size:14px;color:var(--d);background:#fff;border-radius:14px;padding:11px 18px;box-shadow:0 2px 10px rgba(31,58,48,.06)}.pl-pager button.nx{background:var(--d);color:#fff}
+.pl-cr{min-width:270px;align-self:stretch;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:16px 18px}
+.pl-tot{display:block;font-size:28px;margin:4px 0 10px;color:#fff}.pl-bl{list-style:none;margin:0;padding:0}.pl-bl li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:6px 0;font-size:13px}.pl-bl li span{opacity:.9}.pl-bl li b{font-size:13px}
+.pl-bl li i{grid-column:1/-1;display:block;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--l),#d7e8c3);width:var(--w);min-width:4px}
+.pl-sit{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pl-sit div{background:#F6F9F4;border-radius:14px;padding:14px 16px;border-left:4px solid var(--t)}.pl-sit b{font-size:14px;color:var(--d)}.pl-sit p{margin:4px 0 0;font-size:13.5px;color:#3d4c45;line-height:1.5}
+@media(max-width:900px){.pl-sit{grid-template-columns:1fr}.pl-cr{min-width:0}}
 .pl{--d:#1F3A30;--t:#43695B;--l:#A9C47F;--ink:#1c2a24;--mut:#62716a;--ln:#e2e9e4;display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start;color:var(--ink)}
 .pl-toc{position:sticky;top:calc(var(--hdr,64px) + 14px);background:#fff;border-radius:18px;padding:16px 10px;box-shadow:0 2px 12px rgba(31,58,48,.06)}
 .pl-toc>b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:0 10px 8px}
@@ -1153,8 +1158,8 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .pl-tbl td{padding:11px 10px;border-bottom:1px solid var(--ln);vertical-align:top}.pl-tbl td small{display:block;color:var(--mut);font-size:12px}.pl-tbl td.t{font-weight:800;color:var(--d);white-space:nowrap}.pl-tbl tr.tot td{font-weight:800;background:#F2F6EF}
 .pl-tbl .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:middle}
 .pl-risk{list-style:none;margin:0;padding:0}.pl-risk li{padding:10px 12px;border-radius:12px;background:#FAF7EF;margin-bottom:8px}.pl-risk b{display:block;font-size:13.5px}.pl-risk small{display:block;margin-top:3px;font-size:12.5px;color:#3c5a4b}
-@media(max-width:900px){.pl{grid-template-columns:1fr;gap:12px}.pl-toc{top:var(--hdr,64px);z-index:6;padding:6px;border-radius:14px}.pl-toc>b{display:none}.pl-toc nav{flex-direction:row;overflow-x:auto;scrollbar-width:none}.pl-toc nav::-webkit-scrollbar{display:none}.pl-toc a{flex:0 0 auto;border-left:0;border-bottom:3px solid transparent;font-size:13px;padding:8px 12px}.pl-toc a.on{border-bottom-color:var(--t)}
- .pl-cover{grid-template-columns:1fr;padding:22px}.pl-cover h2{font-size:24px}.pl-cr{justify-self:center}.pl-kpis{grid-template-columns:repeat(2,1fr)}.pl-team,.pl-two{grid-template-columns:1fr}.pl-stats{grid-template-columns:repeat(2,1fr)}.pl-sec{padding:18px}.pl-bars>div{grid-template-columns:1fr auto}.pl-bars>div i{grid-column:1/-1;order:3}}
+@media(max-width:900px){.pl{grid-template-columns:minmax(0,1fr);gap:12px}.pl-cover{grid-template-columns:minmax(0,1fr)!important}.pl-road div{min-width:0;flex:1 1 40%}.pl-toc{min-width:0}.pl-kpis,.pl-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pl-toc{top:var(--hdr,64px);z-index:6;padding:6px;border-radius:14px}.pl-toc>b{display:none}.pl-toc nav{flex-direction:row;overflow-x:auto;scrollbar-width:none}.pl-toc nav::-webkit-scrollbar{display:none}.pl-toc a{flex:0 0 auto;border-left:0;border-bottom:3px solid transparent;font-size:13px;padding:8px 12px}.pl-toc a.on{border-bottom-color:var(--t)}
+ .pl-cover{grid-template-columns:1fr;padding:22px}.pl-cover h2{font-size:24px}.pl-cr{justify-self:stretch}.pl-kpis{grid-template-columns:repeat(2,1fr)}.pl-team,.pl-two{grid-template-columns:1fr}.pl-stats{grid-template-columns:repeat(2,1fr)}.pl-sec{padding:18px}.pl-bars>div{grid-template-columns:1fr auto}.pl-bars>div i{grid-column:1/-1;order:3}}
 .mp-lb{position:fixed;inset:0;z-index:9999;background:rgba(10,20,16,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:mpIn .2s}
 .mp-lb img{max-width:100%;max-height:100%;border-radius:14px}.mp-lb button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
 @media(max-width:1000px){.mp-kpis{grid-template-columns:repeat(3,1fr)}.mp-pills{grid-template-columns:repeat(2,1fr)}}
@@ -2961,10 +2966,10 @@ function mpView(m){
   const G=M.gpt, B=M.budget, tot=B.total, mt=B.months.map((_,k)=>B.lines.reduce((s,l)=>s+l[4][k],0)), mx=Math.max(...mt);
   const shade={gpt:"#1F3A30",web:"#43695B",google:"#A9C47F",social:"#D9E4D1"};
   let acc=0; const ring=B.lines.map(l=>{const v=l[4].reduce((a,b)=>a+b,0),s=acc;acc+=v/tot;return `${shade[l[0]]} ${(s*100).toFixed(2)}% ${(acc*100).toFixed(2)}%`;}).join(",");
-  const toc=[["pl-sum","Summary"],["pl-obj","Objectives & KPIs"],...M.pillars.map(p=>["pl-"+p.id,p.name]),["pl-bud","Budget"],["pl-mr","Measurement & risks"]];
+  const toc=[["pl-sum","Summary"],["pl-sit","Where we are today"],["pl-obj","Objectives & KPIs"],...M.pillars.map(p=>["pl-"+p.id,p.name]),["pl-bud","Budget"],["pl-mr","Measurement & risks"]];
   const sec=(id,eb,title,intro,body)=>`<section class="pl-sec" id="${id}"><div class="pl-sh"><span class="pl-eb">${eb}</span><h3>${esc(title)}</h3>${intro?`<p>${esc(intro)}</p>`:""}</div>${body}</section>`;
   const chan=p=>{const b=plBud(M,p.id); return sec("pl-"+p.id,"Channel",p.name,p.aim,`
-    <div class="pl-stats">${p.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}<div class="pl-budget"><b>${plSar(b)}</b><small>Budget</small></div></div>
+    <div class="pl-stats">${p.kpis.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}<div class="pl-budget"><b>${plSar(b)}</b><small>${b==null?"No spend":"Budget · "+Math.round(b/tot*100)+"% of SAR "+Number(tot).toLocaleString("en-US")}</small></div></div>
     <div class="pl-two"><div><h4>Key initiatives</h4><ul class="pl-ul">${p.items.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>${p.id==="gpt"?`<div class="pl-gpt">
         <h4>Target sectors</h4><div class="pl-tags">${G.sectors.map(([i,s,f])=>`<span title="${esc(f)}">${i} ${esc(s)}</span>`).join("")}</div>
         <h4>3-month pilot budget · ${plSar(G.budget.reduce((s,x)=>s+x[3],0))}</h4><div class="pl-bars">${G.budget.map(([mo,ph,cal,v])=>`<div><span>${esc(cal)} · ${esc(ph)}</span><i style="--w:${v/Math.max(...G.budget.map(x=>x[3]))*100}%"></i><b>${plSar(v)}</b></div>`).join("")}</div>
@@ -2977,9 +2982,10 @@ function mpView(m){
    <section class="pl-page" id="pl-sum"><div class="pl-cover"><div class="pl-cl"><span class="pl-eb lt">${esc(monthName(m))} · Marketing plan</span><h2>${esc(M.title)}</h2><p>${esc(M.sub)}</p>
       <p class="pl-goal"><span>Main goal</span>${esc(M.main.replace(/^Main goal:\s*/,""))}</p>
       <div class="pl-road">${M.phases.map(([mo,ph,t,st])=>`<div class="${st}"><small>${esc(mo)}</small><b>${esc(t)}</b></div>`).join("")}<div class="tbc"><small>Then</small><b>To be continued</b></div></div></div>
-     <div class="pl-cr"><div class="pl-ring" style="background:conic-gradient(${ring})"><span><b>${Number(tot).toLocaleString("en-US")}</b><small>SAR · Nov–Jan</small></span></div></div></div>
+     <div class="pl-cr"><span class="pl-eb lt">Budget · Nov–Jan</span><b class="pl-tot">${plSar(tot)}</b><ul class="pl-bl">${B.lines.map(l=>{const v=l[4].reduce((a,b)=>a+b,0);return `<li><span>${esc(l[2])}</span><i style="--w:${v/tot*100}%"></i><b>${plSar(v)}</b></li>`;}).join("")}<li><span>Social media</span><i style="--w:0%"></i><b>In-house</b></li></ul></div></div>
    <div class="pl-kpis">${M.kpis.filter(k=>!/budget/.test(k[1])).map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>
    <div class="pl-team">${Object.values(M.people).map(([n,r])=>`<div><b>${esc(n)}</b><small>${esc(r)}</small></div>`).join("")}</div></section>
+   ${sec("pl-sit","Starting point","Where we are today","What this plan fixes first.",`<div class="pl-sit">${(M.situation||[]).map(([a,t])=>`<div><b>${esc(a)}</b><p>${esc(t)}</p></div>`).join("")}</div>`)}
    ${sec("pl-obj","Targets","Objectives & KPIs","Targets start realistic in month 1 and are raised in December and January.",`<div class="pl-tbl"><table><thead><tr><th>Area</th><th>Objective</th><th>KPI</th><th>Target</th></tr></thead><tbody>${M.objectives.map(([a,o,k,t])=>`<tr><td><b>${esc(a)}</b></td><td>${esc(o)}</td><td>${esc(k)}</td><td class="t">${esc(t)}</td></tr>`).join("")}</tbody></table></div>`)}
    ${M.pillars.map(chan).join("")}
    ${sec("pl-bud","Investment","Budget",B.note,`<div class="pl-two"><div class="pl-tbl"><table><thead><tr><th>Area</th>${B.months.map(x=>`<th>${x}</th>`).join("")}<th>Total</th></tr></thead><tbody>${B.lines.map(l=>`<tr><td><i class="sw" style="background:${shade[l[0]]}"></i><b>${esc(l[2])}</b><small>${esc(l[3])}</small></td>${l[4].map(v=>`<td>${v?plSar(v):"—"}</td>`).join("")}<td class="t">${plSar(l[4].reduce((a,b)=>a+b,0))}</td></tr>`).join("")}<tr><td><i class="sw" style="background:${shade.social}"></i><b>Social media</b><small>Runs in-house</small></td>${B.months.map(()=>"<td>—</td>").join("")}<td class="t">In-house</td></tr><tr class="tot"><td>Total</td>${mt.map(v=>`<td>${plSar(v)}</td>`).join("")}<td class="t">${plSar(tot)}</td></tr></tbody></table></div>
@@ -2990,14 +2996,15 @@ function mpView(m){
 }
 const PLS={cur:"pl-sum"}; {const t=store.get("almays-plpage"); if(t) PLS.cur=t;}
 function plShow(root){ const pages=[...root.querySelectorAll(".pl-doc>section[id]")]; if(!pages.some(p=>p.id===PLS.cur)) PLS.cur="pl-sum";
-  pages.forEach(p=>p.hidden=p.id!==PLS.cur); root.querySelectorAll("[data-plgo]").forEach(a=>a.classList.toggle("on",a.dataset.plgo===PLS.cur));
+  pages.forEach(p=>p.hidden=false); root.querySelectorAll("[data-plgo]").forEach(a=>a.classList.toggle("on",a.dataset.plgo===PLS.cur));
   const i=pages.findIndex(p=>p.id===PLS.cur), pv=pages[i-1], nx=pages[i+1], lab=id=>{const a=root.querySelector(`.pl-toc [data-plgo="${id}"]`);return a?a.textContent:""};
-  const pg=root.querySelector(".pl-pager"); if(pg) pg.innerHTML=`${pv?`<button type="button" data-plgo="${pv.id}">← ${esc(lab(pv.id))}</button>`:"<span></span>"}<small>${i+1} / ${pages.length}</small>${nx?`<button type="button" class="nx" data-plgo="${nx.id}">${esc(lab(nx.id))} →</button>`:"<span></span>"}`;
+  const pg=null; if(pg) pg.innerHTML=`${pv?`<button type="button" data-plgo="${pv.id}">← ${esc(lab(pv.id))}</button>`:"<span></span>"}<small>${i+1} / ${pages.length}</small>${nx?`<button type="button" class="nx" data-plgo="${nx.id}">${esc(lab(nx.id))} →</button>`:"<span></span>"}`;
   const act=root.querySelector(".pl-toc a.on"); if(act&&window.innerWidth<900) act.scrollIntoView({block:"nearest",inline:"center"}); }
 new MutationObserver(()=>{const r=document.getElementById("mpRoot"); if(r&&r.classList.contains("pl")&&!r.dataset.pl){r.dataset.pl=1; plShow(r);}}).observe(document.documentElement,{childList:true,subtree:true});
 function mpInner(m){ return ""; }
+window.addEventListener("scroll",()=>{ const r=document.getElementById("mpRoot"); if(!r||!r.classList.contains("pl")) return; const hd=document.querySelector("header"); const y=(hd?hd.offsetHeight:0)+110; let cur="pl-sum"; r.querySelectorAll(".pl-doc>section[id]").forEach(x=>{ if(x.getBoundingClientRect().top<=y) cur=x.id; }); r.querySelectorAll("[data-plgo]").forEach(a=>{ const on=a.dataset.plgo===cur; if(on!==a.classList.contains("on")){ a.classList.toggle("on",on); if(on&&window.innerWidth<900) a.scrollIntoView({block:"nearest",inline:"center"}); } }); },{passive:true});
 document.addEventListener("click",e=>{
-  const g=e.target.closest("[data-plgo]"); if(g){ e.preventDefault(); const r=document.getElementById("mpRoot"); PLS.cur=g.dataset.plgo; try{store.set("almays-plpage",PLS.cur)}catch(_){} plShow(r); const hd=document.querySelector("header"), off=(hd&&/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+12; const top=r.getBoundingClientRect().top+window.scrollY-off; if(window.scrollY>top) window.scrollTo({top,behavior:"smooth"}); return; }
+  const g=e.target.closest("[data-plgo]"); if(g){ e.preventDefault(); const el=document.getElementById(g.dataset.plgo); if(el){ const hd=document.querySelector("header"), off=(hd&&/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+(window.innerWidth<900?62:16); window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-off,behavior:"smooth"}); } return; }
   const v=e.target.closest("[data-mpimg]"); if(v){ const d=document.createElement("div"); d.className="mp-lb"; d.innerHTML=`<img src="${v.dataset.mpimg}" alt=""><button type="button" aria-label="Close">✕</button>`; d.addEventListener("click",()=>d.remove()); document.body.appendChild(d); }
 });
 
