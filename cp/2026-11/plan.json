@@ -293,6 +293,10 @@
     ],
     "tools": [
      [
+      "Claude + Codex",
+      "Connected to our design & publishing tools to draft captions, build designs and schedule posts"
+     ],
+     [
       "Canva",
       "New post & story templates"
      ],
@@ -382,6 +386,48 @@
       "GA4 + Microsoft Clarity",
       "Traffic & behaviour"
      ]
+    ],
+    "spend": [
+     [
+      "Page builder & premium theme licence",
+      "Annual licence",
+      "600"
+     ],
+     [
+      "SEO plugin (premium)",
+      "Annual licence",
+      "400"
+     ],
+     [
+      "Speed, caching & image optimisation",
+      "Annual licence",
+      "300"
+     ],
+     [
+      "Security & backup",
+      "Annual licence",
+      "300"
+     ],
+     [
+      "WhatsApp chat & quote form",
+      "Plugin licence",
+      "200"
+     ],
+     [
+      "Video hosting (ad-free, for the Al Mays video)",
+      "Annual plan",
+      "400"
+     ],
+     [
+      "Stock photos & footage",
+      "Gaps not covered by our shoot",
+      "500"
+     ],
+     [
+      "Small fixes & contingency",
+      "Ad-hoc help if needed",
+      "300"
+     ]
     ]
    },
    {
@@ -447,6 +493,13 @@
       "Google Ads + GA4",
       "Conversions & cost per client"
      ]
+    ],
+    "spend": [
+     [
+      "SEO tool subscription (Semrush or Ubersuggest)",
+      "Keyword & ranking tracking · 2 months",
+      "1000"
+     ]
     ]
    },
    {
@@ -511,6 +564,23 @@
      [
       "Microsoft Clarity",
       "Landing page behaviour"
+     ]
+    ],
+    "spend": [
+     [
+      "Ad spend · Nov",
+      "Launch & testing (≈ SAR 50 a day)",
+      "1500"
+     ],
+     [
+      "Ad spend · Dec",
+      "Analysis & optimisation",
+      "2000"
+     ],
+     [
+      "Ad spend · Jan",
+      "Optimisation & evaluation",
+      "2500"
      ]
     ]
    }
@@ -620,7 +690,7 @@
      "gpt",
      "💬",
      "ChatGPT campaign",
-     "3-month pilot as proposed",
+     "Ad spend · 3-month pilot",
      [
       1500,
       2000,
@@ -631,7 +701,7 @@
      "web",
      "🌐",
      "Website upgrade",
-     "Tools & plugins, speed, stock assets, video hosting",
+     "Tools & subscriptions (licences, plugins, hosting, stock)",
      [
       2000,
       1000,
@@ -642,7 +712,7 @@
      "google",
      "🔎",
      "Google visibility",
-     "SEO tools & Business Profile assets",
+     "SEO tool subscription",
      [
       500,
       500,
@@ -727,6 +797,13 @@
     "Launch · CTR · cost per click",
     "Live in Nov · tracked weekly",
     "gpt"
+   ],
+   [
+    "Performance",
+    "Clear KPIs for every campaign",
+    "CPL · CPQL · CAC per campaign, every week",
+    "Scale / fix / stop decision per campaign",
+    "perf"
    ],
    [
     "Leads",
@@ -816,6 +893,11 @@
     "New channel",
     "ChatGPT ads just opened to Saudi businesses — an early-mover chance in B2B catering."
    ]
-  ]
+  ],
+  "perfTask": {
+   "id": "IQ5Cz3EFuPqhQ74e4GQQ",
+   "name": "Google Ads campaign performance measurement",
+   "why": "One weekly view of cost per lead, cost per qualified lead and cost per client for every campaign — so we know where to put more money and which campaign to stop."
+  }
  }
 }
