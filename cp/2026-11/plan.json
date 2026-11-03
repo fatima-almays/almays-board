@@ -217,7 +217,7 @@
  ],
  "mp": {
   "title": "November marketing plan",
-  "sub": "Month 1 of a 3-month plan: build a consistent presence, relaunch the website, strengthen search visibility and test ChatGPT as a new lead channel.",
+  "sub": "Month 1 of 3 · build presence, fix the website, get found on Google, launch ChatGPT ads.",
   "kpis": [
    [
     "12",
@@ -283,6 +283,35 @@
      "1 LinkedIn company-activity post a week: contracts, training, certifications, events",
      "Content review & editing before publishing",
      "Photo & video shoot at client sites and the central kitchen"
+    ],
+    "method": [
+     "Monthly content calendar approved on the board",
+     "Design every post in the new template",
+     "Review & edit before publishing",
+     "Schedule posts and stories in advance",
+     "Check insights every Monday"
+    ],
+    "tools": [
+     [
+      "Canva",
+      "New post & story templates"
+     ],
+     [
+      "Meta Business Suite",
+      "Scheduling & Instagram insights"
+     ],
+     [
+      "LinkedIn Page",
+      "Publishing & analytics"
+     ],
+     [
+      "CapCut",
+      "Short videos from site footage"
+     ],
+     [
+      "Marketing board",
+      "Content calendar & approvals"
+     ]
     ]
    },
    {
@@ -320,6 +349,39 @@
      "Replace all photos with the new shoot",
      "Keywords on every page",
      "New company profile + Al Mays video on the home page"
+    ],
+    "method": [
+     "Audit every page and list issues",
+     "Fix broken pages, links and counters",
+     "Replace photos and refresh content",
+     "Add keywords, titles and descriptions",
+     "Launch and track visits & quote requests"
+    ],
+    "tools": [
+     [
+      "Website CMS",
+      "Page edits & new sections"
+     ],
+     [
+      "Screaming Frog (free)",
+      "Find broken links & pages"
+     ],
+     [
+      "PageSpeed Insights",
+      "Speed check"
+     ],
+     [
+      "Squoosh / TinyPNG",
+      "Compress new photos"
+     ],
+     [
+      "WhatsApp chat button",
+      "Instant contact"
+     ],
+     [
+      "GA4 + Microsoft Clarity",
+      "Traffic & behaviour"
+     ]
     ]
    },
    {
@@ -356,6 +418,35 @@
      "Keyword list (AR/EN) by service, sector and city",
      "New page titles & descriptions",
      "Review requests from satisfied clients"
+    ],
+    "method": [
+     "Build the keyword list by service, sector and city",
+     "Optimise page titles and descriptions",
+     "Complete and post weekly on Business Profile",
+     "Collect reviews from satisfied clients",
+     "Track rankings and organic traffic"
+    ],
+    "tools": [
+     [
+      "Google Search Console",
+      "Rankings & indexing"
+     ],
+     [
+      "Google Keyword Planner",
+      "Keyword research"
+     ],
+     [
+      "Google Business Profile",
+      "Local visibility & reviews"
+     ],
+     [
+      "SEO tool (Ubersuggest / Semrush)",
+      "Keyword tracking"
+     ],
+     [
+      "Google Ads + GA4",
+      "Conversions & cost per client"
+     ]
     ]
    },
    {
@@ -392,6 +483,35 @@
      "Landing page + tracking (GA4, GTM, Clarity)",
      "Launch month 1 with SAR 1,500 (≈ SAR 50 a day)",
      "Weekly performance check and optimisation"
+    ],
+    "method": [
+     "Open OpenAI Ads Manager and install the pixel",
+     "Create ad groups for the 6 target sectors",
+     "Send clicks to a Request a quote landing page",
+     "Launch at about SAR 50 a day",
+     "Optimise weekly, report monthly"
+    ],
+    "tools": [
+     [
+      "OpenAI Ads Manager",
+      "Campaigns & reporting"
+     ],
+     [
+      "OpenAI Pixel / Conversions API",
+      "Conversion tracking"
+     ],
+     [
+      "Google Tag Manager",
+      "Events"
+     ],
+     [
+      "GA4",
+      "Traffic & leads"
+     ],
+     [
+      "Microsoft Clarity",
+      "Landing page behaviour"
+     ]
     ]
    }
   ],
