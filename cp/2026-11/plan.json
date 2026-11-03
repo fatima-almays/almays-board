@@ -433,74 +433,94 @@
    {
     "id": "google",
     "icon": "🔎",
-    "name": "Google visibility",
+    "name": "Google Ads & SEO",
     "short": "Google",
     "color": "#4285F4",
-    "aim": "Show up when companies search for catering in Saudi Arabia.",
+    "aim": "Show up — paid and organic — when companies search for catering in Saudi Arabia, and pay only for clicks that become quote requests.",
     "kpis": [
      [
-      "+5–10%",
-      "organic visits"
+      "3",
+      "paid campaigns"
      ],
      [
-      "100%",
-      "Business Profile"
+      "SAR 2,000",
+      "ads / month"
      ],
      [
-      "All",
-      "pages with keywords"
+      "10–20",
+      "leads / month"
      ],
      [
-      "Ready",
-      "Ads tracking & CAC"
+      "≤ SAR 200",
+      "cost per lead"
      ]
     ],
     "img": [
      "mp_g.jpg"
     ],
     "items": [
-     "Google Ads tracking & CAC dashboard",
-     "Google Business Profile: photos, services, hours, weekly posts",
-     "Keyword list (AR/EN) by service, sector and city",
-     "New page titles & descriptions",
-     "Review requests from satisfied clients"
+     "Campaign 1 · Search (Arabic): contract catering by sector & city",
+     "Campaign 2 · Search (English): corporate & industrial catering in KSA",
+     "Campaign 3 · Remarketing: Display & YouTube with the corporate video to past visitors",
+     "Conversion tracking: quote form, calls, WhatsApp clicks",
+     "SEO: keywords on every page, titles & descriptions, Business Profile & reviews"
     ],
     "method": [
-     "Build the keyword list by service, sector and city",
-     "Optimise page titles and descriptions",
-     "Complete and post weekly on Business Profile",
-     "Collect reviews from satisfied clients",
-     "Track rankings and organic traffic"
+     "Set up conversions first (form, call, WhatsApp) in Google Ads + GTM + GA4",
+     "Build keyword groups by sector × city; add negatives (jobs, recipes, home catering)",
+     "Launch the 2 Search campaigns; send clicks to the Request a quote page",
+     "Start remarketing once 1,000+ visitors are in the audience",
+     "Review weekly on the performance board: scale, fix or stop each campaign by CPL/CPQL"
     ],
     "tools": [
      [
-      "Google Search Console",
-      "Rankings & indexing"
+      "Google Ads",
+      "3 campaigns, bidding, search terms & negatives"
+     ],
+     [
+      "Google Tag Manager + GA4",
+      "Form, call & WhatsApp conversions"
      ],
      [
       "Google Keyword Planner",
-      "Keyword research"
+      "Keyword volumes & CPC by city"
+     ],
+     [
+      "Semrush",
+      "Keyword & ranking tracking, competitor ads"
+     ],
+     [
+      "Google Search Console",
+      "Organic visibility"
      ],
      [
       "Google Business Profile",
       "Local visibility & reviews"
-     ],
-     [
-      "SEO tool (Ubersuggest / Semrush)",
-      "Keyword tracking"
-     ],
-     [
-      "Google Ads + GA4",
-      "Conversions & cost per client"
      ]
     ],
     "spend": [
      [
-      "SEO tool subscription (Semrush or Ubersuggest)",
-      "Keyword & ranking tracking · 2 months",
-      "1000"
+      "Campaign 1 · Search Arabic",
+      "Contract catering by sector & city · SAR 1,200 / month",
+      "3600"
+     ],
+     [
+      "Campaign 2 · Search English",
+      "Corporate & industrial catering KSA · SAR 500 / month",
+      "1500"
+     ],
+     [
+      "Campaign 3 · Remarketing",
+      "Display & YouTube (corporate video) · SAR 300 / month",
+      "900"
+     ],
+     [
+      "Semrush Pro",
+      "Keyword & ranking tracking · ≈ USD 140 / month",
+      "1500"
      ]
-    ]
+    ],
+    "note": "Targets based on 2026 benchmarks (business services CPC ≈ USD 5.9, conversion ≈ 4.9%). Replace with our account data after month 1."
    },
    {
     "id": "gpt",
@@ -771,7 +791,7 @@
    "note": "ChatGPT ads are open to Saudi businesses through OpenAI Ads Manager; campaigns start from about SAR 50 a day."
   },
   "budget": {
-   "total": 11500,
+   "total": 18000,
    "note": "Proposed allocation for the plan period (Nov–Jan): ChatGPT pilot, website tools, Google SEO tool and WhatsApp lead capture. Social media runs in-house.",
    "lines": [
     [
@@ -799,12 +819,12 @@
     [
      "google",
      "🔎",
-     "Google visibility",
-     "SEO tool subscription",
+     "Google Ads & SEO",
+     "3 ad campaigns (SAR 2,000/month) + SEO tool",
      [
-      500,
-      500,
-      0
+      2500,
+      2500,
+      2500
      ]
     ],
     [
@@ -885,9 +905,9 @@
    ],
    [
     "Search",
-    "Be found for catering searches in KSA",
-    "Organic visits · Business Profile",
-    "+5–10% · 100% complete",
+    "Be found on Google — paid & organic",
+    "Leads & CPL per campaign · organic visits",
+    "10–20 leads/month · CPL ≤ SAR 200 · +5–10% organic",
     "google"
    ],
    [
