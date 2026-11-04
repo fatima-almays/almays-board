@@ -1238,6 +1238,16 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 #pl-bud .pl-one{margin:0 0 16px}.pl-orow td{background:#FFFBEF}.pl-orow .pl-otag{font-size:10px}.pl-grand td{background:var(--d)!important;color:#fff!important}.pl-grand td small{color:#cfe0c4}
 .pl-oc{display:inline-flex;align-items:center;gap:10px;background:#FFFBEF;border:1px solid #EADFB5;border-radius:999px;padding:6px 14px 6px 6px;margin:0 0 14px;font-size:13px}.pl-oi{width:30px;height:30px;border-radius:50%;background:#C9A227;display:grid;place-items:center;font-size:15px}.pl-oc b{color:var(--d)}.pl-oc small{color:var(--mut);margin-left:6px;font-size:11.5px}.pl-oc em{font-style:normal;font-weight:800;color:#8A6D0B}.pl-oc .pl-otag{font-size:9.5px;padding:2px 8px}
 @media(max-width:900px){.pl-oc{border-radius:16px;flex-wrap:wrap}.pl-oc small{display:block;margin:0}}
+.pl-toc{display:flex;align-items:center;gap:8px}.pl-toc nav{flex:1;min-width:0}
+.pl-xbtn{all:unset;cursor:pointer;flex:0 0 auto;background:var(--l);color:var(--d);font-weight:800;font-size:12.5px;padding:10px 14px;border-radius:12px;white-space:nowrap}.pl-xbtn:hover{filter:brightness(.95)}
+.plx-ov{position:fixed;inset:0;z-index:9999;background:rgba(15,30,24,.45);display:grid;place-items:center;padding:16px}
+.plx{--d:#1F3A30;--l:#A9C47F;width:min(440px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:20px;padding:18px 20px;box-shadow:0 30px 60px rgba(0,0,0,.25);font-family:inherit;color:#1c2a24}
+.plx-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.plx-h b{font-size:18px;color:var(--d)}.plx-x{all:unset;cursor:pointer;font-size:16px;color:#62716a;padding:4px 8px}
+.plx-l{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#43695B;margin:10px 0 6px}
+.plx-pre{display:flex;flex-wrap:wrap;gap:6px}.plx-pre button{all:unset;cursor:pointer;font-size:12.5px;font-weight:700;padding:7px 11px;border-radius:999px;background:#F2F6EF;color:var(--d)}.plx-pre button.on{background:var(--d);color:#fff}
+.plx-list{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}.plx-list label{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:6px 4px;border-radius:8px;cursor:pointer}.plx-list label:hover{background:#F6F9F4}.plx-list input{accent-color:#1F3A30;width:16px;height:16px}
+.plx-f{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid #e2e9e4}.plx-n{font-size:12px;color:#62716a}.plx-go{all:unset;cursor:pointer;background:var(--d);color:#fff;font-weight:800;font-size:13.5px;padding:11px 16px;border-radius:12px}
+@media(max-width:900px){.pl-xbtn{padding:9px 10px;font-size:12px}.plx-list{grid-template-columns:1fr}}
 .mp-lb{position:fixed;inset:0;z-index:9999;background:rgba(10,20,16,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:mpIn .2s}
 .mp-lb img{max-width:100%;max-height:100%;border-radius:14px}.mp-lb button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
 @media(max-width:1000px){.mp-kpis{grid-template-columns:repeat(3,1fr)}.mp-pills{grid-template-columns:repeat(2,1fr)}}
@@ -2831,7 +2841,7 @@ const PAL=["#3DDC84","#4DD8E6","#FFD166","#A47CFF","#FFA94D","#AEC486","#5AA9FF"
 const KPIS=[["leads","Leads","",1],["sql","Qualified leads (SQL)","",1],["cpl","Cost per lead","SAR",-1],["visits","Website visits","",1],["organic","Organic visits (SEO)","",1],["followers","Social followers (total)","",1],["engagement","Engagement rate","%",1],["adspend","Ad spend","SAR",-1],["contracts","Contracts from marketing","",1]];
 const PLAN_ST=["Planned","In Progress","Done","Cancelled"];
 const MON={month:null,tab:"plan",docs:{},plans:[],pending:false,adding:false};
-{const v=new URLSearchParams(location.search).get("view"); if(v==="calendar"){MON.tab="content"; W.page="month"; let n=0; const t=setInterval(()=>{const el=document.querySelector(".cx"); if(el&&el.querySelector(".cx-tabs")){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);}}
+{const q=new URLSearchParams(location.search),v=q.get("view"); if(v==="plan"){MON.tab="plan"; W.page="month"; const pp=q.get("p"); if(pp){try{store.set("almays-plpage","pl-"+pp.replace(/^pl-/,""))}catch(_){}} let n=0; const t=setInterval(()=>{const el=document.getElementById("mpRoot"); if(el&&el.dataset.pl){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);} if(v==="calendar"){MON.tab="content"; W.page="month"; let n=0; const t=setInterval(()=>{const el=document.querySelector(".cx"); if(el&&el.querySelector(".cx-tabs")){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);}}
 const monthOf=s=>String(s||"").slice(0,7);
 const monthName=m=>{const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,1)).toLocaleDateString("en-GB",{month:"long",year:"numeric",timeZone:"UTC"})};
 const shiftMonth=(m,d)=>{const [y,mo]=m.split("-").map(Number); const t=new Date(Date.UTC(y,mo-1+d,1)); return t.toISOString().slice(0,7)};
@@ -3060,7 +3070,7 @@ function mpView(m){
   const arc=(s,e,r=70,w=26)=>{const p=(t)=>[100+r*Math.sin(2*Math.PI*t),100-r*Math.cos(2*Math.PI*t)];const [x1,y1]=p(s),[x2,y2]=p(e-0.0005);return `M${x1.toFixed(2)} ${y1.toFixed(2)} A${r} ${r} 0 ${e-s>0.5?1:0} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`;};
   const donut=`<div class="pl-donut" data-tot="${plSar(tot)}"><svg viewBox="0 0 200 200">${segs.map(x=>`<path d="${arc(x.s,x.e)}" stroke="${shade[x.id]}" data-plseg="${x.id}" data-n="${esc(x.n)}" data-v="${plSar(x.v)}" data-p="${Math.round(x.v/tot*100)}%"/>`).join("")}</svg><div class="pl-dc"><small id="plDcN">Total budget</small><b id="plDcV">${plSar(tot)}</b><small id="plDcP">Nov–Jan</small></div></div>`;
   return `<div class="pl" id="mpRoot">
-   <aside class="pl-toc"><b>November plan</b><nav>${toc.map(([id,l],k)=>`<a href="#${id}" data-plgo="${id}" class="${k?"":"on"}">${esc(l)}</a>`).join("")}</nav></aside>
+   <aside class="pl-toc"><b>November plan</b><nav>${toc.map(([id,l],k)=>`<a href="#${id}" data-plgo="${id}" class="${k?"":"on"}">${esc(l)}</a>`).join("")}</nav><button type="button" class="pl-xbtn" data-plexp title="Export a report">⬇ Export</button></aside>
    <div class="pl-doc">
    <section class="pl-page" id="pl-sum"><div class="pl-cover"><div class="pl-cl"><span class="pl-eb lt">${esc(monthName(m))} · Marketing plan</span><h2>${esc(M.title)}</h2><p>${esc(M.sub)}</p>
       <p class="pl-goal"><span>Main goal</span>${esc(M.main.replace(/^Main goal:\s*/,""))}</p>
@@ -3096,6 +3106,51 @@ document.addEventListener("click",e=>{
   const v=e.target.closest("[data-mpimg]"); if(v){ const d=document.createElement("div"); d.className="mp-lb"; d.innerHTML=`<img src="${v.dataset.mpimg}" alt=""><button type="button" aria-label="Close">✕</button>`; d.addEventListener("click",()=>d.remove()); document.body.appendChild(d); }
 });
 
+
+/* ---- plan report export ---- */
+function plExpOpen(){ const r=document.getElementById("mpRoot"); if(!r) return;
+  const secs=[...r.querySelectorAll(".pl-toc [data-plgo]")].map(a=>[a.dataset.plgo,a.textContent]);
+  const pre=[["all","Full plan",secs.map(x=>x[0])],["bud","Budget only",["pl-bud"]],["sb","Summary + Budget",["pl-sum","pl-bud"]],["ch","Channels",secs.filter(x=>!/pl-(sum|sit|obj|bud|mr)$/.test(x[0])).map(x=>x[0])],["kpi","Objectives & KPIs",["pl-obj","pl-mr"]]];
+  const d=document.createElement("div"); d.className="plx-ov";
+  d.innerHTML=`<div class="plx" role="dialog" aria-label="Export report"><div class="plx-h"><b>Export report</b><button type="button" class="plx-x" aria-label="Close">✕</button></div>
+   <small class="plx-l">Quick pick</small><div class="plx-pre">${pre.map(([k,l])=>`<button type="button" data-pre="${k}">${l}</button>`).join("")}</div>
+   <small class="plx-l">Sections</small><div class="plx-list">${secs.map(([id,l])=>`<label><input type="checkbox" value="${id}" checked><span>${esc(l)}</span></label>`).join("")}</div>
+   <div class="plx-f"><span class="plx-n"></span><button type="button" class="plx-go">Create report · PDF</button></div></div>`;
+  document.body.appendChild(d);
+  const boxes=[...d.querySelectorAll("input")], cnt=()=>{d.querySelector(".plx-n").textContent=boxes.filter(b=>b.checked).length+" of "+boxes.length+" sections";};
+  cnt(); d.addEventListener("change",cnt);
+  d.addEventListener("click",e=>{ if(e.target===d||e.target.closest(".plx-x")) return d.remove();
+    const p=e.target.closest("[data-pre]"); if(p){ const ids=pre.find(x=>x[0]===p.dataset.pre)[2]; boxes.forEach(b=>b.checked=ids.includes(b.value)); d.querySelectorAll("[data-pre]").forEach(x=>x.classList.toggle("on",x===p)); cnt(); return; }
+    if(e.target.closest(".plx-go")){ const ids=boxes.filter(b=>b.checked).map(b=>b.value); if(!ids.length) return; plExport(ids); d.remove(); } });
+}
+function plExport(ids){ const r=document.getElementById("mpRoot"); if(!r) return;
+  const labs=Object.fromEntries([...r.querySelectorAll(".pl-toc [data-plgo]")].map(a=>[a.dataset.plgo,a.textContent]));
+  const css=[...document.querySelectorAll("style")].map(x=>x.outerHTML).join("")+[...document.querySelectorAll('link[rel="stylesheet"]')].map(x=>x.outerHTML).join("");
+  const parts=ids.map(id=>{const sct=r.querySelector("#"+id); if(!sct) return ""; const c=sct.cloneNode(true); c.hidden=false; c.removeAttribute("hidden"); c.querySelectorAll("[id]").forEach(x=>x.removeAttribute("id")); return `<div class="rp-pg">${c.outerHTML}</div>`;}).join("");
+  const title=(r.querySelector(".pl-cover h2")||{}).textContent||"Marketing plan";
+  const only=ids.length===1?labs[ids[0]]:(ids.length===Object.keys(labs).length?"Full plan":ids.map(i=>labs[i]).join(" · "));
+  const dt=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+  const w=window.open("","_blank"); if(!w){ alert("Please allow pop-ups to export the report."); return; }
+  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)} — ${esc(only)}</title><base href="${location.href.split("#")[0]}">${css}
+<style>html,body{background:#fff!important}body{margin:0;font-family:Montserrat,Segoe UI,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.rp{max-width:1080px;margin:0 auto;padding:28px}.rp-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:3px solid #1F3A30;padding-bottom:14px;margin-bottom:20px}
+.rp-hd small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#43695B;text-transform:uppercase}.rp-hd h1{margin:4px 0 0;font-size:26px;color:#1F3A30}.rp-hd p{margin:4px 0 0;color:#62716a;font-size:13px}
+.rp-hd .rt{text-align:right;font-size:12px;color:#62716a}.rp-hd .rt b{display:block;color:#1F3A30;font-size:14px}
+.rp-bar{position:sticky;top:0;z-index:9;display:flex;justify-content:center;gap:10px;padding:10px;background:#1F3A30}.rp-bar button{all:unset;cursor:pointer;background:#A9C47F;color:#1F3A30;font-weight:800;padding:9px 18px;border-radius:10px;font-size:14px}.rp-bar button.g{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.rp-pg{margin-bottom:22px}.rp-pg+.rp-pg{break-before:page}.pl-doc>section{box-shadow:none!important;border:1px solid #e2e9e4}
+.pl-ch .pl-ex{transform:none!important;box-shadow:none!important}.pl-ch:before{display:none}.pl-xbtn,.pl-pager,.pl-perf button{display:none!important}
+.pl-blk,.pl-spend,.pl-bcard,.pl-tbl tr,.pl-sl li,.pl-sit>div,.pl-one{break-inside:avoid}
+.rp-ft{margin-top:24px;padding-top:10px;border-top:1px solid #e2e9e4;font-size:11px;color:#62716a;display:flex;justify-content:space-between}
+@media print{.rp-bar{display:none}.rp{padding:0;max-width:none}@page{size:A4;margin:12mm}}</style></head>
+<body><div class="rp-bar"><button onclick="print()">Print / Save as PDF</button><button class="g" onclick="close()">Close</button></div>
+<div class="rp"><div class="rp-hd"><div><small>Al Mays Catering Solutions · Marketing</small><h1>${esc(title)}</h1><p>Report: ${esc(only)}</p></div><div class="rt"><b>${esc(dt)}</b>Prepared by Marketing</div></div>
+<div class="pl" id="mpRoot"><div class="pl-doc">${parts}</div></div>
+<div class="rp-ft"><span>Al Mays Catering Solutions · Marketing Weekly Board</span><span>${esc(dt)}</span></div></div></body></html>`);
+  w.document.close();
+  const go=()=>{ const imgs=[...w.document.images]; Promise.all(imgs.map(i=>i.complete?1:new Promise(z=>{i.onload=i.onerror=z}))).then(()=>setTimeout(()=>{try{w.focus();w.print()}catch(_){}} ,400)); };
+  if(w.document.readyState==="complete") go(); else w.addEventListener("load",go);
+}
+document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest("[data-plexp]")) plExpOpen(); });
 function mpHdr(){ const hd=document.querySelector("header"); if(hd) document.documentElement.style.setProperty("--hdr",(/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+"px"); }
 window.addEventListener("resize",mpHdr);
 
