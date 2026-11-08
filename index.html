@@ -3125,32 +3125,32 @@ function plExpOpen(){ const r=document.getElementById("mpRoot"); if(!r) return;
 }
 function plExport(ids){ const r=document.getElementById("mpRoot"); if(!r) return;
   const labs=Object.fromEntries([...r.querySelectorAll(".pl-toc [data-plgo]")].map(a=>[a.dataset.plgo,a.textContent]));
-  const css=[...document.querySelectorAll("style")].map(x=>x.outerHTML).join("")+[...document.querySelectorAll('link[rel="stylesheet"]')].map(x=>x.outerHTML).join("");
-  const parts=ids.map(id=>{const sct=r.querySelector("#"+id); if(!sct) return ""; const c=sct.cloneNode(true); c.hidden=false; c.removeAttribute("hidden"); c.querySelectorAll("[id]").forEach(x=>x.removeAttribute("id")); return `<div class="rp-pg">${c.outerHTML}</div>`;}).join("");
+  const css=[...document.querySelectorAll("style")].map(x=>x.outerHTML.replace(/@media\s*\(\s*max-width\s*:\s*\d+px\s*\)/g,"@media (max-width:1px)")).join("")+[...document.querySelectorAll('link[rel="stylesheet"]')].map(x=>x.outerHTML).join("");
+  const parts=ids.map(id=>{const sct=r.querySelector("#"+id); if(!sct) return ""; const c=sct.cloneNode(true); c.hidden=false; c.removeAttribute("hidden"); c.querySelectorAll("[id]").forEach(x=>x.removeAttribute("id")); c.querySelectorAll("img[loading]").forEach(x=>x.removeAttribute("loading")); return `<div class="rp-pg">${c.outerHTML}</div>`;}).join("");
   const title=(r.querySelector(".pl-cover h2")||{}).textContent||"Marketing plan";
   const only=ids.length===1?labs[ids[0]]:(ids.length===Object.keys(labs).length?"Full plan":ids.map(i=>labs[i]).join(" · "));
   const dt=new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
   const w=window.open("","_blank"); if(!w){ alert("Please allow pop-ups to export the report."); return; }
   w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc(title)} — ${esc(only)}</title><base href="${location.href.split("#")[0]}">${css}
 <style>html,body{background:#fff!important}body{margin:0;font-family:Montserrat,Segoe UI,Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.rp{max-width:1080px;margin:0 auto;padding:28px}.rp-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:3px solid #1F3A30;padding-bottom:14px;margin-bottom:20px}
+.rp{width:1080px;margin:0 auto;padding:28px;box-sizing:border-box}.rp-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:3px solid #1F3A30;padding-bottom:14px;margin-bottom:20px}
 .rp-lg{display:flex;align-items:center;gap:18px}.rp-lg img{height:58px;width:auto;flex:0 0 auto}.rp-ft img{height:18px;vertical-align:middle;margin-right:8px}.rp-hd small{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#43695B;text-transform:uppercase}.rp-hd h1{margin:4px 0 0;font-size:26px;color:#1F3A30}.rp-hd p{margin:4px 0 0;color:#62716a;font-size:13px}
 .rp-hd .rt{text-align:right;font-size:12px;color:#62716a}.rp-hd .rt b{display:block;color:#1F3A30;font-size:14px}
-.rp-bar{position:sticky;top:0;z-index:9;display:flex;justify-content:center;gap:10px;padding:10px;background:#1F3A30}.rp-bar button{all:unset;cursor:pointer;background:#A9C47F;color:#1F3A30;font-weight:800;padding:9px 18px;border-radius:10px;font-size:14px}.rp-bar button.g{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+.rp-bar{position:sticky;top:0;z-index:9;display:flex;justify-content:center;gap:10px;padding:10px;background:#1F3A30}.rp-bar button{all:unset;cursor:pointer;background:#A9C47F;color:#1F3A30;font-weight:800;padding:9px 18px;border-radius:10px;font-size:14px}.rp-tip{color:#cfe0c4;font-size:12px;align-self:center}.rp-tip b{color:#fff}.rp-bar button.g{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
 .rp-pg{margin-bottom:22px}.rp-pg+.rp-pg{break-before:page}.pl-doc>section{box-shadow:none!important;border:1px solid #e2e9e4}
 .pl-ch .pl-ex{transform:none!important;box-shadow:none!important}.pl-ch:before{display:none}.pl-xbtn,.pl-pager,.pl-perf button{display:none!important}
 .pl-blk,.pl-spend,.pl-bcard,.pl-tbl tr,.pl-sl li,.pl-sit>div,.pl-one{break-inside:avoid}
 .rp-ft{margin-top:24px;padding-top:10px;border-top:1px solid #e2e9e4;font-size:11px;color:#62716a;display:flex;justify-content:space-between}
-@media print{.rp-bar{display:none}.rp{padding:0;max-width:none}@page{size:A4;margin:12mm}}</style></head>
-<body><div class="rp-bar"><button onclick="print()">Print / Save as PDF</button><button class="g" onclick="close()">Close</button></div>
+@media print{.rp-bar{display:none}html{zoom:.66}.rp{padding:0}@page{size:A4;margin:10mm}}</style></head>
+<body><div class="rp-bar"><button onclick="print()">⬇ Save as PDF / Print</button><button class="g" onclick="close()">Close</button><span class="rp-tip">Choose <b>Save as PDF</b> and turn on <b>Background graphics</b> (More settings)</span></div>
 <div class="rp"><div class="rp-hd"><div class="rp-lg"><img src="${LOGO_COLOR}" alt="Al Mays Catering Solutions"><div><small>Al Mays Catering Solutions · Marketing</small><h1>${esc(title)}</h1><p>Report: ${esc(only)}</p></div></div><div class="rt"><b>${esc(dt)}</b>Prepared by Marketing</div></div>
 <div class="pl" id="mpRoot"><div class="pl-doc">${parts}</div></div>
 <div class="rp-ft"><span><img src="${LOGO_COLOR}" alt="">Al Mays Catering Solutions · Marketing Weekly Board</span><span>${esc(dt)}</span></div></div></body></html>`);
   w.document.close();
-  const go=()=>{ const imgs=[...w.document.images]; Promise.all(imgs.map(i=>i.complete?1:new Promise(z=>{i.onload=i.onerror=z}))).then(()=>setTimeout(()=>{try{w.focus();w.print()}catch(_){}} ,400)); };
-  if(w.document.readyState==="complete") go(); else w.addEventListener("load",go);
+  /* native print: desktop layout is forced via the neutralised media queries + zoom */
 }
 document.addEventListener("click",e=>{ if(e.target.closest&&e.target.closest("[data-plexp]")) plExpOpen(); });
+document.addEventListener("keydown",e=>{ if((e.ctrlKey||e.metaKey)&&(e.key==="p"||e.key==="P")){ const r=document.getElementById("mpRoot"); if(r&&r.offsetParent&&!document.querySelector(".plx-ov")){ e.preventDefault(); plExpOpen(); } } });
 function mpHdr(){ const hd=document.querySelector("header"); if(hd) document.documentElement.style.setProperty("--hdr",(/sticky|fixed/.test(getComputedStyle(hd).position)?hd.offsetHeight:0)+"px"); }
 window.addEventListener("resize",mpHdr);
 
