@@ -1248,6 +1248,15 @@ article.task[data-id]:hover{border-color:#AEC486;box-shadow:0 6px 18px rgba(58,8
 .plx-list{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}.plx-list label{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:6px 4px;border-radius:8px;cursor:pointer}.plx-list label:hover{background:#F6F9F4}.plx-list input{accent-color:#1F3A30;width:16px;height:16px}
 .plx-f{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid #e2e9e4}.plx-n{font-size:12px;color:#62716a}.plx-go{all:unset;cursor:pointer;background:var(--d);color:#fff;font-weight:800;font-size:13.5px;padding:11px 16px;border-radius:12px}
 @media(max-width:900px){.pl-xbtn{padding:9px 10px;font-size:12px}.plx-list{grid-template-columns:1fr}}
+.pl.mr .mr-hl{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:6px}.pl.mr .mr-hl li{position:relative;padding-left:18px;font-size:13.5px;line-height:1.45;color:#e9f0e6}.pl.mr .mr-hl li:before{content:"";position:absolute;left:2px;top:7px;width:7px;height:7px;border-radius:50%;background:#A9C47F}
+.mr-rep{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}.mr-rep:last-child{border:0}.mr-rep b{display:block;font-size:24px;color:#A9C47F}.mr-rep small{color:#cfe0c4;font-size:12px}
+.mr-head div em{display:block;font-style:normal;font-size:11.5px;color:#2E8B57;font-weight:700;margin-top:3px}
+.mr-work{margin-top:14px;background:#F6F9F4;border-radius:16px;padding:14px 16px}.mr-work h4{margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#43695B}.mr-work>div{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.mr-work span{background:#fff;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px}.mr-work i{font-style:normal;font-size:18px}.mr-work b{font-size:20px;color:#1F3A30}.mr-work small{font-size:11.5px;color:#62716a}
+.pl-2c{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.pl.mr .mt{margin-top:14px}.pl.mr .pl-blk .pl-tbl{margin:0}.pl.mr .pl-tbl td,.pl.mr .pl-tbl th{font-size:12.5px;padding:7px 8px}
+.mr-gal{display:grid;gap:8px}.mr-gal.g4{grid-template-columns:repeat(4,1fr)}.mr-gal.g6{grid-template-columns:repeat(6,1fr)}.mr-gal.g1{grid-template-columns:1fr}.mr-gal button,.mr-pimg{all:unset;cursor:zoom-in;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--ln)}.mr-gal img{display:block;width:100%;height:auto}.mr-gal.g1 img{max-height:280px;object-fit:cover;object-position:top}
+.mr-posts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.mr-pimg img{display:block;width:100%;height:190px;object-fit:cover;object-position:top}.mr-pst{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}.mr-pst span{background:color-mix(in srgb,var(--ac) 8%,#fff);border-radius:8px;padding:6px 8px}.mr-pst b{display:block;color:var(--ac);font-size:14px}.mr-pst small{font-size:10.5px;color:#62716a}
+.mr-rec{margin:6px 0 10px;font-size:13px;line-height:1.5;background:color-mix(in srgb,var(--ac) 8%,#fff);border-radius:10px;padding:9px 11px}.mr-sub{margin:14px 0 6px!important}.mr-chg{font-weight:800}.mr-chg.up{color:#2E8B57}.mr-chg.down{color:#C0392B}.mr-ins{margin-top:12px}
+@media(max-width:900px){.pl-2c,.mr-posts{grid-template-columns:1fr}.mr-work>div{grid-template-columns:repeat(2,1fr)}.mr-gal.g4,.mr-gal.g6{grid-template-columns:repeat(3,1fr)}.pl.mr .pl-tbl{overflow-x:auto}}
 .mp-lb{position:fixed;inset:0;z-index:9999;background:rgba(10,20,16,.86);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:mpIn .2s}
 .mp-lb img{max-width:100%;max-height:100%;border-radius:14px}.mp-lb button{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
 @media(max-width:1000px){.mp-kpis{grid-template-columns:repeat(3,1fr)}.mp-pills{grid-template-columns:repeat(2,1fr)}}
@@ -2918,6 +2927,7 @@ function planRow(p,can,report){
    ${can&&!report?`<button class="mi-x" type="button" data-pdel="${esc(p.id)}" aria-label="Delete activity"><svg class="i"><use href="#i-x"/></svg></button>`:""}</div>`;
 }
 function reportView(m,D,plans,can){
+  cpLoad(m); { const mr=mrView(m); if(mr) return mr; }
   const ts=monthTasks(m), d=ts.filter(t=>t.status==="Done"), ip=ts.filter(t=>t.status==="In Progress"), lt=ts.filter(late), p=ts.length?d.length/ts.length:0;
   const pm=shiftMonth(m,-1), PD=mdoc(pm);
   const pd2=plans.filter(x=>x.status==="Done").length, bud=plans.reduce((s,x)=>s+(num(x.budget)||0),0), spent=plans.reduce((s,x)=>s+(num(x.spent)||0),0);
@@ -2980,7 +2990,7 @@ function cpItems(P){const it=[]; (P.posts||[]).forEach(p=>it.push(Object.assign(
 function cpPlat(list){return (list||[]).map(p=>{const c=CP_PLAT[p]||[p[0],"#43695B"]; return `<span class="cx-pl" style="--pc:${c[1]}" title="${esc(p)}"><b>${c[0]}</b>${esc(p)}</span>`}).join("");}
 function cpCopy(t,l){return `<button type="button" class="cx-copy" data-cpcopy="${esc(encodeURIComponent(t))}">${l}</button>`;}
 function contentView(m){
-  const P=CP.docs[m]; if(!P){ cpLoad(m); return `<div class="cx-empty"><b>${CP.loading[m]?"Loading the plan…":"No marketing plan for "+esc(monthName(m))+" yet"}</b></div>`; }
+  const P=CP.docs[m]; if(!P||!P.posts){ cpLoad(m); return `<div class="cx-empty"><b>${CP.loading[m]&&!P?"Loading the plan…":"No content calendar for "+esc(monthName(m))+" yet"}</b></div>`; }
   const items=cpItems(P), posts=P.posts||[], mails=P.emails||[], S=P.seo||{};
   const tabs=[["cal","📅","Calendar"],["posts","📱","Posts",posts.length],["mail","✉️","Bulk emails",mails.length],["goals","🎯","Goals"]];
   const [y,mo]=m.split("-").map(Number), first=new Date(Date.UTC(y,mo-1,1)).getUTCDay(), nd=new Date(Date.UTC(y,mo,0)).getUTCDate();
@@ -3046,6 +3056,44 @@ document.addEventListener("click",e=>{
   const c=e.target.closest("[data-cpcopy]"); if(c){const t=decodeURIComponent(c.dataset.cpcopy), o2=c.textContent; const ok=()=>{c.textContent="Copied ✓"; setTimeout(()=>c.textContent=o2,1400)}; try{navigator.clipboard.writeText(t).then(ok,ok)}catch(_){ok()} return;}
 });
 document.addEventListener("keydown",e=>{ if(!CP.open) return; if(e.key==="Escape") cpClose(); const P=CP.docs[curMonth()]; if(!P) return; const it=cpItems(P), i=it.findIndex(x=>x.id===CP.open); if(e.key==="ArrowRight"&&it[i+1]) cpModal(curMonth(),it[i+1].id); if(e.key==="ArrowLeft"&&it[i-1]) cpModal(curMonth(),it[i-1].id); });
+/* ---------- MONTHLY: report document (cp/<month>/plan.json → mr) ---------- */
+function mrView(m){
+  const P=CP.docs[m], R=P&&P.mr; if(!R) return "";
+  const img=(f,cls)=>`<button type="button" class="${cls||""}" data-mpimg="${cpSrc(m,f)}"><img src="${cpSrc(m,f)}" alt="" loading="lazy"></button>`;
+  const stats=a=>`<div class="pl-stats">${a.map(([v,l])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div>`;
+  const tbl=(h,rows,tcol)=>`<div class="pl-tbl"><table><thead><tr>${h.map(x=>`<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?"":i>=(tcol||99)?' class="t"':""}>${i===0?`<b>${esc(String(c))}</b>`:esc(String(c))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  const ch=(id,ic,eb,title,aim,col,kp,ex,body)=>`<section class="pl-sec pl-ch" id="${id}" style="--ac:${col}"><div class="pl-top ${ex?"":"one"}"><div class="pl-topL"><div class="pl-sh"><span class="pl-eb">${ic} ${eb}</span><h3>${esc(title)}</h3>${aim?`<p>${esc(aim)}</p>`:""}</div>${kp?stats(kp):""}</div>${ex?`<aside class="pl-ex"><h4>${ex[0]}</h4><div class="pl-vis">${img(ex[1])}</div><small class="pl-note">Tap to enlarge</small></aside>`:""}</div>${body}</section>`;
+  const blk=(n,t,inner,cls)=>`<div class="pl-blk ${cls||""}"><h4><i>${n}</i>${esc(t)}</h4>${inner}</div>`;
+  const gal=(a,cls)=>`<div class="mr-gal ${cls||""}">${a.map(f=>img(f)).join("")}</div>`;
+  const E=R.email,G=R.gads,S=R.social,O=R.seo;
+  const toc=[["pl-sum","Summary"],["pl-email","Email marketing"],["pl-gads","Google Ads"],["pl-social","Social media & designs"],["pl-seo","Website & SEO"],["pl-next","Next steps"]];
+  return `<div class="pl mr" id="mpRoot">
+   <aside class="pl-toc"><b>${esc(monthName(m).split(" ")[0])} report</b><nav>${toc.map(([id,l],k)=>`<a href="#${id}" data-plgo="${id}" class="${k?"":"on"}">${esc(l)}</a>`).join("")}</nav><button type="button" class="pl-xbtn" data-plexp title="Export a report">⬇ Export</button></aside>
+   <div class="pl-doc">
+   <section class="pl-page" id="pl-sum"><div class="pl-cover"><div class="pl-cl"><span class="pl-eb lt">${esc(R.period)} · Monthly report</span><h2>${esc(R.title)}</h2><p>${esc(R.sub)}</p>
+     <ul class="mr-hl">${R.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul></div>
+    <div class="pl-cr"><span class="pl-eb lt">Reputation</span>${R.reputation.map(([v,l])=>`<div class="mr-rep"><b>${esc(v)}</b><small>${esc(l)}</small></div>`).join("")}</div></div>
+    <div class="pl-kpis mr-head">${R.headline.map(([v,l,d])=>`<div><b>${esc(v)}</b><small>${esc(l)}</small><em>${esc(d)}</em></div>`).join("")}</div>
+    <div class="mr-work"><h4>Designs & work delivered</h4><div>${R.work.map(([i,l,n])=>`<span><i>${i}</i><b>${n}</b><small>${esc(l)}</small></span>`).join("")}</div></div></section>
+   ${ch("pl-email","✉️","Channel","Email marketing","Mailchimp sector campaign “"+E.subject+"” · sent "+E.kpis[1][0]+".",E.color,E.kpis,["Email sent",E.img[0]],
+     `<div class="pl-2c">${blk("01","Results by sector",tbl(["Sector","Recipients","Opened","Open rate"],E.sectors,3))}${blk("02","Mailchimp results by send",tbl(["Send","Open rate","Click rate","Delivered","Total opens"],E.sends,1))}</div>
+     ${blk("03","Email designs",gal(E.designs,"g4"),"mt")}`)}
+   ${ch("pl-gads","🔎","Channel","Google Ads","Overview for 1–31 October.",G.color,G.kpis,["Account overview",G.img[0]],
+     `${blk("01","Campaigns",tbl(["Campaign","Type","Budget","Status","Impressions","Interactions","Rate","Avg. cost","Cost"],G.campaigns,4))}
+     <div class="pl-3 mt">${blk("02","Conversion goals",`<ul class="pl-tools">${G.goals.map(([i,n,c,a])=>`<li><b>${i} ${esc(n)}</b><small>${esc(c)} · ${esc(a)} · Active</small></li>`).join("")}</ul>`)}
+       ${blk("03","Done this month",`<ul class="pl-ul">${G.actions.map(a=>`<li>${esc(a)}</li>`).join("")}</ul>`)}
+       ${blk("04","Recommendation",`<p class="mr-rec">💡 ${esc(G.rec)}</p><div class="mr-gal g1">${img(G.haraj)}</div><small class="pl-note">Haraj listings updated</small>`)}</div>`)}
+   ${ch("pl-social","📱","Channel","Social media & designs","Top LinkedIn posts this month and the designs revised for November.",S.color,null,null,
+     `<div class="mr-posts">${S.posts.map(([f,t,st],k)=>`<div class="pl-blk"><h4><i>0${k+1}</i>${esc(t)}</h4>${img(f,"mr-pimg")}<div class="mr-pst">${st.map(([v,l])=>`<span><b>${esc(v)}</b><small>${esc(l)}</small></span>`).join("")}</div></div>`).join("")}</div>
+     ${blk("04","Designs revised for November",gal(S.designs,"g6"),"mt")}`)}
+   ${ch("pl-seo","🌐","Channel","Website & SEO","Google Search Console · October vs September.",O.color,null,["AI search result",O.aiimg],
+     `<div class="pl-2c">${blk("01","Organic search · Oct vs Sep",`<div class="pl-tbl"><table><thead><tr><th>Metric</th><th>October</th><th>September</th><th>Change</th></tr></thead><tbody>${O.compare.map(([n,a,b,dir])=>{const x=parseFloat(a),y=parseFloat(b),up=x>y,good=(up?1:-1)*dir>0;return `<tr><td><b>${esc(n)}</b></td><td class="t">${esc(a)}</td><td>${esc(b)}</td><td><span class="mr-chg ${good?"up":"down"}">${up?"▲":"▼"}</span></td></tr>`}).join("")}</tbody></table></div><h4 class="mr-sub">Last 3 months</h4>${stats(O.q3)}`)}
+       ${blk("02","3-month trend",`<div class="mr-gal g1">${img(O.img[0])}</div><p class="mr-rec">🤖 ${esc(O.ai)}</p>`)}</div>
+     <div class="pl-2c mt">${blk("03","Top search queries",tbl(["Query","Clicks","Impressions","CTR","Position"],O.queries,1))}${blk("04","Top pages",tbl(["Page","Clicks","Impressions"],O.pages,1))}</div>
+     <p class="pl-note mr-ins">${esc(O.insight)}</p>`)}
+   <section class="pl-sec" id="pl-next"><div class="pl-sh"><span class="pl-eb">Next month</span><h3>Recommendations & next steps</h3><p>What we carry into ${esc(monthName(shiftMonth(m,1)))}.</p></div><div class="pl-sit">${R.next.map(([a,t])=>`<div><b>${esc(a)}</b><p>${esc(t)}</p></div>`).join("")}</div></section>
+   <div class="pl-pager"></div></div></div>`;
+}
 /* ---------- MONTHLY: marketing plan document (cp/<month>/plan.json → mp) ---------- */
 function plSar(n){ return n==null?"In-house":"SAR "+Number(n).toLocaleString("en-US"); }
 function plBud(M,id){ const l=M.budget.lines.find(x=>x[0]===id); return l?l[4].reduce((a,b)=>a+b,0):null; }
@@ -3111,6 +3159,7 @@ document.addEventListener("click",e=>{
 function plExpOpen(){ const r=document.getElementById("mpRoot"); if(!r) return;
   const secs=[...r.querySelectorAll(".pl-toc [data-plgo]")].map(a=>[a.dataset.plgo,a.textContent]);
   const pre=[["all","Full plan",secs.map(x=>x[0])],["bud","Budget only",["pl-bud"]],["sb","Summary + Budget",["pl-sum","pl-bud"]],["ch","Channels",secs.filter(x=>!/pl-(sum|sit|obj|bud|mr)$/.test(x[0])).map(x=>x[0])],["kpi","Objectives & KPIs",["pl-obj","pl-mr"]]];
+  const have=new Set(secs.map(x=>x[0])); for(let i=pre.length-1;i>0;i--){ pre[i][2]=pre[i][2].filter(x=>have.has(x)); if(!pre[i][2].length||(pre[i][0]==="ch"&&r.classList.contains("mr"))) pre.splice(i,1); }
   const d=document.createElement("div"); d.className="plx-ov";
   d.innerHTML=`<div class="plx" role="dialog" aria-label="Export report"><div class="plx-h"><b>Export report</b><button type="button" class="plx-x" aria-label="Close">✕</button></div>
    <small class="plx-l">Quick pick</small><div class="plx-pre">${pre.map(([k,l])=>`<button type="button" data-pre="${k}">${l}</button>`).join("")}</div>
