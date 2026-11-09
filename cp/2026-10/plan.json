@@ -1,0 +1,551 @@
+{
+ "mr": {
+  "title": "October marketing report",
+  "period": "1–31 October 2026",
+  "sub": "Results across email, Google Ads, social media and the website, compared with September.",
+  "headline": [
+   [
+    "1,031",
+    "Search clicks",
+    "▲ 865 vs September"
+   ],
+   [
+    "3,847",
+    "Ad clicks",
+    "▲ 4,586 vs September"
+   ],
+   [
+    "74,314",
+    "Impressions",
+    "▲ 34,425 vs September"
+   ],
+   [
+    "30%",
+    "Email open rate",
+    "▲ 25 vs September"
+   ]
+  ],
+  "highlights": [
+   "Google Ads: SAR 11,000 spend · 46.1K clicks at SAR 0.24 average CPC",
+   "First sector email campaign “Discover Al Mays” sent on 18 October",
+   "Top LinkedIn post (National Day): 3,473 impressions · 14.43% engagement rate",
+   "Al Mays listed first in Google AI Mode for “أفضل شركة اعاشة”",
+   "Google rating 4.6 / 5 with a 99% response rate"
+  ],
+  "work": [
+   [
+    "📄",
+    "Company profile",
+    6
+   ],
+   [
+    "🪪",
+    "Business & employee cards",
+    16
+   ],
+   [
+    "🖼️",
+    "Social media posts",
+    9
+   ],
+   [
+    "🏅",
+    "Certificates",
+    1
+   ],
+   [
+    "✏️",
+    "Other designs",
+    0
+   ]
+  ],
+  "reputation": [
+   [
+    "4.6 / 5",
+    "Google rating"
+   ],
+   [
+    "99%",
+    "New reviews"
+   ],
+   [
+    "99%",
+    "Response rate · reviews & messages"
+   ]
+  ],
+  "email": {
+   "color": "#C9A227",
+   "kpis": [
+    [
+     "3",
+     "sectors"
+    ],
+    [
+     "18 Oct",
+     "send date"
+    ],
+    [
+     "14.0%",
+     "best open rate"
+    ],
+    [
+     "2.1%",
+     "best click rate"
+    ]
+   ],
+   "sectors": [
+    [
+     "Hotels",
+     "52",
+     "42",
+     "8.8%"
+    ],
+    [
+     "Contracting & factories",
+     "1,778",
+     "240",
+     "27%"
+    ],
+    [
+     "Contracted companies",
+     "84",
+     "6",
+     "7.4%"
+    ]
+   ],
+   "subject": "Discover Al Mays | اكتشف الميس",
+   "sends": [
+    [
+     "Send 1",
+     "8.8%",
+     "0.21%",
+     "479 (99.4%)",
+     "97"
+    ],
+    [
+     "Send 2",
+     "14.0%",
+     "2.1%",
+     "520 (98.7%)",
+     "114"
+    ],
+    [
+     "Send 3",
+     "13.5%",
+     "1.1%",
+     "1,233 (98.6%)",
+     "276"
+    ],
+    [
+     "Send 4",
+     "7.4%",
+     "0%",
+     "81 (96.4%)",
+     "8"
+    ]
+   ],
+   "img": [
+    "mr_email.jpg"
+   ],
+   "designs": [
+    "mr_e1.jpg",
+    "mr_e2.jpg",
+    "mr_e3.jpg",
+    "mr_e4.jpg"
+   ]
+  },
+  "gads": {
+   "color": "#4285F4",
+   "kpis": [
+    [
+     "SAR 11,000",
+     "total spend"
+    ],
+    [
+     "46.1K",
+     "clicks"
+    ],
+    [
+     "969K",
+     "impressions"
+    ],
+    [
+     "SAR 0.24",
+     "avg. CPC"
+    ],
+    [
+     "171K",
+     "interactions"
+    ]
+   ],
+   "campaigns": [
+    [
+     "Performance Max-5",
+     "Performance Max",
+     "SAR 100/day",
+     "Limited by budget",
+     "393,199",
+     "80,621",
+     "20.50%",
+     "SAR 0.04",
+     "SAR 3,067.64"
+    ],
+    [
+     "New Year 2026 campaign",
+     "Search",
+     "SAR 90/day",
+     "Limited by budget",
+     "11,324",
+     "1,092",
+     "9.64%",
+     "SAR 3.76",
+     "SAR 4,110.33"
+    ],
+    [
+     "Lead Gen",
+     "Performance Max",
+     "SAR 90/day",
+     "Paused",
+     "564,385",
+     "89,606",
+     "15.88%",
+     "SAR 0.05",
+     "SAR 4,084.39"
+    ]
+   ],
+   "goals": [
+    [
+     "📞",
+     "Phone call leads",
+     "17 campaigns",
+     "1 action"
+    ],
+    [
+     "👥",
+     "Contact",
+     "26 campaigns",
+     "2 actions"
+    ],
+    [
+     "📍",
+     "Get directions",
+     "18 campaigns",
+     "1 action"
+    ]
+   ],
+   "actions": [
+    "Google Ads consultation with the Google account manager (15 October)",
+    "All conversion goals checked and linked — all active",
+    "WhatsApp and call tracking fixed and linked through Google Tag Manager",
+    "Haraj listings updated"
+   ],
+   "rec": "Raise the budget of the campaign with the most conversions.",
+   "img": [
+    "mr_gads.jpg"
+   ],
+   "haraj": "mr_haraj.jpg"
+  },
+  "social": {
+   "color": "#E97A2E",
+   "posts": [
+    [
+     "mr_p1.jpg",
+     "National Day at the office",
+     [
+      [
+       "3,473",
+       "impressions"
+      ],
+      [
+       "501",
+       "engagements"
+      ],
+      [
+       "14.43%",
+       "engagement rate"
+      ],
+      [
+       "445",
+       "clicks"
+      ],
+      [
+       "12.81%",
+       "CTR"
+      ],
+      [
+       "54",
+       "reactions"
+      ]
+     ]
+    ],
+    [
+     "mr_p2.jpg",
+     "Central kitchen video · 961 views",
+     [
+      [
+       "2,511",
+       "impressions"
+      ],
+      [
+       "274",
+       "engagements"
+      ],
+      [
+       "10.91%",
+       "engagement rate"
+      ],
+      [
+       "208",
+       "clicks"
+      ],
+      [
+       "8.28%",
+       "CTR"
+      ],
+      [
+       "58",
+       "reactions"
+      ]
+     ]
+    ],
+    [
+     "mr_p3.jpg",
+     "National Day design",
+     [
+      [
+       "848",
+       "impressions"
+      ],
+      [
+       "66",
+       "engagements"
+      ],
+      [
+       "7.78%",
+       "engagement rate"
+      ],
+      [
+       "45",
+       "clicks"
+      ],
+      [
+       "5.31%",
+       "CTR"
+      ],
+      [
+       "18",
+       "reactions"
+      ]
+     ]
+    ]
+   ],
+   "designs": [
+    "mr_d1.jpg",
+    "mr_d2.jpg",
+    "mr_d3.jpg",
+    "mr_d4.jpg",
+    "mr_d5.jpg",
+    "mr_d6.jpg"
+   ]
+  },
+  "seo": {
+   "color": "#2E8B6F",
+   "compare": [
+    [
+     "Clicks",
+     "791",
+     "936",
+     1
+    ],
+    [
+     "Impressions",
+     "26.9K",
+     "24.6K",
+     1
+    ],
+    [
+     "CTR",
+     "2.9%",
+     "3.8%",
+     1
+    ],
+    [
+     "Avg. position",
+     "7.4",
+     "7.9",
+     -1
+    ]
+   ],
+   "q3": [
+    [
+     "2.51K",
+     "clicks"
+    ],
+    [
+     "74.7K",
+     "impressions"
+    ],
+    [
+     "3.4%",
+     "CTR"
+    ],
+    [
+     "7.9",
+     "avg. position"
+    ]
+   ],
+   "queries": [
+    [
+     "almays catering solutions",
+     46,
+     317,
+     "14.5%",
+     "1.5"
+    ],
+    [
+     "almays catering",
+     32,
+     108,
+     "29.6%",
+     "1.1"
+    ],
+    [
+     "شركة الميس للتموين والإعاشة",
+     15,
+     28,
+     "53.6%",
+     "1.0"
+    ],
+    [
+     "الميس",
+     14,
+     284,
+     "4.9%",
+     "6.6"
+    ],
+    [
+     "شركة الميس",
+     13,
+     36,
+     "36.1%",
+     "1.3"
+    ],
+    [
+     "وظائف شركات الإعاشة بالسعودية",
+     11,
+     70,
+     "15.7%",
+     "2.2"
+    ],
+    [
+     "شركة الميس الرائدة",
+     11,
+     30,
+     "36.7%",
+     "2.3"
+    ],
+    [
+     "توظيف شركات الإعاشة",
+     9,
+     79,
+     "11.4%",
+     "2.6"
+    ],
+    [
+     "al mays",
+     8,
+     38,
+     "21.1%",
+     "4.5"
+    ],
+    [
+     "almays catering solutions photos",
+     7,
+     121,
+     "5.8%",
+     "1.4"
+    ]
+   ],
+   "pages": [
+    [
+     "/ (home)",
+     435,
+     "12,024"
+    ],
+    [
+     "/en/home",
+     352,
+     "6,220"
+    ],
+    [
+     "/التوظيف",
+     296,
+     "3,399"
+    ],
+    [
+     "/شركة-إعاشة-وتغذية-في-السعودية",
+     145,
+     "5,527"
+    ],
+    [
+     "/شركات-التموين-والاعاشة-بالرياض",
+     138,
+     "5,307"
+    ],
+    [
+     "/projects/المطبخ-المركزي-في-المدينة-المنورة",
+     101,
+     "2,823"
+    ],
+    [
+     "/شركة-إعاشة-في-الرياض",
+     87,
+     "3,656"
+    ],
+    [
+     "/en/projects/riyadh-central-kitchen",
+     83,
+     "7,950"
+    ],
+    [
+     "/en/careers",
+     75,
+     "1,922"
+    ],
+    [
+     "/en/projects/al-madinah-central-kitchen",
+     68,
+     "1,691"
+    ]
+   ],
+   "insight": "Strong brand visibility: “al mays” brings the most impressions, while “almays catering solutions” and “شركة الميس للتموين والإعاشة” get high click rates.",
+   "ai": "Al Mays appears first in Google AI Mode for “أفضل شركة اعاشة” and ranks organically for “وجبات اعاشة للعمال”.",
+   "img": [
+    "mr_gsc.jpg"
+   ],
+   "aiimg": "mr_ai.jpg"
+  },
+  "next": [
+   [
+    "Google Ads",
+    "Raise the budget of the campaign with the most conversions; keep the follow-up with the Google account manager."
+   ],
+   [
+    "Tracking",
+    "Keep WhatsApp and call conversions linked through Google Tag Manager and check them weekly."
+   ],
+   [
+    "Email",
+    "Repeat the sector campaign; the contracting & factories list performed best (27% open rate)."
+   ],
+   [
+    "Social",
+    "Publish the revised November designs and more company-activity posts on LinkedIn."
+   ],
+   [
+    "Website & SEO",
+    "Lift CTR (2.9%) with better titles and descriptions on the top pages; keep Haraj listings updated."
+   ]
+  ]
+ }
+}
