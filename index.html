@@ -2850,7 +2850,7 @@ const PAL=["#3DDC84","#4DD8E6","#FFD166","#A47CFF","#FFA94D","#AEC486","#5AA9FF"
 const KPIS=[["leads","Leads","",1],["sql","Qualified leads (SQL)","",1],["cpl","Cost per lead","SAR",-1],["visits","Website visits","",1],["organic","Organic visits (SEO)","",1],["followers","Social followers (total)","",1],["engagement","Engagement rate","%",1],["adspend","Ad spend","SAR",-1],["contracts","Contracts from marketing","",1]];
 const PLAN_ST=["Planned","In Progress","Done","Cancelled"];
 const MON={month:null,tab:"plan",docs:{},plans:[],pending:false,adding:false};
-{const q=new URLSearchParams(location.search),v=q.get("view"); if(v==="plan"){MON.tab="plan"; W.page="month"; const pp=q.get("p"); if(pp){try{store.set("almays-plpage","pl-"+pp.replace(/^pl-/,""))}catch(_){}} let n=0; const t=setInterval(()=>{const el=document.getElementById("mpRoot"); if(el&&el.dataset.pl){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);} if(v==="calendar"){MON.tab="content"; W.page="month"; let n=0; const t=setInterval(()=>{const el=document.querySelector(".cx"); if(el&&el.querySelector(".cx-tabs")){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);}}
+{const q=new URLSearchParams(location.search),v=q.get("view"); if(v==="plan"){MON.tab="plan"; W.page="month"; const pp=q.get("p"); if(pp){try{store.set("almays-plpage","pl-"+pp.replace(/^pl-/,""))}catch(_){}} let n=0; const t=setInterval(()=>{const el=document.getElementById("mpRoot"); if(el&&el.dataset.pl){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);} if(v==="report"){MON.tab="report"; W.page="month";} if(v==="calendar"){MON.tab="content"; W.page="month"; let n=0; const t=setInterval(()=>{const el=document.querySelector(".cx"); if(el&&el.querySelector(".cx-tabs")){const hd=document.querySelector("header"); const off=hd&&getComputedStyle(hd).position!=="static"?hd.offsetHeight:0; window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-off-10); clearInterval(t);} else if(++n>40) clearInterval(t);},250);}}
 const monthOf=s=>String(s||"").slice(0,7);
 const monthName=m=>{const [y,mo]=m.split("-").map(Number); return new Date(Date.UTC(y,mo-1,1)).toLocaleDateString("en-GB",{month:"long",year:"numeric",timeZone:"UTC"})};
 const shiftMonth=(m,d)=>{const [y,mo]=m.split("-").map(Number); const t=new Date(Date.UTC(y,mo-1+d,1)); return t.toISOString().slice(0,7)};
@@ -2888,7 +2888,7 @@ function renderMonth(){
    </div>
    <div class="mgr-choices m-choices">
     <button type="button" class="choice c-plan" data-mtab="plan" aria-pressed="${tab==="plan"}"><span class="ci">🗓️</span><span><b>Monthly plan</b><small>Goals, KPI targets, activities and budget</small></span><span class="cn">${(cpLoad(m),CP.docs[m]&&CP.docs[m].mp)?CP.docs[m].mp.pillars.reduce((n,p)=>n+p.items.length,0):plans.length}</span></button>
-    <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results, KPIs vs targets, plan vs actual</small></span><span class="cn">${Math.round(monthDone(m)*100)}%</span></button>
+    <button type="button" class="choice c-rep" data-mtab="report" aria-pressed="${tab==="report"}"><span class="ci">📊</span><span><b>Monthly report</b><small>Results of ${esc(monthName(shiftMonth(m,-1)).split(" ")[0])} · last month</small></span><span class="cn">${(()=>{cpLoad(shiftMonth(m,-1));const R=(CP.docs[shiftMonth(m,-1)]||{}).mr;return R?"✓":Math.round(monthDone(m)*100)+"%"})()}</span></button>
     <button type="button" class="choice c-cp" data-mtab="content" aria-pressed="${tab==="content"}"><span class="ci">🗓️</span><span><b>Content calendar</b><small>Posts &amp; bulk emails by date</small></span><span class="cn">${(cpLoad(m),CP.docs[m])?((CP.docs[m].posts||[]).length+(CP.docs[m].emails||[]).length+(((CP.docs[m].seo||{}).articles)||[]).length):0}</span></button>
    </div>
    <div class="m-pane p-${tab}">${tab==="plan"?planView(m,D,plans,can):tab==="content"?contentView(m):reportView(m,D,plans,can)}</div>
@@ -2927,7 +2927,7 @@ function planRow(p,can,report){
    ${can&&!report?`<button class="mi-x" type="button" data-pdel="${esc(p.id)}" aria-label="Delete activity"><svg class="i"><use href="#i-x"/></svg></button>`:""}</div>`;
 }
 function reportView(m,D,plans,can){
-  cpLoad(m); { const mr=mrView(m); if(mr) return mr; }
+  { const rm=shiftMonth(m,-1); cpLoad(rm); const mr=mrView(rm); if(mr) return mr; }
   const ts=monthTasks(m), d=ts.filter(t=>t.status==="Done"), ip=ts.filter(t=>t.status==="In Progress"), lt=ts.filter(late), p=ts.length?d.length/ts.length:0;
   const pm=shiftMonth(m,-1), PD=mdoc(pm);
   const pd2=plans.filter(x=>x.status==="Done").length, bud=plans.reduce((s,x)=>s+(num(x.budget)||0),0), spent=plans.reduce((s,x)=>s+(num(x.spent)||0),0);
