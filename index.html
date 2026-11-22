@@ -1270,6 +1270,26 @@ body[data-sb]{padding-left:248px}
 .sb-ic{width:22px;text-align:center;font-size:15px}.sb-bd{margin-left:auto;background:#E5533D;color:#fff;font-size:11px;font-weight:800;border-radius:99px;padding:1px 7px;line-height:16px}
 .sb-foot{margin-top:auto;padding:14px 12px 0;font-size:11px;color:rgba(207,224,196,.45)}
 .sb-burger,.sb-scrim{display:none}
+@media(min-width:1001px){
+ body[data-sb]{padding-left:76px}
+ .sb{width:76px;padding:16px 12px 14px;overflow-x:hidden;transition:width .22s ease,box-shadow .22s ease}
+ .sb:hover,.sb:focus-within{width:248px;box-shadow:24px 0 48px rgba(0,0,0,.28)}
+ .sb-top{position:relative;height:58px;padding:0;margin-bottom:8px}
+ .sb-top .sb-logo,.sb-top small{opacity:0;transition:opacity .15s;white-space:nowrap}
+ .sb-top .sb-logo{position:absolute;left:10px;top:4px}.sb-top small{position:absolute;left:10px;top:36px;margin:0}
+ .sb-top::before{content:"AM";position:absolute;left:4px;top:6px;width:44px;height:44px;border-radius:14px;background:#A9C47F;color:#1F3A30;font-weight:900;font-size:15px;letter-spacing:.04em;display:grid;place-items:center;transition:opacity .15s}
+ .sb:hover .sb-top .sb-logo,.sb:hover .sb-top small,.sb:focus-within .sb-top .sb-logo,.sb:focus-within .sb-top small{opacity:1}
+ .sb:hover .sb-top::before,.sb:focus-within .sb-top::before{opacity:0}
+ .sb-i{padding:10px 13px;white-space:nowrap;margin-bottom:2px}
+ .sb-i>span:nth-child(2){opacity:0;transition:opacity .12s}
+ .sb:hover .sb-i>span:nth-child(2),.sb:focus-within .sb-i>span:nth-child(2){opacity:1;transition-delay:.06s}
+ .sb-ic{font-size:17px;flex:none}
+ .sb-bd{position:absolute;left:30px;top:4px;margin:0;font-size:10px;padding:0 5px;line-height:15px;transition:left .2s}
+ .sb:hover .sb-bd,.sb:focus-within .sb-bd{position:static;margin-left:auto;font-size:11px;padding:1px 7px;line-height:16px}
+ .sb-g{height:1px;margin:10px 8px;background:rgba(255,255,255,.1);font-size:0;overflow:hidden;white-space:nowrap;transition:all .2s}
+ .sb:hover .sb-g,.sb:focus-within .sb-g{height:auto;background:none;font-size:10.5px;margin:16px 12px 6px}
+ .sb-foot{opacity:0;white-space:nowrap;transition:opacity .15s}.sb:hover .sb-foot{opacity:1}
+}
 body[data-sb] .band .brand-left,body[data-sb] .hdr-tabs,body[data-sb] #startWeek{display:none!important}
 body[data-sb] .band .wrap{grid-template-columns:1fr auto!important;grid-template-areas:"x meta"!important;padding-block:10px!important;min-height:56px}
 body[data-sb]:not([data-page="board"]) .weeknav{display:none!important}
@@ -3471,7 +3491,7 @@ function renderSidebar(){
   const over=id=>{const n=secGroups(secTasks(id)).over.length; return n?`<span class="sb-bd">${n}</span>`:"";};
   let html="", last=null;
   SECS.forEach(s=>{ if(s.owner&&!canLog()) return; if(s.g!==last){ if(s.g) html+=`<div class="sb-g">${esc(s.g)}</div>`; last=s.g; }
-    html+=`<a href="#" class="sb-i${cur===s.id?" on":""}" data-sxnav="${s.id}"><span class="sb-ic">${s.ic}</span><span>${esc(s.l)}</span>${!s.page&&s.id!=="home"?over(s.id):s.id==="home"?over("home"):""}</a>`; });
+    html+=`<a href="#" class="sb-i${cur===s.id?" on":""}" data-sxnav="${s.id}" title="${esc(s.l)}"><span class="sb-ic">${s.ic}</span><span>${esc(s.l)}</span>${!s.page&&s.id!=="home"?over(s.id):s.id==="home"?over("home"):""}</a>`; });
   sb.querySelector(".sb-nav").innerHTML=html;
 }
 function curMonth(){ return todayISO().slice(0,7); }
